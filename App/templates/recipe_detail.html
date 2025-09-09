@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Recette detail{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<h2>MyRecipes</h2>
+
+<div class="card mb-4">
+  <div class="card-body">
+    <h3 class="card-title">{{ recipe.title }}</h3>
+    <p class="card-text">{{ recipe.description }}</p>
+    <h5>Ingrédients:</h5>
+    <ul>
+      {% for ingredient in recipe.ingredients.all %}
+      <li>{{ ingredient.name }} - {{ ingredient.quantity }}</li>
+      {% empty %}
+      <li>Aucun ingrédient disponible.</li>
+      {% endfor %}
+    </ul>
+    <h5>Instructions:</h5>
+    <p>{{ recipe.instructions }}</p>
+    <a href="{% url 'index' %}" class="btn btn-secondary">Retour à l'accueil</a>
+  </div>
+
+{% endblock %}

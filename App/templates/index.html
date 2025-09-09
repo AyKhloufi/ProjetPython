@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}MyRecipes{% endblock %}
+
+{% block content %}
+{% load static %}
+
+<h2>MyRecipes</h2>
+
+<div class="row">
+  {% for recipe in recipes %}
+  <div class="col-md-4 mb-4">
+    <div class="card h-100">
+      <div class="card-body">
+        <h5 class="card-title">{{ recipe.title }}</h5>
+        <p class="card-text">{{ recipe.description|truncatewords:20 }}</p>
+        <a href="{% url 'recipe_detail' recipe.id %}" class="btn btn-primary">Voir la recette</a>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <p>Aucune recette disponible.</p>
+  {% endfor %}
+{% endblock %}

@@ -1,0 +1,82 @@
+***** Dans une terminal PowerShell *****
+
+-----
+Pour connaître la version de python installée:
+python --version
+
+-----
+Pour créer un environnement virtuel:
+python -m venv .venv
+
+-----
+Pour activer un environnement virtuel:
+.venv/Scripts/Activate.ps1
+
+Si vous avez un message qui mentionne que vous n'avez pas les permissions..., exécutez avant:
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process
+
+
+***** Dans l'environnement virtuel *****
+
+	-----
+	Pour faire la mise à jour du programme pip:
+	python -m pip install --upgrade pip
+
+	-----
+	Pour installer Django:
+	pip install django
+
+	-----
+	Pour voir la version de Django installée:
+	python -m django --version
+
+	-----
+	Pour installer le module mysqlclient (si vous utilisez MySQL):
+	pip install mysqlclient
+
+	-----
+	Pour installer le module Pillow (si vous utiliser des FileField ou ImageField)
+	python -m pip install --upgrade Pillow
+
+	-----
+	Pour générer requirements.txt (dans l'environnement virtuel):
+	pip freeze > requirements.txt
+
+	-----
+	Pour restorer les packages (dans l'environnement virtuel):
+	pip install -r requirements.txt
+
+	-----
+	Pour créer la structure d'un projet Django (après, déplacez-vous dans le répertoire racine de demo_project):
+	django-admin startproject demo_project
+
+
+	***** Dans un projet Django *****
+
+		-----
+		Pour créer une nouvelle application :
+		django-admin startapp demo_app
+
+		-----
+		Pour générer les migrations Django:
+		python manage.py makemigrations
+
+		-----
+		Pour appliquer les migrations:
+		python manage.py migrate
+
+		-----
+		Pour créer un superuser dans Django (admin) :
+		python manage.py createsuperuser
+
+		-----
+		Pour lancer le serveur web:
+		python manage.py runserver
+
+	*****
+
+	-----
+	Pour quitter l'environnement virtuel:
+	deactivate
+
+*****
