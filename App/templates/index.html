@@ -5,6 +5,9 @@
 {% load static %}
 
 <h2>MyRecipes</h2>
+<a href="{% url 'quantity_units' %}" class="btn btn-primary">Voir les unités de quantité</a>
+<a href="{% url 'ingredients' %}" class="btn btn-primary">Voir les ingrédients</a>
+<a href="{% url 'add_recipe' %}" class="btn btn-primary">Ajouter une recette</a>
 
 <div class="row">
   {% for recipe in recipes %}

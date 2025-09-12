@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Liste des ingrédients{% endblock %}
+
+{% block content %}
+<h2>Liste des ingrédients</h2>
+<a href="{% url 'add_ingredient' %}" class="btn btn-primary">Ajouter un ingrédient</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nom</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for ingredient in ingredients %}
+        <tr>
+            <td>{{ ingredient.id }}</td>
+            <td>{{ ingredient.name }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{% url 'index' %}" class="btn btn-secondary">Retour à l'accueil</a>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Ajouter une recette{% endblock %}
+
+{% block content %}
+<h2>Ajouter une recette</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="title" class="form-label">Titre de la recette</label>
+        <input type="text" class="form-control" id="title" name="title" required>
+    </div>
+    <div class="mb-3">
+        <label for="description" class="form-label">Description de la recette</label>
+        <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+</form>
+{% if message %}
+<div class="alert alert-success mt-3">{{ message }}</div>
+{% endif %}
+<a href="{% url 'index' %}" class="btn btn-secondary mt-3">Retour à l'accueil</a>
+{% endblock %}
+    

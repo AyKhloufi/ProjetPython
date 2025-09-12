@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Ajouter une unité de quantité{% endblock %}
+
+{% block content %}
+<h2>Ajouter une unité de quantité</h2>
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="unit" class="form-label">Unité</label>
+        <input type="text" class="form-control" id="unit" name="unit" required>
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+</form>
+{% if message %}
+<div class="alert alert-success mt-3">{{ message }}</div>
+{% endif %}
+{% endblock %}
