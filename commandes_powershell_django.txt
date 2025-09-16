@@ -2,11 +2,11 @@
 
 -----
 Pour connaître la version de python installée:
-python --version
+py --version
 
 -----
 Pour créer un environnement virtuel:
-python -m venv .venv
+py -m venv .venv
 
 -----
 Pour activer un environnement virtuel:
