@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}Éditer l'ingrédient{% endblock %}
+
+{% block content %}
+<h2>Éditer l'ingrédient</h2>
+<form method="post">
+    {% csrf_token %}
+    <input type="hidden" name="ingredient_id" value="{{ ingredient.id }}">
+    <div class="form-group">
+        <label for="name">Nom de l'ingrédient:</label>
+        <input type="text" class="form-control" id="name" name="name" value="{{ ingredient.name }}" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Enregistrer les modifications</button>
+    <a href="{% url 'ingredients' %}" class="btn btn-secondary">Annuler</a>
+</form>
+{% endblock %}

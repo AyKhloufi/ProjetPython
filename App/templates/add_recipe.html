@@ -3,21 +3,87 @@
 
 {% block content %}
 <h2>Ajouter une recette</h2>
+
+{% if errors %}
+<div class="alert alert-danger">
+    <ul>
+    {% for error in errors %}
+        <li>{{ error }}</li>
+    {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
 <form method="post">
     {% csrf_token %}
     <div class="mb-3">
         <label for="title" class="form-label">Titre de la recette</label>
-        <input type="text" class="form-control" id="title" name="title" required>
+        <input 
+            type="text" 
+            class="form-control" 
+            id="title" 
+            name="title" 
+            required
+            value="{{ title|default:'' }}"
+        >
     </div>
     <div class="mb-3">
         <label for="description" class="form-label">Description de la recette</label>
-        <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
+        <textarea 
+            class="form-control" 
+            id="description" 
+            name="description" 
+            rows="3" 
+            required
+        >{{ description|default:'' }}</textarea>
     </div>
+    <div class="mb-3">
+        <label for="instructions" class="form-label">Instructions</label>
+        <textarea 
+            class="form-control" 
+            id="instructions" 
+            name="instructions" 
+            rows="5" 
+            required
+        >{{ instructions|default:'' }}</textarea>
+    </div>
+
+    <h4>Ingrédients</h4>
+    {% for ingredient in ingredients %}
+        <div class="row align-items-center mb-2">
+            <div class="col-auto">
+                <input 
+                    type="checkbox" 
+                    id="ingredient{{ forloop.counter }}" 
+                    name="ingredient_ids" 
+                    value="{{ ingredient.id }}"
+                >
+                <label for="ingredient{{ forloop.counter }}">{{ ingredient.name }}</label>
+            </div>
+            <div class="col-auto">
+                <input 
+                    type="number" 
+                    min="0.01" 
+                    step="any" 
+                    name="quantity_{{ ingredient.id }}" 
+                    placeholder="Quantité"
+                    required
+                >
+            </div>
+            <div class="col-auto">
+                <select name="unit_{{ ingredient.id }}" required>
+                    {% for unit in units %}
+                        <option value="{{ unit.id }}">{{ unit.unit }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+    {% endfor %}
     <button type="submit" class="btn btn-primary">Ajouter</button>
 </form>
+
 {% if message %}
 <div class="alert alert-success mt-3">{{ message }}</div>
 {% endif %}
 <a href="{% url 'index' %}" class="btn btn-secondary mt-3">Retour à l'accueil</a>
 {% endblock %}
-    

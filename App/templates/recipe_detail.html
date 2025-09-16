@@ -12,12 +12,13 @@
     <p class="card-text">{{ recipe.description }}</p>
     <h5>Ingrédients:</h5>
     <ul>
-      {% for ingredient in recipe.ingredients.all %}
-      <li>{{ ingredient.name }} - {{ ingredient.quantity }}</li>
+      {% for ri in recipe_ingredients %}
+        <li>{{ ri.ingredient.name }} - {{ ri.quantity }} {{ ri.unit.unit }}</li>
       {% empty %}
-      <li>Aucun ingrédient disponible.</li>
+        <li>Aucun ingrédient disponible.</li>
       {% endfor %}
     </ul>
+
     <h5>Instructions:</h5>
     <p>{{ recipe.instructions }}</p>
     <a href="{% url 'index' %}" class="btn btn-secondary">Retour à l'accueil</a>

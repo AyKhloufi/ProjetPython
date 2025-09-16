@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% load custom_filters %}
+{% block title %}Éditer la recette{% endblock %}
+
+{% block content %}
+<h2>Éditer la recette</h2>
+
+{% if errors %}
+<div class="alert alert-danger">
+    <ul>
+        {% for error in errors %}
+            <li>{{ error }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+
+<form method="post">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="title" class="form-label">Titre de la recette</label>
+        <input type="text" id="title" name="title" class="form-control" required value="{{ title|default:recipe.title }}">
+    </div>
+
+    <div class="mb-3">
+        <label for="description" class="form-label">Description</label>
+        <textarea id="description" name="description" class="form-control" rows="3" required>{{ description|default:recipe.description }}</textarea>
+    </div>
+
+    <div class="mb-3">
+        <label for="instructions" class="form-label">Instructions</label>
+        <textarea id="instructions" name="instructions" class="form-control" rows="5" required>{{ instructions|default:recipe.instructions }}</textarea>
+    </div>
+
+        <h4>Ingrédients</h4>
+    {% for ingredient in ingredients %}
+        {% with ri=ri_dict|get_item:ingredient.id %}
+        <div class="row align-items-center mb-2">
+            <div class="col-auto">
+                <input type="checkbox"
+                       id="ingredient{{ forloop.counter }}"
+                       name="ingredient_ids"
+                       value="{{ ingredient.id }}"
+                       {% if ri %}checked{% endif %}>
+                <label for="ingredient{{ forloop.counter }}">{{ ingredient.name }}</label>
+            </div>
+            <div class="col-auto">
+                <input type="number" name="quantity_{{ ingredient.id }}" min="0.01" step="any" value="{{ ri.quantity_str|default_if_none:'' }}">
+
+            </div>
+            <div class="col-auto">
+                <select name="unit_{{ ingredient.id }}">
+                    {% for unit in units %}
+                        <option value="{{ unit.id }}" {% if ri and ri.unit.id == unit.id %}selected{% endif %}>
+                            {{ unit.unit }}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        {% endwith %}
+    {% endfor %}
+
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+</form>
+
+<a href="{% url 'index' %}" class="btn btn-secondary mt-3">Retour à l'accueil</a>
+{% endblock %}

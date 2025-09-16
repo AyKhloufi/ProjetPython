@@ -51,3 +51,7 @@ class RecipeIngredient(models.Model):
         unique_together = ('recipe', 'ingredient')
         verbose_name = "ingrédient de recette"
         verbose_name_plural = "ingrédients de recette"
+    @property
+    def quantity_str(self):
+        # Convertit la quantité en string avec point décimal pour HTML input
+        return str(self.quantity).replace(',', '.')

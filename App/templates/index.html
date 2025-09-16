@@ -16,7 +16,17 @@
       <div class="card-body">
         <h5 class="card-title">{{ recipe.title }}</h5>
         <p class="card-text">{{ recipe.description|truncatewords:20 }}</p>
-        <a href="{% url 'recipe_detail' recipe.id %}" class="btn btn-primary">Voir la recette</a>
+        <a href="{% url 'recipe_detail' recipe.id %}" class="btn btn-primary">Voir la recette</a>       
+
+        <a href="{% url 'edit_recipe' recipe.id %}" class="btn btn-secondary">Éditer</a>
+
+        <form method="post" action="{% url 'delete_recipe' recipe.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">
+                Supprimer
+            </button>
+        </form>
+
       </div>
     </div>
   </div>
