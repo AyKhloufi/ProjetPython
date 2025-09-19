@@ -4,6 +4,10 @@
 {% block content %}
 <h2>Ajouter une recette</h2>
 
+{% if message %}
+<div class="alert alert-success mt-3">{{ message }}</div>
+{% endif %}
+
 {% if errors %}
 <div class="alert alert-danger">
     <ul>
@@ -67,11 +71,10 @@
                     step="any" 
                     name="quantity_{{ ingredient.id }}" 
                     placeholder="Quantité"
-                    required
                 >
             </div>
             <div class="col-auto">
-                <select name="unit_{{ ingredient.id }}" required>
+                <select name="unit_{{ ingredient.id }}">
                     {% for unit in units %}
                         <option value="{{ unit.id }}">{{ unit.unit }}</option>
                     {% endfor %}
@@ -82,8 +85,6 @@
     <button type="submit" class="btn btn-primary">Ajouter</button>
 </form>
 
-{% if message %}
-<div class="alert alert-success mt-3">{{ message }}</div>
-{% endif %}
-<a href="{% url 'index' %}" class="btn btn-secondary mt-3">Retour à l'accueil</a>
+
+<a href="{% url 'home' %}" class="btn btn-secondary mt-3">Retour à l'accueil</a>
 {% endblock %}

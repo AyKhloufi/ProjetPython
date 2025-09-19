@@ -28,7 +28,7 @@ class Ingredient(models.Model):
         verbose_name = "ingredient"
         verbose_name_plural = "ingredients"
 
-class QuantityUnit(models.Model):
+class Unit(models.Model):
     unit = models.CharField(max_length=20, verbose_name="Unité")
 
     def __str__(self):
@@ -43,7 +43,7 @@ class RecipeIngredient(models.Model):
     recipe = models.ForeignKey(Recipe, related_name='recipe_ingredients', on_delete=models.CASCADE, verbose_name="Recette")
     ingredient = models.ForeignKey(Ingredient, on_delete=models.CASCADE, verbose_name="Ingrédient")
     quantity = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Quantité")
-    unit = models.ForeignKey(QuantityUnit, on_delete=models.CASCADE, verbose_name="Unité")
+    unit = models.ForeignKey(Unit, on_delete=models.CASCADE, verbose_name="Unité")
 
     def __str__(self):
         return f"{self.quantity} {self.unit} de {self.ingredient.name}"

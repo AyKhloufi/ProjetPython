@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Liste des unités de quantité{% endblock %}
+
+{% block content %}
+<h2>Liste des unités de quantité</h2>
+
+
+{% if not units %}
+<div class="alert alert-info">
+    <p>Aucune unité de quantité trouvée dans la base de données.</p>
+    <a href="{% url 'add_unit' %}" class="btn btn-primary">Cliquez ici pour en ajouter une</a>
+</div>
+{% else %}
+
+<table class="table">
+    <div class="mb-3"></div>
+        <a href="{% url 'add_unit' %}" class="btn btn-primary">Ajouter une unité</a>
+    </div>
+    <thead>
+        <tr>
+        <th>Unité</th>
+        <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for unit in units %}
+        <tr>
+        <td>{{ unit.unit }}</td>
+        <td>
+            <a href="{% url 'edit_unit' unit.id %}" class="btn btn-secondary">Éditer</a>
+            <form method="post" action="{% url 'delete_unit' unit.id %}" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+            </form>
+        </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endif %}
+{% endblock %}

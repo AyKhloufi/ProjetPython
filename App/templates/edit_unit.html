@@ -10,9 +10,9 @@
     <input type="hidden" name="unit_id" value="{{ quantity_unit.id }}">
     <div class="form-group">
         <label for="unit">Unité de quantité:</label>
-        <input type="text" class="form-control" id="unit" name="unit" value="{{ quantity_unit.unit }}" required>
+        <input type="text" class="form-control" id="unit" name="unit" value="{{ unit.unit }}" required>
     </div>
     <button type="submit" class="btn btn-primary">Enregistrer</button>
-    <a href="{% url 'quantity_units' %}" class="btn btn-secondary">Annuler</a>
+    <a href="{% url 'units' %}" class="btn btn-secondary">Annuler</a>
 </form>
 {% endblock %}

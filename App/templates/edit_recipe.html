@@ -38,10 +38,10 @@
         <div class="row align-items-center mb-2">
             <div class="col-auto">
                 <input type="checkbox"
-                       id="ingredient{{ forloop.counter }}"
-                       name="ingredient_ids"
-                       value="{{ ingredient.id }}"
-                       {% if ri %}checked{% endif %}>
+                    id="ingredient{{ forloop.counter }}"
+                    name="ingredient_ids"
+                    value="{{ ingredient.id }}"
+                    {% if ri %}checked{% endif %}>
                 <label for="ingredient{{ forloop.counter }}">{{ ingredient.name }}</label>
             </div>
             <div class="col-auto">
@@ -64,5 +64,5 @@
     <button type="submit" class="btn btn-primary">Enregistrer</button>
 </form>
 
-<a href="{% url 'index' %}" class="btn btn-secondary mt-3">Retour à l'accueil</a>
+<a href="{% url 'recipe_detail' recipe.id %}" class="btn btn-secondary mt-3">Annuler</a>
 {% endblock %}

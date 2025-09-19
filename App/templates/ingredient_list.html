@@ -3,18 +3,23 @@
 
 {% block content %}
 <h2>Liste des ingrédients</h2>
-<a href="{% url 'add_ingredient' %}" class="btn btn-primary">Ajouter un ingrédient</a>
+{% if not ingredients %}
+<div class="alert alert-info">
+    <p>Aucun ingrédient trouvé dans la base de données.</p>
+    <a href="{% url 'add_ingredient' %}" class="btn btn-primary">Cliquez ici pour en ajouter un</a>
+</div>
+{% else %}
+<a href="{% url 'add_ingredient' %}" class="btn btn-primary mb-3">Ajouter un ingrédient</a>
 <table class="table">
     <thead>
         <tr>
-            <th>ID</th>
             <th>Nom</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
         {% for ingredient in ingredients %}
         <tr>
-            <td>{{ ingredient.id }}</td>
             <td>{{ ingredient.name }}</td>
             <td>
                 <a href="{% url 'edit_ingredient' ingredient.id %}" class="btn btn-secondary">Éditer</a>
@@ -27,5 +32,6 @@
         {% endfor %}
     </tbody>
 </table>
-<a href="{% url 'index' %}" class="btn btn-secondary">Retour à l'accueil</a>
+{% endif %}
+<a href="{% url 'home' %}" class="btn btn-secondary">Retour à l'accueil</a>
 {% endblock %}
