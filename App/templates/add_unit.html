@@ -1,18 +1,127 @@
 {% extends 'base.html' %}
-{% block title %}Ajouter une unité de quantité{% endblock %}
+{% load static %}
+
+{% block title %}Ajouter une Unité - Mon Site Recettes{% endblock %}
 
 {% block content %}
-<h2>Ajouter une unité de quantité</h2>
-<form method="post">
-    {% csrf_token %}
-    <div class="mb-3">
-        <label for="unit" class="form-label">Unité</label>
-        <input type="text" class="form-control" id="unit" name="unit" required>
+<div class="add-unit-page">
+  <!-- Header Section -->
+  <div class="page-header mb-5">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <div class="header-content">
+          <div class="header-icon mb-3">
+            <i class="fas fa-plus fa-2x text-warning"></i>
+          </div>
+          <h1 class="display-5 mb-3">Ajouter une Nouvelle Unité</h1>
+          <p class="lead text-muted">Enrichissez votre système de mesures pour des recettes précises</p>
+        </div>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <a href="{% url 'units' %}" class="btn btn-outline-secondary">
+          <i class="fas fa-arrow-left me-2"></i>Retour à la Liste
+        </a>
+      </div>
     </div>
-    
-    <button type="submit" class="btn btn-primary">Ajouter</button>
-</form>
-{% if message %}
-<div class="alert alert-success mt-3">{{ message }}</div>
-{% endif %}
+  </div>
+
+  <!-- Form Section -->
+  <div class="form-section">
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+        <div class="form-card">
+          <div class="form-header">
+            <div class="form-icon">
+              <i class="fas fa-balance-scale"></i>
+            </div>
+            <h3>Détails de l'Unité</h3>
+            <p class="text-muted">Saisissez les informations de votre nouvelle unité de mesure</p>
+          </div>
+          
+          <form method="post" class="form-modern">
+            {% csrf_token %}
+            
+            {% if messages %}
+              {% for message in messages %}
+                <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} mb-4">
+                  <i class="fas fa-{% if message.tags == 'error' %}exclamation-triangle{% else %}check-circle{% endif %} me-2"></i>{{ message }}
+                </div>
+              {% endfor %}
+            {% endif %}
+            
+            <div class="form-group mb-4">
+              <label for="unit" class="form-label">
+                <i class="fas fa-ruler me-2"></i>Unité de Mesure
+              </label>
+              <input type="text" 
+                     class="form-control form-control-lg" 
+                     id="unit" 
+                     name="unit" 
+                     placeholder="Ex: g, ml, tasse, cuillère à soupe..."
+                     required>
+              <div class="form-help">
+                <small class="text-muted">
+                  <i class="fas fa-info-circle me-1"></i>
+                  Utilisez des abréviations standard (g, ml) ou des noms complets (tasse, cuillère)
+                </small>
+              </div>
+            </div>
+
+            <div class="form-actions">
+              <button type="submit" class="btn btn-warning btn-lg">
+                <i class="fas fa-plus me-2"></i>Ajouter l'Unité
+              </button>
+              <a href="{% url 'units' %}" class="btn btn-outline-secondary btn-lg ms-3">
+                <i class="fas fa-times me-2"></i>Annuler
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Examples Section -->
+  <div class="examples-section mt-5">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <div class="examples-card">
+          <h4><i class="fas fa-examples me-2 text-info"></i>Exemples d'Unités Courantes</h4>
+          <div class="row g-3 mt-3">
+            <div class="col-md-4">
+              <div class="example-category">
+                <h6><i class="fas fa-weight-hanging me-2"></i>Poids</h6>
+                <div class="example-items">
+                  <span class="badge bg-light text-dark me-2">g</span>
+                  <span class="badge bg-light text-dark me-2">kg</span>
+                  <span class="badge bg-light text-dark me-2">oz</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="example-category">
+                <h6><i class="fas fa-tint me-2"></i>Volume</h6>
+                <div class="example-items">
+                  <span class="badge bg-light text-dark me-2">ml</span>
+                  <span class="badge bg-light text-dark me-2">l</span>
+                  <span class="badge bg-light text-dark me-2">cl</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="example-category">
+                <h6><i class="fas fa-utensils me-2"></i>Cuisine</h6>
+                <div class="example-items">
+                  <span class="badge bg-light text-dark me-2">tasse</span>
+                  <span class="badge bg-light text-dark me-2">c. à soupe</span>
+                  <span class="badge bg-light text-dark me-2">c. à café</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}

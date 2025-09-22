@@ -22,33 +22,11 @@
     <h5>Instructions:</h5>
     <p>{{ recipe.instructions }}</p>
     <a href="{% url 'edit_recipe' recipe.id %}" class="btn btn-secondary">Éditer la recette</a>
-    <form method="post" action="{% url 'delete_recipe' recipe.id %}" style="display:inline;">
+    <form method="post" action="{% url 'delete_recipe' recipe.id %}" style="display:inline;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette recette ? Cette action est irréversible.');">
         {% csrf_token %}
-        <button type="submit" class="btn btn-danger" id="deleteBtn">
+        <button type="submit" class="btn btn-danger">
             Supprimer la recette
         </button>
-          </form>
-<!-- TODO fix popup, message d'erreur et de confimation, bouton de navigation, about.html, design -->
-          <script>
-            document.getElementById('deleteBtn').addEventListener('click', function(e) {
-                e.preventDefault();
-                // Show custom modal or use a more modern confirmation method
-                if (document.getElementById('customModal')) {
-                  document.getElementById('customModal').style.display = 'block';
-                } else {
-                  // Alternative: use a custom confirmation dialog
-                  const deleteForm = e.target.closest('form');
-                  deleteForm.style.display = 'none';
-                  const confirmDiv = document.createElement('div');
-                  confirmDiv.innerHTML = `
-                    <p>Êtes-vous sûr de vouloir supprimer cette recette ? Cette action est irréversible.</p>
-                    <button onclick="this.parentElement.nextElementSibling.submit(); this.parentElement.remove();" class="btn btn-danger">Confirmer</button>
-                    <button onclick="this.parentElement.previousElementSibling.style.display='inline'; this.parentElement.remove();" class="btn btn-secondary">Annuler</button>
-                  `;
-                  deleteForm.parentNode.insertBefore(confirmDiv, deleteForm.nextSibling);
-                }
-            });
-          </script>
     </form>
 
     <a href="{% url 'recipes' %}" class="btn btn-secondary">Retour aux recettes</a>

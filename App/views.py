@@ -1,6 +1,8 @@
 from django.http import Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.base import View
+from django.contrib import messages
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import Recipe, Ingredient, Unit, RecipeIngredient
 
 # Home #
@@ -14,19 +16,48 @@ class HomeView(View):
 
 class RecipeListView(View):
     def get(self, request):
-        recipes = Recipe.objects.all()
+        recipes_list = Recipe.objects.all()
+        paginator = Paginator(recipes_list, 6)  # 6 recettes par page (2 lignes de 3)
+        
+        page = request.GET.get('page')
+        try:
+            recipes = paginator.page(page)
+        except PageNotAnInteger:
+            recipes = paginator.page(1)
+        except EmptyPage:
+            recipes = paginator.page(paginator.num_pages)
 
         return render(request, 'recipes.html', {'recipes': recipes})
     
 class IngredientListView(View):
     def get(self, request):
-        ingredients = Ingredient.objects.all()
+        ingredients_list = Ingredient.objects.all()
+        paginator = Paginator(ingredients_list, 9)  # 9 ingrédients par page (3 lignes de 3)
+        
+        page = request.GET.get('page')
+        try:
+            ingredients = paginator.page(page)
+        except PageNotAnInteger:
+            ingredients = paginator.page(1)
+        except EmptyPage:
+            ingredients = paginator.page(paginator.num_pages)
+            
         return render(request, 'ingredient_list.html', {'ingredients': ingredients})
 
 
 class UnitListView(View):
     def get(self, request):
-        units = Unit.objects.all()
+        units_list = Unit.objects.all()
+        paginator = Paginator(units_list, 8)  # 8 unités par page (2 lignes de 4)
+        
+        page = request.GET.get('page')
+        try:
+            units = paginator.page(page)
+        except PageNotAnInteger:
+            units = paginator.page(1)
+        except EmptyPage:
+            units = paginator.page(paginator.num_pages)
+            
         return render(request, 'unit_list.html', {'units': units})
 
 class RecipeDetailView(View):
@@ -48,11 +79,16 @@ class AddIngredientView(View):
         return render(request, 'add_ingredient.html')
 
     def post(self, request):
-        name = request.POST.get('name')
+        name = request.POST.get('name', '').strip()
+        if not name:
+            messages.error(request, "Le nom de l'ingrédient ne peut pas être vide.")
+            return render(request, 'add_ingredient.html')
         if Ingredient.objects.filter(name__iexact=name).exists():
-            return render(request, 'add_ingredient.html', {'message': "L'ingrédient existe déjà."})
+            messages.error(request, "L'ingrédient existe déjà.")
+            return render(request, 'add_ingredient.html')
         Ingredient.objects.create(name=name)
-        return render(request, 'add_ingredient.html', {'message': 'Ingrédient ajouté avec succès!'})
+        messages.success(request, 'Ingrédient ajouté avec succès!')
+        return redirect('ingredients')
 
 class AddRecipeView(View):
     def get(self, request):
@@ -117,25 +153,24 @@ class AddRecipeView(View):
                 unit_id=unit_id
             )
 
-        # Recharger le formulaire vide avec un message de succès
-        ingredients = Ingredient.objects.all()
-        units = Unit.objects.all()
-        return render(request, 'add_recipe.html', {
-            'message': 'Recette ajoutée avec succès!',
-            'ingredients': ingredients,
-            'units': units
-        })
+        messages.success(request, 'Recette ajoutée avec succès!')
+        return redirect('recipes')
 
 class AddUnitView(View):
     def get(self, request):
         return render(request, 'add_unit.html')
 
     def post(self, request):
-        unit = request.POST.get('unit')
+        unit = request.POST.get('unit', '').strip()
+        if not unit:
+            messages.error(request, "Le nom de l'unité ne peut pas être vide.")
+            return render(request, 'add_unit.html')
         if Unit.objects.filter(unit__iexact=unit).exists():
-            return render(request, 'add_unit.html', {'message': "L'unité existe déjà."})
+            messages.error(request, "L'unité existe déjà.")
+            return render(request, 'add_unit.html')
         Unit.objects.create(unit=unit)
-        return render(request, 'add_unit.html', {'message': 'Unité ajoutée avec succès!'})
+        messages.success(request, 'Unité ajoutée avec succès!')
+        return redirect('units')
 
 
 
@@ -226,6 +261,7 @@ class EditRecipeView(View):
                 unit_id=unit_id
             )
 
+        messages.success(request, 'Recette modifiée avec succès!')
         return redirect('recipe_detail', pk=recipe.pk)
     
 
@@ -249,6 +285,7 @@ class EditIngredientView(View):
             })
         ingredient.name = name
         ingredient.save()
+        messages.success(request, 'Ingrédient modifié avec succès!')
         return redirect('ingredients')
     
 
@@ -272,6 +309,7 @@ class EditUnitView(View):
             })
         unit.unit = unit_name
         unit.save()
+        messages.success(request, 'Unité modifiée avec succès!')
         return redirect('units')
 
 
@@ -281,21 +319,27 @@ class EditUnitView(View):
 class DeleteRecipeView(View):
     def post(self, request, pk):
         recipe = get_object_or_404(Recipe, pk=pk)
+        recipe_title = recipe.title
         recipe.delete()
+        messages.success(request, f'Recette "{recipe_title}" supprimée avec succès!')
         return redirect('recipes')
 
     
 class DeleteIngredientView(View):
     def post(self, request, pk):
         ingredient = get_object_or_404(Ingredient, pk=pk)
+        ingredient_name = ingredient.name
         ingredient.delete()
+        messages.success(request, f'Ingrédient "{ingredient_name}" supprimé avec succès!')
         return redirect('ingredients')
 
 
 class DeleteUnitView(View):
     def post(self, request, pk):
         unit = get_object_or_404(Unit, pk=pk)
+        unit_name = unit.unit
         unit.delete()
+        messages.success(request, f'Unité "{unit_name}" supprimée avec succès!')
         return redirect('units')
 
 

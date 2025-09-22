@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}À propos - Mon Site Recettes{% endblock %}
+
+{% block content %}
+<div class="about-page">
+  <!-- Hero Section -->
+  <div class="hero-section text-center mb-5">
+    <div class="hero-icon mb-3">
+      <i class="fas fa-utensils fa-4x text-primary"></i>
+    </div>
+    <h1 class="display-4 mb-3">À propos de Mon Site Recettes</h1>
+    <p class="lead text-muted">Une application Django moderne pour la gestion de recettes culinaires</p>
+  </div>
+
+  <!-- Project Info Cards -->
+  <div class="row g-4 mb-5">
+    <div class="col-md-6">
+      <div class="info-card h-100">
+        <div class="card-icon">
+          <i class="fas fa-code text-success"></i>
+        </div>
+        <h3>Projet Académique</h3>
+        <p>Développé dans le cadre du cours <strong>Programmation web et sécurité (420-E60-CH)</strong> au Cégep de l'Outaouais.</p>
+        <ul class="feature-list">
+          <li><i class="fas fa-check text-success"></i> Travail 2 - Prototype Django transactionnel</li>
+          <li><i class="fas fa-check text-success"></i> Architecture MVT complète</li>
+          <li><i class="fas fa-check text-success"></i> Opérations CRUD avancées</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="col-md-6">
+      <div class="info-card h-100">
+        <div class="card-icon">
+          <i class="fas fa-tools text-warning"></i>
+        </div>
+        <h3>Technologies Utilisées</h3>
+        <p>Application construite avec les technologies web modernes et les meilleures pratiques.</p>
+        <ul class="tech-list">
+          <li><span class="tech-badge django">Django 5.2.6</span></li>
+          <li><span class="tech-badge python">Python</span></li>
+          <li><span class="tech-badge bootstrap">Bootstrap 5.2.3</span></li>
+          <li><span class="tech-badge sqlite">SQLite</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <div class="features-section mb-5">
+    <h2 class="text-center mb-4">
+      <i class="fas fa-star text-warning me-2"></i>
+      Fonctionnalités Principales
+    </h2>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <div class="feature-item text-center">
+          <div class="feature-icon mb-3">
+            <i class="fas fa-book-open"></i>
+          </div>
+          <h4>Gestion des Recettes</h4>
+          <p>Créez, modifiez et organisez vos recettes préférées avec facilité.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="feature-item text-center">
+          <div class="feature-icon mb-3">
+            <i class="fas fa-carrot"></i>
+          </div>
+          <h4>Base d'Ingrédients</h4>
+          <p>Gérez une base complète d'ingrédients réutilisables pour toutes vos recettes.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="feature-item text-center">
+          <div class="feature-icon mb-3">
+            <i class="fas fa-balance-scale"></i>
+          </div>
+          <h4>Unités de Mesure</h4>
+          <p>Système flexible d'unités pour des mesures précises et cohérentes.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="feature-item text-center">
+          <div class="feature-icon mb-3">
+            <i class="fas fa-mobile-alt"></i>
+          </div>
+          <h4>Design Responsive</h4>
+          <p>Interface adaptative qui fonctionne parfaitement sur tous les appareils.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Technical Details -->
+  <div class="technical-section mb-5">
+    <h2 class="text-center mb-4">
+      <i class="fas fa-cogs text-info me-2"></i>
+      Architecture Technique
+    </h2>
+    <div class="row">
+      <div class="col-lg-8 mx-auto">
+        <div class="architecture-card">
+          <div class="row g-4">
+            <div class="col-md-4 text-center">
+              <div class="arch-item">
+                <i class="fas fa-database fa-2x text-primary mb-2"></i>
+                <h5>Modèles</h5>
+                <p class="small">4 modèles relationnels avec relations many-to-many et contraintes d'intégrité</p>
+              </div>
+            </div>
+            <div class="col-md-4 text-center">
+              <div class="arch-item">
+                <i class="fas fa-eye fa-2x text-success mb-2"></i>
+                <h5>Vues</h5>
+                <p class="small">Vues basées sur les classes avec gestion complète CRUD et validation</p>
+              </div>
+            </div>
+            <div class="col-md-4 text-center">
+              <div class="arch-item">
+                <i class="fas fa-palette fa-2x text-warning mb-2"></i>
+                <h5>Templates</h5>
+                <p class="small">Héritage de templates avec Bootstrap et localisation française</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Developer Info -->
+  <div class="developer-section text-center">
+    <div class="developer-card mx-auto">
+      <div class="avatar mb-3">
+        <i class="fas fa-user-graduate fa-3x text-primary"></i>
+      </div>
+      <h3>Khloufi Ayoub</h3>
+      <p class="text-muted mb-3">Étudiant en Programmation Web et Sécurité</p>
+      <p class="small">
+        <i class="fas fa-school me-2"></i>Cégep de l'Outaouais<br>
+        <i class="fas fa-calendar me-2"></i>Session Automne 2025<br>
+        <i class="fas fa-code me-2"></i>Passion pour le développement web
+      </p>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,9 +1,145 @@
 {% extends 'base.html' %}
-{% block title %}Accueil{% endblock %}
+{% load static %}
+
+{% block title %}Accueil - Mon Site Recettes{% endblock %}
 
 {% block content %}
-<h1>Bienvenue sur MyRecipes</h1>
-<p>Votre application de gestion de recettes de cuisine.</p>
-<p>Utilisez la barre de navigation pour explorer les recettes, les ingrédients et les unités de mesure.</p>
+<div class="home-page">
+  <!-- Hero Section -->
+  <div class="hero-banner text-center mb-5">
+    <div class="hero-content">
+      <div class="hero-icon mb-4">
+        <i class="fas fa-utensils fa-5x"></i>
+      </div>
+      <h1 class="display-3 mb-3">Bienvenue sur Mon Site Recettes</h1>
+      <p class="lead mb-4">Votre compagnon culinaire pour organiser, créer et partager vos recettes préférées</p>
+      <div class="hero-buttons">
+        <a href="{% url 'recipes' %}" class="btn btn-lg me-3">
+          <i class="fas fa-book me-2"></i>Découvrir les Recettes
+        </a>
+        <a href="{% url 'add_recipe' %}" class="btn btn-outline-primary btn-lg">
+          <i class="fas fa-plus me-2"></i>Ajouter une Recette
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="quick-actions mb-5">
+    <h2 class="text-center mb-4">
+      <i class="fas fa-rocket text-warning me-2"></i>
+      Actions Rapides
+    </h2>
+    <div class="row g-4">
+      <div class="col-lg-3 col-md-6">
+        <div class="action-card text-center">
+          <div class="action-icon">
+            <i class="fas fa-book-open"></i>
+          </div>
+          <h4>Parcourir les Recettes</h4>
+          <p>Explorez notre collection de recettes délicieuses</p>
+          <a href="{% url 'recipes' %}" class="btn btn-sm">Voir les Recettes</a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="action-card text-center">
+          <div class="action-icon">
+            <i class="fas fa-plus-circle"></i>
+          </div>
+          <h4>Créer une Recette</h4>
+          <p>Ajoutez vos propres créations culinaires</p>
+          <a href="{% url 'add_recipe' %}" class="btn btn-sm">Nouvelle Recette</a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="action-card text-center">
+          <div class="action-icon">
+            <i class="fas fa-carrot"></i>
+          </div>
+          <h4>Gérer les Ingrédients</h4>
+          <p>Organisez votre base d'ingrédients</p>
+          <a href="{% url 'ingredients' %}" class="btn btn-sm">Voir les Ingrédients</a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="action-card text-center">
+          <div class="action-icon">
+            <i class="fas fa-balance-scale"></i>
+          </div>
+          <h4>Unités de Mesure</h4>
+          <p>Configurez vos unités préférées</p>
+          <a href="{% url 'units' %}" class="btn btn-sm">Gérer les Unités</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features Showcase -->
+  <div class="features-showcase">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <div class="feature-content">
+          <h2 class="mb-4">
+            <i class="fas fa-magic text-primary me-2"></i>
+            Pourquoi Choisir Mon Site Recettes ?
+          </h2>
+          <div class="feature-list">
+            <div class="feature-item mb-3">
+              <div class="feature-icon-small">
+                <i class="fas fa-check-circle text-success"></i>
+              </div>
+              <div class="feature-text">
+                <h5>Interface Intuitive</h5>
+                <p>Design moderne et facile à utiliser pour tous les niveaux</p>
+              </div>
+            </div>
+            <div class="feature-item mb-3">
+              <div class="feature-icon-small">
+                <i class="fas fa-database text-info"></i>
+              </div>
+              <div class="feature-text">
+                <h5>Organisation Intelligente</h5>
+                <p>Système de gestion avancé pour vos recettes et ingrédients</p>
+              </div>
+            </div>
+            <div class="feature-item mb-3">
+              <div class="feature-icon-small">
+                <i class="fas fa-mobile-alt text-warning"></i>
+              </div>
+              <div class="feature-text">
+                <h5>Accès Partout</h5>
+                <p>Compatible avec tous vos appareils, partout où vous cuisinez</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="feature-image text-center">
+          <div class="cooking-illustration">
+            <i class="fas fa-utensils fa-8x text-muted opacity-50"></i>
+            <div class="floating-icons">
+              <i class="fas fa-apple-alt floating-icon-1"></i>
+              <i class="fas fa-cheese floating-icon-2"></i>
+              <i class="fas fa-fish floating-icon-3"></i>
+              <i class="fas fa-bread-slice floating-icon-4"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Call to Action -->
+  <div class="cta-section text-center mt-5">
+    <div class="cta-content">
+      <h3 class="mb-3">Prêt à Commencer Votre Aventure Culinaire ?</h3>
+      <p class="text-muted mb-4">Rejoignez-nous et découvrez une nouvelle façon d'organiser vos recettes</p>
+      <a href="{% url 'add_recipe' %}" class="btn btn-lg">
+        <i class="fas fa-plus me-2"></i>Créer Ma Première Recette
+      </a>
+    </div>
+  </div>
+</div>
 {% endblock %}
 

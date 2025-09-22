@@ -1,37 +1,159 @@
 {% extends 'base.html' %}
-{% block title %}Liste des ingrédients{% endblock %}
+{% load static %}
+
+{% block title %}Ingrédients - Mon Site Recettes{% endblock %}
 
 {% block content %}
-<h2>Liste des ingrédients</h2>
-{% if not ingredients %}
-<div class="alert alert-info">
-    <p>Aucun ingrédient trouvé dans la base de données.</p>
-    <a href="{% url 'add_ingredient' %}" class="btn btn-primary">Cliquez ici pour en ajouter un</a>
+<div class="ingredients-page">
+  <!-- Header Section -->
+  <div class="page-header mb-5">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <div class="header-content">
+          <div class="header-icon mb-3">
+            <i class="fas fa-carrot fa-3x text-success"></i>
+          </div>
+          <h1 class="display-4 mb-3">Mes Ingrédients</h1>
+          <p class="lead text-muted">Découvrez et gérez votre collection d'ingrédients pour vos recettes</p>
+        </div>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <a href="{% url 'add_ingredient' %}" class="btn btn-lg btn-success">
+          <i class="fas fa-plus me-2"></i>Ajouter un Ingrédient
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Ingredients Grid -->
+  {% if ingredients %}
+    <div class="ingredients-stats mb-4">
+      <div class="stats-card">
+        <i class="fas fa-carrot me-2"></i>
+        <span class="stats-number">{{ ingredients.paginator.count }}</span>
+        <span class="stats-label">ingrédient{{ ingredients.paginator.count|pluralize }}</span>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      {% for ingredient in ingredients %}
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="ingredient-card-modern">
+          <div class="ingredient-header">
+            <div class="ingredient-icon">
+              <i class="fas fa-leaf"></i>
+            </div>
+            <div class="ingredient-meta">
+              <span class="ingredient-status">
+                <i class="fas fa-check-circle me-1 text-success"></i>
+                Disponible
+              </span>
+            </div>
+          </div>
+          
+          <div class="ingredient-content">
+            <h3 class="ingredient-title">{{ ingredient.name }}</h3>
+            <p class="ingredient-description text-muted">
+              Ingrédient prêt à être utilisé dans vos recettes
+            </p>
+            
+            <div class="ingredient-usage-preview">
+              <span class="usage-label">
+                <i class="fas fa-utensils me-1"></i>
+                Utilisé dans {{ ingredient.recipeingredient_set.count }} recette{{ ingredient.recipeingredient_set.count|pluralize }}
+              </span>
+            </div>
+          </div>
+          
+          <div class="ingredient-actions">
+            <a href="{% url 'edit_ingredient' ingredient.id %}" class="btn btn-outline-secondary btn-sm">
+              <i class="fas fa-edit me-1"></i>Modifier
+            </a>
+            <form method="post" action="{% url 'delete_ingredient' ingredient.id %}" style="display:inline;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer l\'ingrédient {{ ingredient.name }} ?');">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-danger btn-sm">
+                <i class="fas fa-trash me-1"></i>Supprimer
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Pagination -->
+    {% if ingredients.has_other_pages %}
+    <div class="pagination-section mt-5">
+      <nav aria-label="Navigation des ingrédients">
+        <ul class="pagination justify-content-center">
+          {% if ingredients.has_previous %}
+            <li class="page-item">
+              <a class="page-link" href="?page=1">
+                <i class="fas fa-angle-double-left me-1"></i>Premier
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="?page={{ ingredients.previous_page_number }}">
+                <i class="fas fa-angle-left me-1"></i>Précédent
+              </a>
+            </li>
+          {% endif %}
+
+          {% for num in ingredients.paginator.page_range %}
+            {% if ingredients.number == num %}
+              <li class="page-item active">
+                <span class="page-link">{{ num }}</span>
+              </li>
+            {% elif num > ingredients.number|add:'-3' and num < ingredients.number|add:'3' %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ num }}">{{ num }}</a>
+              </li>
+            {% endif %}
+          {% endfor %}
+
+          {% if ingredients.has_next %}
+            <li class="page-item">
+              <a class="page-link" href="?page={{ ingredients.next_page_number }}">
+                Suivant<i class="fas fa-angle-right ms-1"></i>
+              </a>
+            </li>
+            <li class="page-item">
+              <a class="page-link" href="?page={{ ingredients.paginator.num_pages }}">
+                Dernier<i class="fas fa-angle-double-right ms-1"></i>
+              </a>
+            </li>
+          {% endif %}
+        </ul>
+      </nav>
+
+      <div class="pagination-info text-center mt-3">
+        <small class="text-muted">
+          <i class="fas fa-info-circle me-1"></i>
+          Page {{ ingredients.number }} sur {{ ingredients.paginator.num_pages }} 
+          ({{ ingredients.start_index }}-{{ ingredients.end_index }} sur {{ ingredients.paginator.count }} ingrédients)
+        </small>
+      </div>
+    </div>
+    {% endif %}
+  {% else %}
+    <!-- Empty State -->
+    <div class="empty-state">
+      <div class="empty-icon">
+        <i class="fas fa-carrot fa-4x text-muted"></i>
+      </div>
+      <h3>Aucun ingrédient disponible</h3>
+      <p class="text-muted mb-4">Commencez par ajouter vos premiers ingrédients pour créer votre collection culinaire.</p>
+      <a href="{% url 'add_ingredient' %}" class="btn btn-lg btn-success">
+        <i class="fas fa-plus me-2"></i>Créer Mon Premier Ingrédient
+      </a>
+    </div>
+  {% endif %}
+
+  <!-- Navigation -->
+  <div class="page-navigation mt-5">
+    <a href="{% url 'home' %}" class="btn btn-outline-secondary">
+      <i class="fas fa-home me-2"></i>Retour à l'Accueil
+    </a>
+  </div>
 </div>
-{% else %}
-<a href="{% url 'add_ingredient' %}" class="btn btn-primary mb-3">Ajouter un ingrédient</a>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Nom</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for ingredient in ingredients %}
-        <tr>
-            <td>{{ ingredient.name }}</td>
-            <td>
-                <a href="{% url 'edit_ingredient' ingredient.id %}" class="btn btn-secondary">Éditer</a>
-                <form method="post" action="{% url 'delete_ingredient' ingredient.id %}" style="display:inline;">
-                    {% csrf_token %}
-                    <button type="submit" class="btn btn-danger">Supprimer</button>
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{% endif %}
-<a href="{% url 'home' %}" class="btn btn-secondary">Retour à l'accueil</a>
 {% endblock %}
