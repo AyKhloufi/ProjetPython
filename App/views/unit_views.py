@@ -3,6 +3,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from ..models import Unit
+from ..forms import UnitForm
 
 # Read # 
 
@@ -25,19 +26,16 @@ class UnitListView(View):
 
 class AddUnitView(View):
     def get(self, request):
-        return render(request, 'App/unit/add_unit.html')
+        form = UnitForm()
+        return render(request, 'App/unit/add_unit.html', {'form': form})
 
     def post(self, request):
-        unit = request.POST.get('unit', '').strip()
-        if not unit:
-            messages.error(request, "Le nom de l'unité ne peut pas être vide.")
-            return render(request, 'App/unit/add_unit.html')
-        if Unit.objects.filter(unit__iexact=unit).exists():
-            messages.error(request, "L'unité existe déjà.")
-            return render(request, 'App/unit/add_unit.html')
-        Unit.objects.create(unit=unit)
-        messages.success(request, 'Unité ajoutée avec succès!')
-        return redirect('units')
+        form = UnitForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Unité ajoutée avec succès!')
+            return redirect('units')
+        return render(request, 'App/unit/add_unit.html', {'form': form})
 
 
 # Update #
@@ -45,25 +43,23 @@ class AddUnitView(View):
 class EditUnitView(View):
     def get(self, request, pk):
         unit = get_object_or_404(Unit, pk=pk)
-        return render(request, 'App/unit/edit_unit.html', {'unit': unit})
+        form = UnitForm(instance=unit)
+        return render(request, 'App/unit/edit_unit.html', {
+            'unit': unit, 
+            'form': form
+        })
 
     def post(self, request, pk):
         unit = get_object_or_404(Unit, pk=pk)
-        unit_name = request.POST.get('unit', '').strip()
-        if not unit_name:
-            return render(request, 'App/unit/edit_unit.html', {
-                'unit': unit,
-                'error': "Le nom de l'unité ne peut pas être vide."
-            })
-        if Unit.objects.filter(unit__iexact=unit_name).exclude(pk=pk).exists():
-            return render(request, 'App/unit/edit_unit.html', {
-                'unit': unit,
-                'error': "Une autre unité avec ce nom existe déjà."
-            })
-        unit.unit = unit_name
-        unit.save()
-        messages.success(request, 'Unité modifiée avec succès!')
-        return redirect('units')
+        form = UnitForm(request.POST, instance=unit)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Unité modifiée avec succès!')
+            return redirect('units')
+        return render(request, 'App/unit/edit_unit.html', {
+            'unit': unit, 
+            'form': form
+        })
 
 
 # Delete #

@@ -8,6 +8,7 @@ class Recipe(models.Model):
     instructions = models.TextField(verbose_name="Instructions")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Crée le")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Mis à jour le")
+    image = models.ImageField(default="", upload_to='recipes/', verbose_name="Image", blank=True, null=True)
 
     def __str__(self):
         return self.title
@@ -19,6 +20,7 @@ class Recipe(models.Model):
 
 class Ingredient(models.Model):
     name = models.CharField(max_length=50, verbose_name="Nom")
+    image = models.ImageField(default="", upload_to='ingredients/', verbose_name="Image", blank=True, null=True)
     
     def __str__(self):
         return self.name

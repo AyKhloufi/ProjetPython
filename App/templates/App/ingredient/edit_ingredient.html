@@ -24,65 +24,17 @@
       </div>
     </div>
   </div>
-
   <!-- Form Section -->
-  <div class="form-section">
-    <div class="row justify-content-center">
-      <div class="col-lg-6 col-md-8">
-        <div class="form-card">
-          <div class="form-header">
-            <div class="form-icon">
-              <i class="fas fa-leaf"></i>
-            </div>
-            <h3>Détails de l'Ingrédient</h3>
-            <p class="text-muted">Modifiez les informations de votre ingrédient</p>
-          </div>
-          
-          <form method="post" class="form-modern">
-            {% csrf_token %}
-            
-            {% if error %}
-            <div class="alert alert-danger mb-4">
-              <i class="fas fa-exclamation-triangle me-2"></i>{{ error }}
-            </div>
-            {% endif %}
-            
-            <div class="form-group mb-4">
-              <label for="name" class="form-label">
-                <i class="fas fa-tag me-2"></i>Nom de l'Ingrédient
-              </label>
-              <input type="text" 
-                     class="form-control form-control-lg" 
-                     id="name" 
-                     name="name" 
-                     value="{{ ingredient.name }}"
-                     placeholder="Ex: Tomates, Fromage, Basilic..."
-                     required>
-              <div class="form-help">
-                <small class="text-muted">
-                  <i class="fas fa-info-circle me-1"></i>
-                  Choisissez un nom clair et précis pour votre ingrédient
-                </small>
-              </div>
-            </div>
-
-            <div class="current-info mb-4">
-              <div class="info-card">
-                <h5><i class="fas fa-info-circle me-2"></i>Informations Actuelles</h5>
-                <p><strong>ID:</strong> #{{ ingredient.id }}</p>
-                <p><strong>Nom actuel:</strong> {{ ingredient.name }}</p>
-              </div>
-            </div>
-
-            <div class="form-actions">
-              <button type="submit" class="btn btn-primary">
-                <i class="fas fa-save me-2"></i>Enregistrer les Modifications
-              </button>
-              <a href="{% url 'ingredients' %}" class="btn btn-outline-secondary btn-lg ms-3">
-                <i class="fas fa-times me-2"></i>Annuler
-              </a>
-            </div>
-          </form>
+  {% include 'App/snippets/form_snippet.html' with form_title='Détails de l\'Ingrédient' form_description='Modifiez les informations de votre ingrédient' form_icon='fas fa-leaf' submit_text='Enregistrer les Modifications' submit_icon='fas fa-save' submit_class='btn-primary' cancel_url='ingredients' form=form col_size='col-lg-6 col-md-8' %}
+  
+  <!-- Additional Info Section -->
+  <div class="row justify-content-center mt-4">
+    <div class="col-lg-6 col-md-8">
+      <div class="current-info">
+        <div class="info-card">
+          <h5><i class="fas fa-info-circle me-2"></i>Informations Actuelles</h5>
+          <p><strong>ID:</strong> #{{ ingredient.id }}</p>
+          <p><strong>Nom actuel:</strong> {{ ingredient.name }}</p>
         </div>
       </div>
     </div>

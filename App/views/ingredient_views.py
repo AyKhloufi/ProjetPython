@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from ..models import Ingredient
+from ..forms import IngredientForm
 from django.views import View
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib import messages
@@ -22,49 +23,43 @@ class IngredientListView(View):
         return render(request, 'App/ingredient/ingredient_list.html', {'ingredients': ingredients})
 
 
-
 # Create #
 
 class AddIngredientView(View):
     def get(self, request):
-        return render(request, 'App/ingredient/add_ingredient.html')
+        form = IngredientForm()
+        return render(request, 'App/ingredient/add_ingredient.html', {'form': form})
 
     def post(self, request):
-        name = request.POST.get('name', '').strip()
-        if not name:
-            messages.error(request, "Le nom de l'ingrédient ne peut pas être vide.")
-            return render(request, 'App/ingredient/add_ingredient.html')
-        if Ingredient.objects.filter(name__iexact=name).exists():
-            messages.error(request, "L'ingrédient existe déjà.")
-            return render(request, 'App/ingredient/add_ingredient.html')
-        Ingredient.objects.create(name=name)
-        messages.success(request, 'Ingrédient ajouté avec succès!')
-        return redirect('ingredients')
+        form = IngredientForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Ingrédient ajouté avec succès!')
+            return redirect('ingredients')
+        return render(request, 'App/ingredient/add_ingredient.html', {'form': form})
 
 # Update #
 
 class EditIngredientView(View):
     def get(self, request, pk):
         ingredient = get_object_or_404(Ingredient, pk=pk)
-        return render(request, 'App/ingredient/edit_ingredient.html', {'ingredient': ingredient})
+        form = IngredientForm(instance=ingredient)
+        return render(request, 'App/ingredient/edit_ingredient.html', {
+            'ingredient': ingredient, 
+            'form': form
+        })
 
     def post(self, request, pk):
         ingredient = get_object_or_404(Ingredient, pk=pk)
-        name = request.POST.get('name', '').strip()
-        if not name:
-            return render(request, 'App/ingredient/edit_ingredient.html', {
-                'ingredient': ingredient,
-                'error': "Le nom de l'ingrédient ne peut pas être vide."
-            })
-        if Ingredient.objects.filter(name__iexact=name).exclude(pk=pk).exists():
-            return render(request, 'App/ingredient/edit_ingredient.html', {
-                'ingredient': ingredient,
-                'error': "Un autre ingrédient avec ce nom existe déjà."
-            })
-        ingredient.name = name
-        ingredient.save()
-        messages.success(request, 'Ingrédient modifié avec succès!')
-        return redirect('ingredients')
+        form = IngredientForm(request.POST, request.FILES, instance=ingredient)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Ingrédient modifié avec succès!')
+            return redirect('ingredients')
+        return render(request, 'App/ingredient/edit_ingredient.html', {
+            'ingredient': ingredient, 
+            'form': form
+        })
 
 # Delete #
 

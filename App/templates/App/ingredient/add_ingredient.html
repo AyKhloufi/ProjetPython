@@ -23,63 +23,9 @@
         </a>
       </div>
     </div>
-  </div>
-
+no  </div>
   <!-- Form Section -->
-  <div class="form-section">
-    <div class="row justify-content-center">
-      <div class="col-lg-6 col-md-8">
-        <div class="form-card">
-          <div class="form-header">
-            <div class="form-icon">
-              <i class="fas fa-leaf"></i>
-            </div>
-            <h3>Détails de l'Ingrédient</h3>
-            <p class="text-muted">Saisissez les informations de votre nouvel ingrédient</p>
-          </div>
-          
-          <form method="post" class="form-modern">
-            {% csrf_token %}
-            
-            {% if messages %}
-              {% for message in messages %}
-                <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %} mb-4">
-                  <i class="fas fa-{% if message.tags == 'error' %}exclamation-triangle{% else %}check-circle{% endif %} me-2"></i>{{ message }}
-                </div>
-              {% endfor %}
-            {% endif %}
-            
-            <div class="form-group mb-4">
-              <label for="name" class="form-label">
-                <i class="fas fa-tag me-2"></i>Nom de l'Ingrédient
-              </label>
-              <input type="text" 
-                     class="form-control form-control-lg" 
-                     id="name" 
-                     name="name" 
-                     placeholder="Ex: Tomates, Fromage, Basilic..."
-                     required>
-              <div class="form-help">
-                <small class="text-muted">
-                  <i class="fas fa-info-circle me-1"></i>
-                  Choisissez un nom clair et précis pour votre ingrédient
-                </small>
-              </div>
-            </div>
-
-            <div class="form-actions">
-              <button type="submit" class="btn btn-success btn-lg">
-                <i class="fas fa-plus me-2"></i>Ajouter l'Ingrédient
-              </button>
-              <a href="{% url 'ingredients' %}" class="btn btn-outline-secondary btn-lg ms-3">
-                <i class="fas fa-times me-2"></i>Annuler
-              </a>
-            </div>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
+  {% include 'App/snippets/form_snippet.html' with form_title='Détails de l\'Ingrédient' form_description='Saisissez les informations de votre nouvel ingrédient' form_icon='fas fa-leaf' submit_text='Ajouter l\'Ingrédient' submit_icon='fas fa-plus' submit_class='btn-success' cancel_url='ingredients' form=form col_size='col-lg-6 col-md-8' %}
 
   <!-- Tips Section -->
   <div class="tips-section mt-5">

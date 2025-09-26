@@ -1,0 +1,64 @@
+{% comment %}
+  Template de pagination réutilisable
+  
+  Variables attendues :
+  - page_obj : l'objet paginated (ex: recipes, ingredients, units)
+  - aria_label : le label pour l'accessibilité (ex: "Navigation des recettes")
+  - item_name : le nom de l'élément au singulier (ex: "recette")  
+  - item_name_plural : le nom de l'élément au pluriel (ex: "recettes")
+  - base_url : l'URL de base pour la pagination (optionnel, par défaut "?page=")
+{% endcomment %}
+
+{% if page_obj.has_other_pages %}
+<div class="pagination-section mt-5">
+  <nav aria-label="{{ aria_label|default:'Navigation des pages' }}">
+    <ul class="pagination justify-content-center">
+      {% if page_obj.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="{{ base_url|default:'?page=' }}1">
+            <i class="fas fa-angle-double-left me-1"></i>Premier
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="{{ base_url|default:'?page=' }}{{ page_obj.previous_page_number }}">
+            <i class="fas fa-angle-left me-1"></i>Précédent
+          </a>
+        </li>
+      {% endif %}
+
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <li class="page-item active">
+            <span class="page-link">{{ num }}</span>
+          </li>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <li class="page-item">
+            <a class="page-link" href="{{ base_url|default:'?page=' }}{{ num }}">{{ num }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <li class="page-item">
+          <a class="page-link" href="{{ base_url|default:'?page=' }}{{ page_obj.next_page_number }}">
+            Suivant<i class="fas fa-angle-right ms-1"></i>
+          </a>
+        </li>
+        <li class="page-item">
+          <a class="page-link" href="{{ base_url|default:'?page=' }}{{ page_obj.paginator.num_pages }}">
+            Dernier<i class="fas fa-angle-double-right ms-1"></i>
+          </a>
+        </li>
+      {% endif %}
+    </ul>
+  </nav>
+
+  <div class="pagination-info text-center mt-3">
+    <small class="text-muted">
+      <i class="fas fa-info-circle me-1"></i>
+      Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }} 
+      ({{ page_obj.start_index }}-{{ page_obj.end_index }} sur {{ page_obj.paginator.count }} {{ item_name_plural|default:'éléments' }})
+    </small>
+  </div>
+</div>
+{% endif %}
