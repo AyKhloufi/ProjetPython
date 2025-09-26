@@ -1,16 +1,8 @@
-from django.http import Http404
-from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.base import View
+from django.shortcuts import render, redirect, get_object_or_404
+from ..models import Recipe, Ingredient, Unit, RecipeIngredient
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from .models import Recipe, Ingredient, Unit, RecipeIngredient
-
-# Home #
-
-class HomeView(View):
-    def get(self, request):
-        return render(request, 'home.html')
-
 
 # Read # 
 
@@ -27,74 +19,23 @@ class RecipeListView(View):
         except EmptyPage:
             recipes = paginator.page(paginator.num_pages)
 
-        return render(request, 'recipes.html', {'recipes': recipes})
+        return render(request, 'App/recipe/recipes.html', {'recipes': recipes})
     
-class IngredientListView(View):
-    def get(self, request):
-        ingredients_list = Ingredient.objects.all()
-        paginator = Paginator(ingredients_list, 9)  # 9 ingrédients par page (3 lignes de 3)
-        
-        page = request.GET.get('page')
-        try:
-            ingredients = paginator.page(page)
-        except PageNotAnInteger:
-            ingredients = paginator.page(1)
-        except EmptyPage:
-            ingredients = paginator.page(paginator.num_pages)
-            
-        return render(request, 'ingredient_list.html', {'ingredients': ingredients})
-
-
-class UnitListView(View):
-    def get(self, request):
-        units_list = Unit.objects.all()
-        paginator = Paginator(units_list, 8)  # 8 unités par page (2 lignes de 4)
-        
-        page = request.GET.get('page')
-        try:
-            units = paginator.page(page)
-        except PageNotAnInteger:
-            units = paginator.page(1)
-        except EmptyPage:
-            units = paginator.page(paginator.num_pages)
-            
-        return render(request, 'unit_list.html', {'units': units})
-
 class RecipeDetailView(View):
     def get(self, request, pk):
-        try:
-            recipe = Recipe.objects.get(pk=pk)
-        except Recipe.DoesNotExist:
-            raise Http404("Recipe not found")
+        recipe = get_object_or_404(Recipe, pk=pk)
         recipe_ingredients = RecipeIngredient.objects.filter(recipe=recipe).select_related('ingredient', 'unit')
-        return render(request, 'recipe_detail.html', {
+        return render(request, 'App/recipe/recipe_detail.html', {
             'recipe': recipe,
-            'recipe_ingredients': recipe_ingredients,
-        })
+            'recipe_ingredients': recipe_ingredients,        })
 
 # Create #
-
-class AddIngredientView(View):
-    def get(self, request):
-        return render(request, 'add_ingredient.html')
-
-    def post(self, request):
-        name = request.POST.get('name', '').strip()
-        if not name:
-            messages.error(request, "Le nom de l'ingrédient ne peut pas être vide.")
-            return render(request, 'add_ingredient.html')
-        if Ingredient.objects.filter(name__iexact=name).exists():
-            messages.error(request, "L'ingrédient existe déjà.")
-            return render(request, 'add_ingredient.html')
-        Ingredient.objects.create(name=name)
-        messages.success(request, 'Ingrédient ajouté avec succès!')
-        return redirect('ingredients')
 
 class AddRecipeView(View):
     def get(self, request):
         ingredients = Ingredient.objects.all()
         units = Unit.objects.all()
-        return render(request, 'add_recipe.html', {'ingredients': ingredients, 'units': units})
+        return render(request, 'App/recipe/add_recipe.html', {'ingredients': ingredients, 'units': units})
 
     def post(self, request):
         title = request.POST.get('title', '').strip()
@@ -125,13 +66,11 @@ class AddRecipeView(View):
                 errors.append(f"Une quantité valide est requise pour l'ingrédient {ingredient.name}.")
             if not unit_id:
                 errors.append(f"Une unité est requise pour l'ingrédient {ingredient.name}.")
-            ingredients_data.append((ingredient_id, quantity, unit_id))
-
-        # Si erreurs, recharger le formulaire avec les données existantes
+            ingredients_data.append((ingredient_id, quantity, unit_id))        # Si erreurs, recharger le formulaire avec les données existantes
         if errors:
             ingredients = Ingredient.objects.all()
             units = Unit.objects.all()
-            return render(request, 'add_recipe.html', {
+            return render(request, 'App/recipe/add_recipe.html', {
                 'errors': errors,
                 'ingredients': ingredients,
                 'units': units,
@@ -156,34 +95,16 @@ class AddRecipeView(View):
         messages.success(request, 'Recette ajoutée avec succès!')
         return redirect('recipes')
 
-class AddUnitView(View):
-    def get(self, request):
-        return render(request, 'add_unit.html')
-
-    def post(self, request):
-        unit = request.POST.get('unit', '').strip()
-        if not unit:
-            messages.error(request, "Le nom de l'unité ne peut pas être vide.")
-            return render(request, 'add_unit.html')
-        if Unit.objects.filter(unit__iexact=unit).exists():
-            messages.error(request, "L'unité existe déjà.")
-            return render(request, 'add_unit.html')
-        Unit.objects.create(unit=unit)
-        messages.success(request, 'Unité ajoutée avec succès!')
-        return redirect('units')
-
-
-
 # Update #
 
 class EditRecipeView(View):
-    def get(self, request, pk):        
+    def get(self, request, pk):
         recipe = get_object_or_404(Recipe, pk=pk)
         ingredients = Ingredient.objects.all()
         units = Unit.objects.all()
         recipe_ingredients = RecipeIngredient.objects.filter(recipe=recipe).select_related('ingredient', 'unit')
         ri_dict = {ri.ingredient.id: ri for ri in recipe_ingredients}
-        return render(request, 'edit_recipe.html', {
+        return render(request, 'App/recipe/edit_recipe.html', {
             'recipe': recipe,
             'ingredients': ingredients,
             'units': units,
@@ -232,7 +153,7 @@ class EditRecipeView(View):
             units = Unit.objects.all()
             recipe_ingredients = RecipeIngredient.objects.filter(recipe=recipe).select_related('ingredient', 'unit')
             ri_dict = {ri.ingredient.id: ri for ri in recipe_ingredients}
-            return render(request, 'edit_recipe.html', {
+            return render(request, 'App/recipe/edit_recipe.html', {
                 'recipe': recipe,
                 'ingredients': ingredients,
                 'units': units,
@@ -265,55 +186,6 @@ class EditRecipeView(View):
         return redirect('recipe_detail', pk=recipe.pk)
     
 
-class EditIngredientView(View):
-    def get(self, request, pk):
-        ingredient = get_object_or_404(Ingredient, pk=pk)
-        return render(request, 'edit_ingredient.html', {'ingredient': ingredient})
-
-    def post(self, request, pk):
-        ingredient = get_object_or_404(Ingredient, pk=pk)
-        name = request.POST.get('name', '').strip()
-        if not name:
-            return render(request, 'edit_ingredient.html', {
-                'ingredient': ingredient,
-                'error': "Le nom de l'ingrédient ne peut pas être vide."
-            })
-        if Ingredient.objects.filter(name__iexact=name).exclude(pk=pk).exists():
-            return render(request, 'edit_ingredient.html', {
-                'ingredient': ingredient,
-                'error': "Un autre ingrédient avec ce nom existe déjà."
-            })
-        ingredient.name = name
-        ingredient.save()
-        messages.success(request, 'Ingrédient modifié avec succès!')
-        return redirect('ingredients')
-    
-
-class EditUnitView(View):
-    def get(self, request, pk):
-        unit = get_object_or_404(Unit, pk=pk)
-        return render(request, 'edit_unit.html', {'unit': unit})
-
-    def post(self, request, pk):
-        unit = get_object_or_404(Unit, pk=pk)
-        unit_name = request.POST.get('unit', '').strip()
-        if not unit_name:
-            return render(request, 'edit_unit.html', {
-                'unit': unit,
-                'error': "Le nom de l'unité ne peut pas être vide."
-            })
-        if Unit.objects.filter(unit__iexact=unit_name).exclude(pk=pk).exists():
-            return render(request, 'edit_unit.html', {
-                'unit': unit,
-                'error': "Une autre unité avec ce nom existe déjà."
-            })
-        unit.unit = unit_name
-        unit.save()
-        messages.success(request, 'Unité modifiée avec succès!')
-        return redirect('units')
-
-
-
 # Delete #
 
 class DeleteRecipeView(View):
@@ -323,27 +195,3 @@ class DeleteRecipeView(View):
         recipe.delete()
         messages.success(request, f'Recette "{recipe_title}" supprimée avec succès!')
         return redirect('recipes')
-
-    
-class DeleteIngredientView(View):
-    def post(self, request, pk):
-        ingredient = get_object_or_404(Ingredient, pk=pk)
-        ingredient_name = ingredient.name
-        ingredient.delete()
-        messages.success(request, f'Ingrédient "{ingredient_name}" supprimé avec succès!')
-        return redirect('ingredients')
-
-
-class DeleteUnitView(View):
-    def post(self, request, pk):
-        unit = get_object_or_404(Unit, pk=pk)
-        unit_name = unit.unit
-        unit.delete()
-        messages.success(request, f'Unité "{unit_name}" supprimée avec succès!')
-        return redirect('units')
-
-
-# About #
-class AboutView(View):
-    def get(self, request):
-        return render(request, 'about.html')
