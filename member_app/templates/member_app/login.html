@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Identification{% endblock %}
+
+{% block content %}
+
+<div class="container-fluid member-app">
+    <div class="row">
+        <div class="col-md-8 col-lg-6 mx-auto">
+            <h2>Veuillez vous identifier</h2>
+            <br />
+
+            <form method="POST">
+                <div class="form-group">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+
+                    <a href="{% url 'index' %}" class="btn btn-secondary">Annuler</a>
+                    <button type="submit" class="btn btn-primary">Se connecter <i
+                            class="fas fa-chevron-right"></i></button>
+                </div>
+            </form>
+            <br /><br />
+        </div>
+    </div>
+</div>
+
+{% endblock %}
