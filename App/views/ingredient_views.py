@@ -26,6 +26,8 @@ class IngredientListView(View):
 # Create #
 
 class AddIngredientView(View):
+    permission_required = 'App.add_ingredient'
+
     def get(self, request):
         form = IngredientForm()
         return render(request, 'App/ingredient/add_ingredient.html', {'form': form})
@@ -41,6 +43,8 @@ class AddIngredientView(View):
 # Update #
 
 class EditIngredientView(View):
+    permission_required = 'App.change_ingredient'
+
     def get(self, request, pk):
         ingredient = get_object_or_404(Ingredient, pk=pk)
         form = IngredientForm(instance=ingredient)
@@ -64,6 +68,8 @@ class EditIngredientView(View):
 # Delete #
 
 class DeleteIngredientView(View):
+    permission_required = 'App.delete_ingredient'
+
     def post(self, request, pk):
         ingredient = get_object_or_404(Ingredient, pk=pk)
         ingredient_name = ingredient.name

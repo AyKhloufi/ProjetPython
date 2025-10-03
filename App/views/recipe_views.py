@@ -32,6 +32,8 @@ class RecipeDetailView(View):
 # Create #
 
 class AddRecipeView(View):
+    permission_required = 'App.add_recipe'
+
     def get(self, request):
         ingredients = Ingredient.objects.all()
         units = Unit.objects.all()
@@ -98,6 +100,8 @@ class AddRecipeView(View):
 # Update #
 
 class EditRecipeView(View):
+    permission_required = 'App.change_recipe'
+
     def get(self, request, pk):
         recipe = get_object_or_404(Recipe, pk=pk)
         ingredients = Ingredient.objects.all()
@@ -189,6 +193,8 @@ class EditRecipeView(View):
 # Delete #
 
 class DeleteRecipeView(View):
+    permission_required = 'App.delete_recipe'
+    
     def post(self, request, pk):
         recipe = get_object_or_404(Recipe, pk=pk)
         recipe_title = recipe.title

@@ -25,6 +25,8 @@ class UnitListView(View):
 # Create #
 
 class AddUnitView(View):
+    permission_required = 'App.add_unit'
+
     def get(self, request):
         form = UnitForm()
         return render(request, 'App/unit/add_unit.html', {'form': form})
@@ -41,6 +43,8 @@ class AddUnitView(View):
 # Update #
 
 class EditUnitView(View):
+    permission_required = 'App.change_unit'
+
     def get(self, request, pk):
         unit = get_object_or_404(Unit, pk=pk)
         form = UnitForm(instance=unit)
@@ -65,6 +69,8 @@ class EditUnitView(View):
 # Delete #
 
 class DeleteUnitView(View):
+    permission_required = 'App.delete_unit'
+    
     def post(self, request, pk):
         unit = get_object_or_404(Unit, pk=pk)
         unit_name = unit.unit
