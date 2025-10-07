@@ -1,86 +1,271 @@
 {% extends 'base.html' %}
-{% block title %}Ajouter une recette{% endblock %}
+{% load static %}
+
+{% block title %}Nouvelle Recette - Mon Site Recettes{% endblock %}
 
 {% block content %}
-<h2>Ajouter une recette</h2>
-
-{% if errors %}
-<div class="alert alert-danger">
-    <ul>
-    {% for error in errors %}
-        <li>{{ error }}</li>
-    {% endfor %}
-    </ul>
-</div>
-{% endif %}
-
-<form method="post">
-    {% csrf_token %}
-    <div class="mb-3">
-        <label for="title" class="form-label">Titre de la recette</label>
-        <input 
-            type="text" 
-            class="form-control" 
-            id="title" 
-            name="title" 
-            required
-            value="{{ title|default:'' }}"
-        >
-    </div>
-    <div class="mb-3">
-        <label for="description" class="form-label">Description de la recette</label>
-        <textarea 
-            class="form-control" 
-            id="description" 
-            name="description" 
-            rows="3" 
-            required
-        >{{ description|default:'' }}</textarea>
-    </div>
-    <div class="mb-3">
-        <label for="instructions" class="form-label">Instructions</label>
-        <textarea 
-            class="form-control" 
-            id="instructions" 
-            name="instructions" 
-            rows="5" 
-            required
-        >{{ instructions|default:'' }}</textarea>
-    </div>
-
-    <h4>Ingrédients</h4>
-    {% for ingredient in ingredients %}
-        <div class="row align-items-center mb-2">
-            <div class="col-auto">
-                <input 
-                    type="checkbox" 
-                    id="ingredient{{ forloop.counter }}" 
-                    name="ingredient_ids" 
-                    value="{{ ingredient.id }}"
-                >
-                <label for="ingredient{{ forloop.counter }}">{{ ingredient.name }}</label>
-            </div>
-            <div class="col-auto">
-                <input 
-                    type="number" 
-                    min="0.01" 
-                    step="any" 
-                    name="quantity_{{ ingredient.id }}" 
-                    placeholder="Quantité"
-                >
-            </div>
-            <div class="col-auto">
-                <select name="unit_{{ ingredient.id }}">
-                    {% for unit in units %}
-                        <option value="{{ unit.id }}">{{ unit.unit }}</option>
-                    {% endfor %}
-                </select>
-            </div>
+<div class="add-recipe-page">
+  <!-- Header Section -->
+  <div class="page-header mb-4">
+    <div class="row align-items-center">
+      <div class="col-lg-8">
+        <div class="header-content">
+          <div class="header-icon mb-3">
+            <i class="fas fa-plus-circle fa-3x text-primary"></i>
+          </div>
+          <h1 class="display-4 mb-3">Nouvelle Recette</h1>
+          <p class="lead text-muted">Créez une nouvelle recette délicieuse avec vos ingrédients favoris</p>
         </div>
-    {% endfor %}
-    <button type="submit" class="btn btn-primary">Ajouter</button>
-</form>
+      </div>
+      <div class="col-lg-4 text-lg-end">
+        <a href="{% url 'recipes' %}" class="btn btn-outline-secondary">
+          <i class="fas fa-arrow-left me-2"></i>Retour aux Recettes
+        </a>
+      </div>
+    </div>
+  </div>
 
+  <!-- Form Section -->
+  <div class="form-section">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <div class="form-card">
+          <div class="form-header">
+            <div class="form-icon">
+              <i class="fas fa-utensils"></i>
+            </div>
+            <h3>Créer une Nouvelle Recette</h3>
+            <p class="text-muted">Partagez votre création culinaire avec le monde</p>
+          </div>
+          
+          <form method="post" class="form-modern">
+            {% csrf_token %}
+            
+            {% if errors %}
+            <div class="alert alert-danger mb-4">
+              <i class="fas fa-exclamation-triangle me-2"></i>
+              <strong>Erreurs détectées :</strong>
+              <ul class="mb-0 mt-2">
+                {% for error in errors %}
+                  <li>{{ error }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+            {% endif %}
+            
+            <!-- Basic Information -->
+            <div class="section-header">
+              <h4><i class="fas fa-info-circle me-2"></i>Informations Générales</h4>
+              <hr>
+            </div>
+            
+            <div class="row">
+              <div class="col-md-12 mb-4">
+                <label for="title" class="form-label">
+                  <i class="fas fa-heading me-2"></i>Titre de la Recette
+                </label>
+                <input type="text" 
+                       class="form-control form-control-lg" 
+                       id="title" 
+                       name="title" 
+                       value="{{ title|default:'' }}"
+                       placeholder="Donnez un nom délicieux à votre recette..."
+                       required>
+                <div class="form-help">
+                  <small class="text-muted">
+                    <i class="fas fa-lightbulb me-1"></i>
+                    Choisissez un titre accrocheur et descriptif
+                  </small>
+                </div>
+              </div>
+            </div>
 
-<a href="{% url 'index' %}" class="btn btn-secondary mt-3">Retour à l'accueil</a>
+            <div class="row">
+              <div class="col-md-12 mb-4">
+                <label for="description" class="form-label">
+                  <i class="fas fa-align-left me-2"></i>Description
+                </label>
+                <textarea class="form-control" 
+                          id="description" 
+                          name="description" 
+                          rows="3" 
+                          placeholder="Décrivez votre recette en quelques mots..."
+                          required>{{ description|default:'' }}</textarea>
+                <div class="form-help">
+                  <small class="text-muted">
+                    <i class="fas fa-info-circle me-1"></i>
+                    Une description appétissante qui donne envie d'essayer la recette
+                  </small>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 mb-4">
+                <label for="instructions" class="form-label">
+                  <i class="fas fa-list-ol me-2"></i>Instructions de Préparation
+                </label>
+                <textarea class="form-control" 
+                          id="instructions" 
+                          name="instructions" 
+                          rows="6" 
+                          placeholder="1. Commencez par...&#10;2. Ensuite...&#10;3. Finalement..."
+                          required>{{ instructions|default:'' }}</textarea>
+                <div class="form-help">
+                  <small class="text-muted">
+                    <i class="fas fa-info-circle me-1"></i>
+                    Détaillez chaque étape de préparation de manière claire et ordonnée
+                  </small>
+                </div>
+              </div>
+            </div>
+
+            <!-- Ingredients Section -->
+            <div class="section-header mt-4">
+              <h4><i class="fas fa-carrot me-2"></i>Ingrédients et Quantités</h4>
+              <hr>
+            </div>
+            
+            <div class="ingredients-selection">
+              <div class="selection-help mb-3">
+                <div class="alert alert-info">
+                  <i class="fas fa-info-circle me-2"></i>
+                  <strong>Instructions :</strong> Cochez les ingrédients nécessaires et spécifiez les quantités et unités pour chacun.
+                </div>
+              </div>
+              
+              {% if ingredients %}
+              <div class="ingredients-grid">
+                {% for ingredient in ingredients %}
+                <div class="ingredient-item">
+                  <div class="ingredient-card-selection">
+                    <div class="ingredient-check">
+                      <input type="checkbox"
+                             id="ingredient{{ forloop.counter }}"
+                             name="ingredient_ids"
+                             value="{{ ingredient.id }}"
+                             class="form-check-input">
+                      <label for="ingredient{{ forloop.counter }}" class="form-check-label ingredient-name">
+                        <i class="fas fa-leaf me-2"></i>{{ ingredient.name }}
+                      </label>
+                    </div>
+                    
+                    <div class="ingredient-details">
+                      <div class="row g-2">
+                        <div class="col-6">
+                          <label class="form-label small">Quantité</label>
+                          <input type="number" 
+                                 name="quantity_{{ ingredient.id }}" 
+                                 class="form-control form-control-sm" 
+                                 min="0.01" 
+                                 step="any" 
+                                 placeholder="0.0">
+                        </div>
+                        <div class="col-6">
+                          <label class="form-label small">Unité</label>
+                          <select name="unit_{{ ingredient.id }}" class="form-select form-select-sm">
+                            {% for unit in units %}
+                              <option value="{{ unit.id }}">{{ unit.unit }}</option>
+                            {% endfor %}
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+              {% else %}
+              <div class="empty-ingredients">
+                <div class="text-center py-5">
+                  <i class="fas fa-carrot fa-4x text-muted mb-3"></i>
+                  <h5>Aucun ingrédient disponible</h5>
+                  <p class="text-muted mb-4">Vous devez d'abord ajouter des ingrédients pour créer une recette.</p>
+                  <a href="{% url 'add_ingredient' %}" class="btn btn-success">
+                    <i class="fas fa-plus me-2"></i>Ajouter un Ingrédient
+                  </a>
+                </div>
+              </div>
+              {% endif %}
+            </div>
+
+            <!-- Form Actions -->
+            <div class="form-actions mt-5">
+              <button type="submit" class="btn btn-primary btn-lg">
+                <i class="fas fa-plus me-2"></i>Créer la Recette
+              </button>
+              <a href="{% url 'recipes' %}" class="btn btn-outline-secondary btn-lg ms-3">
+                <i class="fas fa-times me-2"></i>Annuler
+              </a>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tips Section -->
+  <div class="tips-section mt-5">
+    <div class="row">
+      <div class="col-lg-10 mx-auto">
+        <div class="tips-card">
+          <h4><i class="fas fa-lightbulb me-2 text-warning"></i>Conseils pour une Excellente Recette</h4>
+          <div class="row g-3 mt-2">
+            <div class="col-md-3">
+              <div class="tip-item">
+                <i class="fas fa-clock me-2 text-primary"></i>
+                <small>Précisez les temps de préparation et cuisson</small>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="tip-item">
+                <i class="fas fa-thermometer-half me-2 text-danger"></i>
+                <small>Indiquez les températures de cuisson</small>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="tip-item">
+                <i class="fas fa-users me-2 text-success"></i>
+                <small>Précisez le nombre de portions</small>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="tip-item">
+                <i class="fas fa-star me-2 text-warning"></i>
+                <small>Ajoutez des astuces personnelles</small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Gestion de la sélection visuelle des ingrédients pour l'ajout
+document.addEventListener('DOMContentLoaded', function() {
+    const checkboxes = document.querySelectorAll('input[name="ingredient_ids"]');
+    
+    checkboxes.forEach(function(checkbox) {
+        const ingredientItem = checkbox.closest('.ingredient-item');
+        
+        // État initial
+        updateIngredientStyle(checkbox, ingredientItem);
+        
+        // Écouter les changements
+        checkbox.addEventListener('change', function() {
+            updateIngredientStyle(checkbox, ingredientItem);
+        });
+    });
+    
+    function updateIngredientStyle(checkbox, ingredientItem) {
+        if (checkbox.checked) {
+            ingredientItem.classList.add('ingredient-selected');
+        } else {
+            ingredientItem.classList.remove('ingredient-selected');
+        }
+    }
+});
+</script>
 {% endblock %}
