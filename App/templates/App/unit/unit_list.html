@@ -18,9 +18,11 @@
         </div>
       </div>
       <div class="col-lg-4 text-lg-end">
-        <a href="{% url 'add_unit' %}" class="btn btn-lg btn-primary">
-          <i class="fas fa-plus me-2"></i>Ajouter une Unité
-        </a>
+        {% if user.is_authenticated and perms.App.add_unit %}
+          <a href="{% url 'add_unit' %}" class="btn btn-lg btn-primary">
+            <i class="fas fa-plus me-2"></i>Ajouter une Unité
+          </a>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -89,15 +91,19 @@
           </div>
           
           <div class="unit-actions">
-            <a href="{% url 'edit_unit' unit.id %}" class="btn btn-outline-secondary btn-sm">
-              <i class="fas fa-edit me-1"></i>Modifier
-            </a>
-            <form method="post" action="{% url 'delete_unit' unit.id %}" style="display:inline;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer l\'unité {{ unit.unit }} ?');">
-              {% csrf_token %}
-              <button type="submit" class="btn btn-danger">
-                <i class="fas fa-trash me-1"></i>Supprimer
-              </button>
-            </form>
+            {% if user.is_authenticated and perms.App.change_unit %}
+              <a href="{% url 'edit_unit' unit.id %}" class="btn btn-outline-secondary btn-sm">
+                <i class="fas fa-edit me-1"></i>Modifier
+              </a>
+            {% endif %}
+            {% if user.is_authenticated and perms.App.delete_unit %}
+              <form method="post" action="{% url 'delete_unit' unit.id %}" style="display:inline;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer l\'unité {{ unit.unit }} ?');">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">
+                  <i class="fas fa-trash me-1"></i>Supprimer
+                </button>
+              </form>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -112,9 +118,11 @@
       </div>
       <h3>Aucune unité de mesure disponible</h3>
       <p class="text-muted mb-4">Commencez par ajouter vos unités de mesure pour créer des recettes précises.</p>
-      <a href="{% url 'add_unit' %}" class="btn btn-lg btn-primary">
-        <i class="fas fa-plus me-2"></i>Créer Ma Première Unité
-      </a>
+      {% if user.is_authenticated and perms.App.add_unit %}
+        <a href="{% url 'add_unit' %}" class="btn btn-lg btn-primary">
+          <i class="fas fa-plus me-2"></i>Créer Ma Première Unité
+        </a>
+      {% endif %}
     </div>
   {% endif %}
 

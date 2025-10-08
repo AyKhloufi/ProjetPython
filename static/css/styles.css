@@ -1955,3 +1955,370 @@ input[type="submit"]:hover {
         font-size: 0.8rem;
     }
 }
+
+/* Styles pour l'affichage de l'auteur des recettes */
+.recipe-meta .recipe-author {
+    display: block;
+    margin-top: 0.25rem;
+    font-size: 0.85rem;
+    color: #6c757d;
+}
+
+.recipe-author-info {
+    padding: 0.5rem 0.75rem;
+    background-color: #f8f9fa;
+    border-left: 3px solid #007bff;
+    border-radius: 0.25rem;
+}
+
+.recipe-author-info .text-muted {
+    color: #6c757d !important;
+}
+
+.recipe-author-info strong {
+    color: #495057;
+}
+
+/* Responsive pour l'affichage auteur */
+@media (max-width: 768px) {
+    .recipe-meta .recipe-author {
+        font-size: 0.8rem;
+    }
+    
+    .recipe-author-info {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* Styles pour les images de recettes */
+.recipe-image-card {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+
+.recipe-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.recipe-card-modern:hover .recipe-card-img {
+    transform: scale(1.05);
+}
+
+.recipe-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: linear-gradient(135deg, rgba(64, 145, 108, 0.9), rgba(82, 183, 136, 0.9));
+    color: white;
+    padding: 1rem;
+    border-radius: 0 0 0 15px;
+}
+
+.recipe-header-meta {
+    padding: 1rem 1.5rem 0;
+}
+
+.current-image-preview {
+    border: 2px dashed #e9ecef;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    background: #f8f9fa;
+}
+
+.current-image-preview img {
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.recipe-image {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.recipe-image img {
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.recipe-image img:hover {
+    transform: scale(1.02);
+}
+
+/* Responsive pour les images */
+@media (max-width: 768px) {
+    .recipe-image-card {
+        height: 150px;
+    }
+    
+    .recipe-overlay {
+        padding: 0.75rem;
+    }
+    
+    .current-image-preview {
+        padding: 0.75rem;
+    }
+}
+
+/* Styles pour les instructions de recette formatées */
+.recipe-instructions {
+    background: #f8f9fa;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1rem 0;
+    border-left: 4px solid #40916c;
+}
+
+.instruction-list {
+    margin: 0;
+    padding-left: 1.5rem;
+    counter-reset: instruction-counter;
+    list-style: none;
+}
+
+.instruction-item {
+    position: relative;
+    margin-bottom: 1rem;
+    padding: 1rem 1rem 1rem 3rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #e9ecef;
+    counter-increment: instruction-counter;
+    transition: all 0.3s ease;
+    line-height: 1.6;
+}
+
+.instruction-item:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: #40916c;
+}
+
+.instruction-item:last-child {
+    margin-bottom: 0;
+}
+
+.instruction-item::before {
+    content: counter(instruction-counter);
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, #40916c, #52b788);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.9rem;
+    box-shadow: 0 2px 6px rgba(64, 145, 108, 0.3);
+}
+
+.instruction-text {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border-left: 4px solid #40916c;
+    margin: 1rem 0;
+    line-height: 1.6;
+    color: #495057;
+}
+
+/* Responsive pour les instructions */
+@media (max-width: 768px) {
+    .recipe-instructions {
+        padding: 1rem;
+    }
+    
+    .instruction-item {
+        padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .instruction-item::before {
+        width: 24px;
+        height: 24px;
+        left: 0.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .instruction-text {
+        padding: 1rem;
+        font-size: 0.95rem;
+    }
+}
+
+/* Styles pour les images d'ingrédients */
+.ingredient-image-card {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 12px 12px 0 0;
+}
+
+.ingredient-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.ingredient-card-modern:hover .ingredient-card-img {
+    transform: scale(1.05);
+}
+
+.ingredient-overlay {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.5rem 0.75rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ingredient-overlay .ingredient-status {
+    color: #28a745;
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin: 0;
+}
+
+.ingredient-overlay .ingredient-status i {
+    color: #28a745;
+}
+
+/* Ajustement des cartes d'ingrédients avec images */
+.ingredient-card-modern:has(.ingredient-image-card) {
+    padding: 0;
+}
+
+.ingredient-card-modern:has(.ingredient-image-card) .ingredient-content {
+    padding: 1.5rem;
+}
+
+.ingredient-card-modern:has(.ingredient-image-card) .ingredient-actions {
+    padding: 1rem 1.5rem;
+    margin-top: auto;
+}
+
+/* Fallback pour navigateurs sans support :has() */
+.ingredient-card-modern.has-image {
+    padding: 0;
+}
+
+.ingredient-card-modern.has-image .ingredient-content {
+    padding: 1.5rem;
+}
+
+.ingredient-card-modern.has-image .ingredient-actions {
+    padding: 1rem 1.5rem;
+    margin-top: auto;
+}
+
+/* Responsive pour les images d'ingrédients */
+@media (max-width: 768px) {
+    .ingredient-image-card {
+        height: 140px;
+    }
+    
+    .ingredient-overlay {
+        top: 0.75rem;
+        right: 0.75rem;
+        padding: 0.4rem 0.6rem;
+    }
+    
+    .ingredient-overlay .ingredient-status {
+        font-size: 0.8rem;
+    }
+}
+
+/* Image placeholder pour les ingrédients sans image */
+.ingredient-placeholder-image {
+    width: 100%;
+    height: 180px;
+    background: linear-gradient(135deg, #52b788 0%, #74c69d 50%, #95d5b2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.ingredient-placeholder-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain-ingredient" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="7.5" cy="7.5" r="0.8" fill="white" opacity="0.15"/><circle cx="3" cy="12" r="0.4" fill="white" opacity="0.1"/><circle cx="12" cy="3" r="0.4" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain-ingredient)"/></svg>');
+    pointer-events: none;
+}
+
+.ingredient-placeholder-image .placeholder-content {
+    text-align: center;
+    z-index: 1;
+    position: relative;
+    padding: 1rem;
+}
+
+.ingredient-placeholder-image .placeholder-content i {
+    display: block;
+    margin-bottom: 0.75rem;
+    opacity: 0.9;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.ingredient-placeholder-image .placeholder-content h5 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    line-height: 1.2;
+    word-break: break-word;
+}
+
+/* Variations de couleurs pour les placeholders d'ingrédients */
+.ingredient-card-modern:nth-child(4n+1) .ingredient-placeholder-image {
+    background: linear-gradient(135deg, #52b788 0%, #74c69d 100%);
+}
+
+.ingredient-card-modern:nth-child(4n+2) .ingredient-placeholder-image {
+    background: linear-gradient(135deg, #f4a261 0%, #e76f51 100%);
+}
+
+.ingredient-card-modern:nth-child(4n+3) .ingredient-placeholder-image {
+    background: linear-gradient(135deg, #2a9d8f 0%, #264653 100%);
+}
+
+.ingredient-card-modern:nth-child(4n+4) .ingredient-placeholder-image {
+    background: linear-gradient(135deg, #e9c46a 0%, #f4a261 100%);
+}
+
+/* Responsive pour les placeholders d'ingrédients */
+@media (max-width: 768px) {
+    .ingredient-placeholder-image {
+        height: 140px;
+    }
+    
+    .ingredient-placeholder-image .placeholder-content h5 {
+        font-size: 0.9rem;
+    }
+    
+    .ingredient-placeholder-image .placeholder-content i {
+        font-size: 1.5rem;
+    }
+}

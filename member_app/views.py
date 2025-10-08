@@ -1,6 +1,7 @@
 from django.contrib.auth import logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import PasswordChangeView, LoginView
+from django.contrib.auth.models import Group
 from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView
@@ -25,6 +26,20 @@ class UserCreationView(CreateView):
     form_class = MyUserCreationForm
     template_name = 'member_app/user_create.html'
     success_url = reverse_lazy('login')
+    
+    def form_valid(self, form):
+        # Sauvegarder l'utilisateur
+        response = super().form_valid(form)
+        
+        # Ajouter l'utilisateur au groupe "Cuisinier"
+        try:
+            cuisinier_group = Group.objects.get(name='Cuisinier')
+            self.object.groups.add(cuisinier_group)
+        except Group.DoesNotExist:
+            # Le groupe n'existe pas encore
+            print("Le groupe 'Cuisinier' n'existe pas. Créez-le via l'admin Django.")
+        
+        return response
 
 
 class UserChangeView(LoginRequiredMixin, UpdateView):

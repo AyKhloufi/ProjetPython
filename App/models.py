@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -9,6 +10,7 @@ class Recipe(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="Crée le")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Mis à jour le")
     image = models.ImageField(default="", upload_to='recipes/', verbose_name="Image", blank=True, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="Créateur", null=True, blank=True)
 
     def __str__(self):
         return self.title

@@ -1,15 +1,33 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load custom_filters %}
 {% block title %}Recette detail{% endblock %}
 
 {% block content %}
-{% load static %}
 
 <h2>MyRecipes</h2>
 
 <div class="card mb-4">
   <div class="card-body">
     <h3 class="card-title">{{ recipe.title }}</h3>
+    
+    {% if recipe.image %}
+      <div class="recipe-image mb-3">
+        <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" class="img-fluid rounded" style="max-width: 100%; height: auto; max-height: 400px;">
+      </div>
+    {% endif %}
+    
     <p class="card-text">{{ recipe.description }}</p>
+    
+    {% if recipe.user %}
+      <div class="recipe-author-info mb-3">
+        <small class="text-muted">
+          <i class="fas fa-user me-1"></i>
+          Recette créée par <strong>{{ recipe.user.username }}</strong>
+        </small>
+      </div>
+    {% endif %}
+    
     <h5>Ingrédients:</h5>
     <ul>
       {% for ri in recipe_ingredients %}
@@ -20,14 +38,27 @@
     </ul>
 
     <h5>Instructions:</h5>
-    <p>{{ recipe.instructions }}</p>
-    <a href="{% url 'edit_recipe' recipe.id %}" class="btn btn-secondary">Éditer la recette</a>
-    <form method="post" action="{% url 'delete_recipe' recipe.id %}" style="display:inline;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette recette ? Cette action est irréversible.');">
-        {% csrf_token %}
-        <button type="submit" class="btn btn-danger">
-            Supprimer la recette
-        </button>
-    </form>
+    <div class="recipe-instructions">
+      {{ recipe.instructions|format_instructions }}
+    </div>
+    
+    {% if user.is_authenticated %}
+      {% can_edit_recipe user recipe as can_edit %}
+      {% can_delete_recipe user recipe as can_delete %}
+      
+      {% if can_edit %}
+        <a href="{% url 'edit_recipe' recipe.id %}" class="btn btn-secondary">Éditer la recette</a>
+      {% endif %}
+      
+      {% if can_delete %}
+        <form method="post" action="{% url 'delete_recipe' recipe.id %}" style="display:inline;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette recette ? Cette action est irréversible.');">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">
+                Supprimer la recette
+            </button>
+        </form>
+      {% endif %}
+    {% endif %}
 
     <a href="{% url 'recipes' %}" class="btn btn-secondary">Retour aux recettes</a>
   </div>

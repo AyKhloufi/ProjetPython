@@ -1,6 +1,5 @@
 from django.urls import path
 from .views.default_views import *
-from .views.default_views import *
 from .views.recipe_views import *
 from .views.ingredient_views import *
 from .views.unit_views import *

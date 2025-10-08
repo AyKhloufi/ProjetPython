@@ -3,12 +3,38 @@ from django.shortcuts import render, redirect, get_object_or_404
 from ..models import Recipe, Ingredient, Unit, RecipeIngredient
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.core.exceptions import PermissionDenied
+
+# Fonctions utilitaires pour vérifier les permissions de recette
+def can_edit_recipe(user, recipe):
+    """Vérifie si l'utilisateur peut modifier cette recette"""
+    # Les gestionnaires peuvent tout faire
+    if user.groups.filter(name='Gestionnaire').exists():
+        return True
+    # Les cuisiniers ne peuvent agir que sur leurs propres recettes
+    if user.groups.filter(name='Cuisinier').exists():
+        return recipe.user == user
+    # Fallback: vérifier la permission générale
+    return user.has_perm('App.change_recipe')
+
+def can_delete_recipe(user, recipe):
+    """Vérifie si l'utilisateur peut supprimer cette recette"""
+    # Les gestionnaires peuvent tout faire
+    if user.groups.filter(name='Gestionnaire').exists():
+        return True
+    # Les cuisiniers ne peuvent agir que sur leurs propres recettes
+    if user.groups.filter(name='Cuisinier').exists():
+        return recipe.user == user
+    # Fallback: vérifier la permission générale
+    return user.has_perm('App.delete_recipe')
 
 # Read # 
 
 class RecipeListView(View):
     def get(self, request):
-        recipes_list = Recipe.objects.all()
+        recipes_list = Recipe.objects.select_related('user').all()
         paginator = Paginator(recipes_list, 6)  # 6 recettes par page (2 lignes de 3)
         
         page = request.GET.get('page')
@@ -23,7 +49,7 @@ class RecipeListView(View):
     
 class RecipeDetailView(View):
     def get(self, request, pk):
-        recipe = get_object_or_404(Recipe, pk=pk)
+        recipe = get_object_or_404(Recipe.objects.select_related('user'), pk=pk)
         recipe_ingredients = RecipeIngredient.objects.filter(recipe=recipe).select_related('ingredient', 'unit')
         return render(request, 'App/recipe/recipe_detail.html', {
             'recipe': recipe,
@@ -31,18 +57,26 @@ class RecipeDetailView(View):
 
 # Create #
 
+@method_decorator(login_required, name='dispatch')
 class AddRecipeView(View):
-    permission_required = 'App.add_recipe'
-
     def get(self, request):
+        # Vérifier si l'utilisateur peut ajouter des recettes
+        if not request.user.has_perm('App.add_recipe'):
+            raise PermissionDenied("Vous n'avez pas la permission d'ajouter des recettes.")
+        
         ingredients = Ingredient.objects.all()
         units = Unit.objects.all()
         return render(request, 'App/recipe/add_recipe.html', {'ingredients': ingredients, 'units': units})
 
     def post(self, request):
+        # Vérifier si l'utilisateur peut ajouter des recettes
+        if not request.user.has_perm('App.add_recipe'):
+            raise PermissionDenied("Vous n'avez pas la permission d'ajouter des recettes.")
+        
         title = request.POST.get('title', '').strip()
         description = request.POST.get('description', '').strip()
         instructions = request.POST.get('instructions', '').strip()
+        image = request.FILES.get('image')
 
         # Validation des champs
         errors = []
@@ -81,9 +115,13 @@ class AddRecipeView(View):
                 'instructions': instructions,
             })
 
-        # Création de la recette
+        # Création de la recette avec l'utilisateur connecté
         recipe = Recipe.objects.create(
-            title=title, description=description, instructions=instructions
+            title=title, 
+            description=description, 
+            instructions=instructions,
+            image=image,  # Ajouter l'image
+            user=request.user  # Assigner l'utilisateur connecté
         )
         # Création des liaisons avec quantités et unités
         for ingredient_id, quantity, unit_id in ingredients_data:
@@ -99,11 +137,15 @@ class AddRecipeView(View):
 
 # Update #
 
+@method_decorator(login_required, name='dispatch')
 class EditRecipeView(View):
-    permission_required = 'App.change_recipe'
-
     def get(self, request, pk):
-        recipe = get_object_or_404(Recipe, pk=pk)
+        recipe = get_object_or_404(Recipe.objects.select_related('user'), pk=pk)
+        
+        # Vérifier si l'utilisateur peut modifier cette recette
+        if not can_edit_recipe(request.user, recipe):
+            raise PermissionDenied("Vous n'avez pas la permission de modifier cette recette.")
+        
         ingredients = Ingredient.objects.all()
         units = Unit.objects.all()
         recipe_ingredients = RecipeIngredient.objects.filter(recipe=recipe).select_related('ingredient', 'unit')
@@ -116,10 +158,16 @@ class EditRecipeView(View):
         })
 
     def post(self, request, pk):
-        recipe = get_object_or_404(Recipe, pk=pk)
+        recipe = get_object_or_404(Recipe.objects.select_related('user'), pk=pk)
+        
+        # Vérifier si l'utilisateur peut modifier cette recette
+        if not can_edit_recipe(request.user, recipe):
+            raise PermissionDenied("Vous n'avez pas la permission de modifier cette recette.")
+        
         title = request.POST.get('title', '').strip()
         description = request.POST.get('description', '').strip()
         instructions = request.POST.get('instructions', '').strip()
+        image = request.FILES.get('image')
         ingredient_ids = request.POST.getlist('ingredient_ids')
 
         # Validation des champs
@@ -172,6 +220,8 @@ class EditRecipeView(View):
         recipe.title = title
         recipe.description = description
         recipe.instructions = instructions
+        if image:  # Seulement si une nouvelle image est fournie
+            recipe.image = image
         recipe.save()
 
         # Supprimer les anciennes liaisons ingrédients
@@ -192,11 +242,15 @@ class EditRecipeView(View):
 
 # Delete #
 
+@method_decorator(login_required, name='dispatch')
 class DeleteRecipeView(View):
-    permission_required = 'App.delete_recipe'
-    
     def post(self, request, pk):
-        recipe = get_object_or_404(Recipe, pk=pk)
+        recipe = get_object_or_404(Recipe.objects.select_related('user'), pk=pk)
+        
+        # Vérifier si l'utilisateur peut supprimer cette recette
+        if not can_delete_recipe(request.user, recipe):
+            raise PermissionDenied("Vous n'avez pas la permission de supprimer cette recette.")
+        
         recipe_title = recipe.title
         recipe.delete()
         messages.success(request, f'Recette "{recipe_title}" supprimée avec succès!')

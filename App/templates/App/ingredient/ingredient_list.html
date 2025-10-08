@@ -18,9 +18,11 @@
         </div>
       </div>
       <div class="col-lg-4 text-lg-end">
-        <a href="{% url 'add_ingredient' %}" class="btn btn-lg btn-success">
-          <i class="fas fa-plus me-2"></i>Ajouter un Ingrédient
-        </a>
+        {% if user.is_authenticated and perms.App.add_ingredient %}
+          <a href="{% url 'add_ingredient' %}" class="btn btn-lg btn-success">
+            <i class="fas fa-plus me-2"></i>Ajouter un Ingrédient
+          </a>
+        {% endif %}
       </div>
     </div>
   </div>
@@ -39,15 +41,22 @@
       {% for ingredient in ingredients %}
       <div class="col-lg-4 col-md-6 col-sm-12">
         <div class="ingredient-card-modern">
-          <div class="ingredient-header">
-            <div class="ingredient-icon">
-              <i class="fas fa-leaf"></i>
-            </div>
-            <div class="ingredient-meta">
-              <span class="ingredient-status">
-                <i class="fas fa-check-circle me-1 text-success"></i>
+          <div class="ingredient-image-card">
+            {% if ingredient.image %}
+              <img src="{{ ingredient.image.url }}" alt="{{ ingredient.name }}" class="ingredient-card-img">
+            {% else %}
+              <div class="ingredient-placeholder-image">
+                <div class="placeholder-content">
+                  <i class="fas fa-leaf fa-2x"></i>
+                  <h5>{{ ingredient.name }}</h5>
+                </div>
+              </div>
+            {% endif %}
+            <div class="ingredient-overlay">
+              <div class="ingredient-status">
+                <i class="fas fa-check-circle me-1"></i>
                 Disponible
-              </span>
+              </div>
             </div>
           </div>
           
@@ -66,15 +75,19 @@
           </div>
           
           <div class="ingredient-actions">
-            <a href="{% url 'edit_ingredient' ingredient.id %}" class="btn btn-outline-secondary btn-sm">
-              <i class="fas fa-edit me-1"></i>Modifier
-            </a>
-            <form method="post" action="{% url 'delete_ingredient' ingredient.id %}" style="display:inline;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer l\'ingrédient {{ ingredient.name }} ?');">
-              {% csrf_token %}
-              <button type="submit" class="btn btn-danger btn-sm">
-                <i class="fas fa-trash me-1"></i>Supprimer
-              </button>
-            </form>
+            {% if user.is_authenticated and perms.App.change_ingredient %}
+              <a href="{% url 'edit_ingredient' ingredient.id %}" class="btn btn-outline-secondary btn-sm">
+                <i class="fas fa-edit me-1"></i>Modifier
+              </a>
+            {% endif %}
+            {% if user.is_authenticated and perms.App.delete_ingredient %}
+              <form method="post" action="{% url 'delete_ingredient' ingredient.id %}" style="display:inline;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer l\'ingrédient {{ ingredient.name }} ?');">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger btn-sm">
+                  <i class="fas fa-trash me-1"></i>Supprimer
+                </button>
+              </form>
+            {% endif %}
           </div>
         </div>
       </div>
@@ -89,9 +102,11 @@
       </div>
       <h3>Aucun ingrédient disponible</h3>
       <p class="text-muted mb-4">Commencez par ajouter vos premiers ingrédients pour créer votre collection culinaire.</p>
-      <a href="{% url 'add_ingredient' %}" class="btn btn-lg btn-success">
-        <i class="fas fa-plus me-2"></i>Créer Mon Premier Ingrédient
-      </a>
+      {% if user.is_authenticated and perms.App.add_ingredient %}
+        <a href="{% url 'add_ingredient' %}" class="btn btn-lg btn-success">
+          <i class="fas fa-plus me-2"></i>Créer Mon Premier Ingrédient
+        </a>
+      {% endif %}
     </div>
   {% endif %}
 
@@ -102,4 +117,18 @@
     </a>
   </div>
 </div>
+
+<script>
+// Fallback pour navigateurs sans support CSS :has()
+document.addEventListener('DOMContentLoaded', function() {
+    const ingredientCards = document.querySelectorAll('.ingredient-card-modern');
+    
+    ingredientCards.forEach(function(card) {
+        const hasImage = card.querySelector('.ingredient-image-card');
+        if (hasImage) {
+            card.classList.add('has-image');
+        }
+    });
+});
+</script>
 {% endblock %}
