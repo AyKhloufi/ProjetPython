@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load custom_filters %}
+{% load i18n %}
 
-{% block title %}Mes Recettes - Mon Site Recettes{% endblock %}
+{% block title %}{% trans "Mes Recettes" %} - {% trans "Mon Site Recettes" %}{% endblock %}
 
 {% block content %}
 <div class="recipes-page">
@@ -14,14 +15,14 @@
           <div class="header-icon mb-3">
             <i class="fas fa-book-open fa-3x text-primary"></i>
           </div>
-          <h1 class="display-4 mb-3">Mes Recettes</h1>
-          <p class="lead text-muted">Découvrez et gérez votre collection de recettes culinaires</p>
+          <h1 class="display-4 mb-3">{% trans "Mes Recettes" %}</h1>
+          <p class="lead text-muted">{% trans "Découvrez et gérez votre collection de recettes culinaires" %}</p>
         </div>
       </div>
       <div class="col-lg-4 text-lg-end">
         {% if user.is_authenticated and perms.App.add_recipe %}
           <a href="{% url 'add_recipe' %}" class="btn btn-lg btn-primary">
-            <i class="fas fa-plus me-2"></i>Ajouter une Recette
+            <i class="fas fa-plus me-2"></i>{% trans "Ajouter une Recette" %}
           </a>
         {% endif %}
       </div>
@@ -34,7 +35,7 @@
       <div class="stats-card">
         <i class="fas fa-utensils me-2"></i>
         <span class="stats-number">{{ recipes.paginator.count }}</span>
-        <span class="stats-label">recette{{ recipes.paginator.count|pluralize }}</span>
+        <span class="stats-label">{% trans "recette" %}{{ recipes.paginator.count|pluralize }}</span>
       </div>
     </div>
 
@@ -64,12 +65,12 @@
             <div class="recipe-meta">
               <span class="recipe-date">
                 <i class="fas fa-calendar-alt me-1"></i>
-                Ajouté récemment
+                {% trans "Ajouté récemment" %}
               </span>
               {% if recipe.user %}
                 <span class="recipe-author">
                   <i class="fas fa-user me-1"></i>
-                  Par {{ recipe.user.username }}
+                  {% trans "Par" %} {{ recipe.user.username }}
                 </span>
               {% endif %}
             </div>
@@ -82,13 +83,13 @@
           
           <div class="recipe-actions">
             <a href="{% url 'recipe_detail' recipe.id %}" class="btn btn-primary btn-sm">
-              <i class="fas fa-eye me-1"></i>Voir la Recette
+              <i class="fas fa-eye me-1"></i>{% trans "Voir la Recette" %}
             </a>
             {% if user.is_authenticated %}
               {% can_edit_recipe user recipe as can_edit %}
               {% if can_edit %}
                 <a href="{% url 'edit_recipe' recipe.id %}" class="btn btn-outline-secondary btn-sm">
-                  <i class="fas fa-edit me-1"></i>Modifier
+                  <i class="fas fa-edit me-1"></i>{% trans "Modifier" %}
                 </a>
               {% endif %}
             {% endif %}
@@ -104,11 +105,11 @@
       <div class="empty-icon">
         <i class="fas fa-book-open fa-4x text-muted"></i>
       </div>
-      <h3>Aucune recette disponible</h3>
-      <p class="text-muted mb-4">Commencez par ajouter votre première recette pour créer votre collection culinaire.</p>
+      <h3>{% trans "Aucune recette disponible" %}</h3>
+      <p class="text-muted mb-4">{% trans "Commencez par ajouter votre première recette pour créer votre collection culinaire." %}</p>
       {% if user.is_authenticated and perms.App.add_recipe %}
         <a href="{% url 'add_recipe' %}" class="btn btn-lg btn-primary">
-          <i class="fas fa-plus me-2"></i>Créer Ma Première Recette
+          <i class="fas fa-plus me-2"></i>{% trans "Créer Ma Première Recette" %}
         </a>
       {% endif %}
     </div>
@@ -117,7 +118,7 @@
   <!-- Navigation -->
   <div class="page-navigation mt-5">
     <a href="{% url 'index' %}" class="btn btn-outline-secondary">
-      <i class="fas fa-home me-2"></i>Retour à l'Accueil
+      <i class="fas fa-home me-2"></i>{% trans "Retour à l'Accueil" %}
     </a>
   </div>
 </div>

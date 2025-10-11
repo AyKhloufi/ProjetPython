@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load custom_filters %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}Modifier {{ recipe.title }} - Mon Site Recettes{% endblock %}
 
@@ -14,14 +15,14 @@
           <div class="header-icon mb-3">
             <i class="fas fa-edit fa-3x text-primary"></i>
           </div>
-          <h1 class="display-4 mb-3">Modifier la Recette</h1>
+          <h1 class="display-4 mb-3">{% trans "Modifier la Recette" %}</h1>
           <p class="lead text-muted">Mettre à jour les informations de <strong>{{ recipe.title }}</strong></p>
         </div>
       </div>
       <div class="col-lg-4 text-lg-end">
         <a href="{% url 'recipe_detail' recipe.id %}" class="btn btn-outline-secondary">
-          <i class="fas fa-arrow-left me-2"></i>Retour à la Recette
-        </a>
+          <i class="fas fa-arrow-left me-2"></i>{% trans "Retour à la Recette
+        " %}</a>
       </div>
     </div>
   </div>
@@ -35,8 +36,8 @@
             <div class="form-icon">
               <i class="fas fa-utensils"></i>
             </div>
-            <h3>Détails de la Recette</h3>
-            <p class="text-muted">Modifiez les informations de votre recette</p>
+            <h3>{% trans "{% trans "Détails de la Recette" %}" %}</h3>
+            <p class="text-muted">{% trans "Modifiez les informations de votre recette" %}</p>
           </div>
           
           <form method="post" enctype="multipart/form-data" class="form-modern">
@@ -45,7 +46,7 @@
             {% if errors %}
             <div class="alert alert-danger mb-4">
               <i class="fas fa-exclamation-triangle me-2"></i>
-              <strong>Erreurs détectées :</strong>
+              <strong>{% trans "Erreurs détectées :" %}</strong>
               <ul class="mb-0 mt-2">
                 {% for error in errors %}
                   <li>{{ error }}</li>
@@ -56,21 +57,21 @@
             
             <!-- Basic Information -->
             <div class="section-header">
-              <h4><i class="fas fa-info-circle me-2"></i>Informations Générales</h4>
+              <h4><i class="fas fa-info-circle me-2"></i>{% trans "Informations Générales" %}</h4>
               <hr>
             </div>
             
             <div class="row">
               <div class="col-md-12 mb-4">
                 <label for="title" class="form-label">
-                  <i class="fas fa-heading me-2"></i>Titre de la Recette
-                </label>
+                  <i class="fas fa-heading me-2"></i>{% trans "Titre de la Recette
+                " %}</label>
                 <input type="text" 
                        class="form-control form-control-lg" 
                        id="title" 
                        name="title" 
                        value="{{ title|default:recipe.title }}"
-                       placeholder="Donnez un nom délicieux à votre recette..."
+                       placeholder="{% trans "Donnez un nom délicieux à votre recette..." %}"
                        required>
                 <div class="form-help">
                   <small class="text-muted">
@@ -84,13 +85,13 @@
             <div class="row">
               <div class="col-md-12 mb-4">
                 <label for="description" class="form-label">
-                  <i class="fas fa-align-left me-2"></i>Description
-                </label>
+                  <i class="fas fa-align-left me-2"></i>{% trans "Description
+                " %}</label>
                 <textarea class="form-control" 
                           id="description" 
                           name="description" 
                           rows="3" 
-                          placeholder="Décrivez votre recette en quelques mots..."
+                          placeholder="{% trans "Décrivez votre recette en quelques mots..." %}"
                           required>{{ description|default:recipe.description }}</textarea>
                 <div class="form-help">
                   <small class="text-muted">
@@ -104,13 +105,13 @@
             <div class="row">
               <div class="col-md-12 mb-4">
                 <label for="instructions" class="form-label">
-                  <i class="fas fa-list-ol me-2"></i>Instructions de Préparation
-                </label>
+                  <i class="fas fa-list-ol me-2"></i>{% trans "Instructions de Préparation
+                " %}</label>
                 <textarea class="form-control" 
                           id="instructions" 
                           name="instructions" 
                           rows="6" 
-                          placeholder="1. Commencez par...&#10;2. Ensuite...&#10;3. Finalement..."
+                          placeholder="{% trans "1. Commencez par...&#10;2. Ensuite...&#10;3. Finalement..." %}"
                           required>{{ instructions|default:recipe.instructions }}</textarea>
                 <div class="form-help">
                   <small class="text-muted">
@@ -124,13 +125,13 @@
             <div class="row">
               <div class="col-md-12 mb-4">
                 <label for="image" class="form-label">
-                  <i class="fas fa-camera me-2"></i>Image de la Recette
-                </label>
+                  <i class="fas fa-camera me-2"></i>{% trans "Image de la Recette
+                " %}</label>
                 {% if recipe.image %}
                 <div class="current-image mb-3">
                   <p class="small text-muted mb-2">
-                    <i class="fas fa-image me-1"></i>Image actuelle :
-                  </p>
+                    <i class="fas fa-image me-1"></i>{% trans "Image actuelle :
+                  " %}</p>
                   <div class="current-image-preview">
                     <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}" class="img-thumbnail" style="max-width: 200px; max-height: 150px;">
                   </div>
@@ -141,7 +142,7 @@
                        id="image" 
                        name="image" 
                        accept="image/*"
-                       placeholder="Choisir une nouvelle image...">
+                       placeholder="{% trans "Choisir une nouvelle image..." %}">
                 <div class="form-help">
                   <small class="text-muted">
                     <i class="fas fa-info-circle me-1"></i>
@@ -157,7 +158,7 @@
 
             <!-- Ingredients Section -->
             <div class="section-header mt-4">
-              <h4><i class="fas fa-carrot me-2"></i>Ingrédients et Quantités</h4>
+              <h4><i class="fas fa-carrot me-2"></i>{% trans "Ingrédients et Quantités" %}</h4>
               <hr>
             </div>
             
@@ -165,7 +166,7 @@
               <div class="selection-help mb-3">
                 <div class="alert alert-info">
                   <i class="fas fa-info-circle me-2"></i>
-                  <strong>Instructions :</strong> Cochez les ingrédients nécessaires et spécifiez les quantités et unités pour chacun.
+                  <strong>{% trans "Instructions :" %}</strong> Cochez les ingrédients nécessaires et spécifiez les quantités et unités pour chacun.
                 </div>
               </div>
               
@@ -189,17 +190,17 @@
                       <div class="ingredient-details">
                         <div class="row g-2">
                           <div class="col-6">
-                            <label class="form-label small">Quantité</label>
+                            <label class="form-label small">{% trans "Quantité" %}</label>
                             <input type="number" 
                                    name="quantity_{{ ingredient.id }}" 
                                    class="form-control form-control-sm" 
                                    min="0.01" 
                                    step="any" 
                                    value="{{ ri.quantity_str|default_if_none:'' }}"
-                                   placeholder="0.0">
+                                   placeholder="{% trans "0.0" %}">
                           </div>
                           <div class="col-6">
-                            <label class="form-label small">Unité</label>
+                            <label class="form-label small">{% trans "Unité" %}</label>
                             <select name="unit_{{ ingredient.id }}" class="form-select form-select-sm">
                               {% for unit in units %}
                                 <option value="{{ unit.id }}" {% if ri and ri.unit.id == unit.id %}selected{% endif %}>
@@ -220,11 +221,11 @@
             <!-- Form Actions -->
             <div class="form-actions mt-5">
               <button type="submit" class="btn btn-primary btn-lg">
-                <i class="fas fa-save me-2"></i>Enregistrer les Modifications
-              </button>
+                <i class="fas fa-save me-2"></i>{% trans "Enregistrer les Modifications
+              " %}</button>
               <a href="{% url 'recipe_detail' recipe.id %}" class="btn btn-outline-secondary btn-lg ms-3">
-                <i class="fas fa-times me-2"></i>Annuler
-              </a>
+                <i class="fas fa-times me-2"></i>{% trans "Annuler
+              " %}</a>
             </div>
           </form>
         </div>
@@ -237,30 +238,30 @@
     <div class="row">
       <div class="col-lg-10 mx-auto">
         <div class="tips-card">
-          <h4><i class="fas fa-lightbulb me-2 text-warning"></i>Conseils pour une Excellente Recette</h4>
+          <h4><i class="fas fa-lightbulb me-2 text-warning"></i>{% trans "Conseils pour une Excellente Recette" %}</h4>
           <div class="row g-3 mt-2">
             <div class="col-md-3">
               <div class="tip-item">
                 <i class="fas fa-clock me-2 text-primary"></i>
-                <small>Précisez les temps de préparation et cuisson</small>
+                <small>{% trans "Précisez les temps de préparation et cuisson" %}</small>
               </div>
             </div>
             <div class="col-md-3">
               <div class="tip-item">
                 <i class="fas fa-thermometer-half me-2 text-danger"></i>
-                <small>Indiquez les températures de cuisson</small>
+                <small>{% trans "Indiquez les températures de cuisson" %}</small>
               </div>
             </div>
             <div class="col-md-3">
               <div class="tip-item">
                 <i class="fas fa-users me-2 text-success"></i>
-                <small>Précisez le nombre de portions</small>
+                <small>{% trans "Précisez le nombre de portions" %}</small>
               </div>
             </div>
             <div class="col-md-3">
               <div class="tip-item">
                 <i class="fas fa-star me-2 text-warning"></i>
-                <small>Ajoutez des astuces personnelles</small>
+                <small>{% trans "Ajoutez des astuces personnelles" %}</small>
               </div>
             </div>
           </div>

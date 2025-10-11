@@ -1,3 +1,4 @@
+{% load i18n %}
 
     <!-- Form Section -->
     <div class="form-section">
@@ -9,7 +10,7 @@
             <div class="form-icon">
             <i class="{{ form_icon|default:'fas fa-edit' }}"></i>
             </div>
-            <h3>{{ form_title|default:'Formulaire' }}</h3>
+            <h3>{% trans "{{ form_title|default:'Formulaire' }}" %}</h3>
             <p class="text-muted">{{ form_description|default:'Saisissez les informations requises' }}</p>
         </div>
         
@@ -24,7 +25,7 @@
             {% if errors %}
             <div class="alert alert-danger mb-4">
             <i class="fas fa-exclamation-triangle me-2"></i>
-            <strong>Erreurs détectées :</strong>
+            <strong>{% trans "Erreurs détectées :" %}</strong>
             <ul class="mb-0 mt-2">
                 {% for error in errors %}
                 <li>{{ error }}</li>
@@ -70,13 +71,13 @@
                 {% block form_fields %}
                 <div class="form-group mb-4">
                     <label for="example_field" class="form-label">
-                    <i class="fas fa-edit me-2"></i>Champ d'exemple
-                    </label>
+                    <i class="fas fa-edit me-2"></i>{% trans "Champ d'exemple
+                    " %}</label>
                     <input type="text" 
                             class="form-control form-control-lg" 
                             id="example_field" 
                             name="example_field" 
-                            placeholder="Exemple de placeholder..."
+                            placeholder="{% trans "Exemple de placeholder..." %}"
                             required>
                     <div class="form-help">
                     <small class="text-muted">
@@ -95,8 +96,8 @@
             </button>            
             {% if cancel_url %}
             <a href="{% url cancel_url %}" class="btn btn-outline-secondary btn-lg ms-3">
-                <i class="fas fa-times me-2"></i>Annuler
-            </a>
+                <i class="fas fa-times me-2"></i>{% trans "Annuler
+            " %}</a>
             {% endif %}
             </div>
         </form>

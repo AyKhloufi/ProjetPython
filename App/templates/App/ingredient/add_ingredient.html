@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}Ajouter un Ingrédient - Mon Site Recettes{% endblock %}
 
@@ -13,13 +14,13 @@
           <div class="header-icon mb-3">
             <i class="fas fa-plus fa-2x text-success"></i>
           </div>
-          <h1 class="display-5 mb-3">Ajouter un Nouvel Ingrédient</h1>
-          <p class="lead text-muted">Enrichissez votre base d'ingrédients pour vos recettes</p>
+          <h1 class="display-5 mb-3">{% trans "Ajouter un Nouvel Ingrédient" %}</h1>
+          <p class="lead text-muted">{% trans "Enrichissez votre base d'ingrédients pour vos recettes" %}</p>
         </div>
       </div>
       <div class="col-lg-4 text-lg-end">
         <a href="{% url 'ingredients' %}" class="btn btn-outline-secondary">
-          <i class="fas fa-arrow-left me-2"></i>Retour à la Liste
+          <i class="fas fa-arrow-left me-2"></i>{% trans "Retour à la Liste" %}
         </a>
       </div>
     </div>
@@ -32,24 +33,24 @@ no  </div>
     <div class="row">
       <div class="col-lg-8 mx-auto">
         <div class="tips-card">
-          <h4><i class="fas fa-lightbulb me-2 text-warning"></i>Conseils pour nommer vos ingrédients</h4>
+          <h4><i class="fas fa-lightbulb me-2 text-warning"></i>{% trans "Conseils pour nommer vos ingrédients" %}</h4>
           <div class="row g-3 mt-3">
             <div class="col-md-4">
               <div class="tip-item">
                 <i class="fas fa-check-circle text-success me-2"></i>
-                <span>Utilisez des noms simples</span>
+                <span>{% trans "Utilisez des noms simples" %}</span>
               </div>
             </div>
             <div class="col-md-4">
               <div class="tip-item">
                 <i class="fas fa-check-circle text-success me-2"></i>
-                <span>Évitez les abréviations</span>
+                <span>{% trans "Évitez les abréviations" %}</span>
               </div>
             </div>
             <div class="col-md-4">
               <div class="tip-item">
                 <i class="fas fa-check-circle text-success me-2"></i>
-                <span>Soyez spécifique si nécessaire</span>
+                <span>{% trans "Soyez spécifique si nécessaire" %}</span>
               </div>
             </div>
           </div>

@@ -1,3 +1,4 @@
+{% load i18n %}
 {% comment %}
   Template de pagination réutilisable
   
@@ -16,13 +17,13 @@
       {% if page_obj.has_previous %}
         <li class="page-item">
           <a class="page-link" href="{{ base_url|default:'?page=' }}1">
-            <i class="fas fa-angle-double-left me-1"></i>Premier
-          </a>
+            <i class="fas fa-angle-double-left me-1"></i>{% trans "Premier
+          " %}</a>
         </li>
         <li class="page-item">
           <a class="page-link" href="{{ base_url|default:'?page=' }}{{ page_obj.previous_page_number }}">
-            <i class="fas fa-angle-left me-1"></i>Précédent
-          </a>
+            <i class="fas fa-angle-left me-1"></i>{% trans "Précédent
+          " %}</a>
         </li>
       {% endif %}
 
@@ -41,12 +42,12 @@
       {% if page_obj.has_next %}
         <li class="page-item">
           <a class="page-link" href="{{ base_url|default:'?page=' }}{{ page_obj.next_page_number }}">
-            Suivant<i class="fas fa-angle-right ms-1"></i>
+            {% trans "Suivant" %}<i class="fas fa-angle-right ms-1"></i>
           </a>
         </li>
         <li class="page-item">
           <a class="page-link" href="{{ base_url|default:'?page=' }}{{ page_obj.paginator.num_pages }}">
-            Dernier<i class="fas fa-angle-double-right ms-1"></i>
+            {% trans "Dernier" %}<i class="fas fa-angle-double-right ms-1"></i>
           </a>
         </li>
       {% endif %}
@@ -56,8 +57,8 @@
   <div class="pagination-info text-center mt-3">
     <small class="text-muted">
       <i class="fas fa-info-circle me-1"></i>
-      Page {{ page_obj.number }} sur {{ page_obj.paginator.num_pages }} 
-      ({{ page_obj.start_index }}-{{ page_obj.end_index }} sur {{ page_obj.paginator.count }} {{ item_name_plural|default:'éléments' }})
+      {% trans "Page" %} {{ page_obj.number }} {% trans "sur" %} {{ page_obj.paginator.num_pages }} 
+      ({{ page_obj.start_index }}-{{ page_obj.end_index }} {% trans "sur" %} {{ page_obj.paginator.count }} {{ item_name_plural|default:'éléments' }})
     </small>
   </div>
 </div>

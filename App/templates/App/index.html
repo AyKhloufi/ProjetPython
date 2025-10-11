@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
-{% block title %}Accueil - Mon Site Recettes{% endblock %}
+{% block title %}{% trans "Accueil" %} - {% trans "Mon Site Recettes" %}{% endblock %}
 
 {% block content %}
 <div class="home-page">
@@ -11,14 +12,14 @@
       <div class="hero-icon mb-4">
         <i class="fas fa-utensils fa-5x"></i>
       </div>
-      <h1 class="display-3 mb-3">Bienvenue sur Mon Site Recettes</h1>
-      <p class="lead mb-4">Votre compagnon culinaire pour organiser, créer et partager vos recettes préférées</p>
+      <h1 class="display-3 mb-3">{% trans "Bienvenue sur Mon Site Recettes" %}</h1>
+      <p class="lead mb-4">{% trans "Votre compagnon culinaire pour organiser, créer et partager vos recettes préférées" %}</p>
       <div class="hero-buttons">
         <a href="{% url 'recipes' %}" class="btn btn-lg me-3">
-          <i class="fas fa-book me-2"></i>Découvrir les Recettes
+          <i class="fas fa-book me-2"></i>{% trans "Découvrir les Recettes" %}
         </a>
         <a href="{% url 'add_recipe' %}" class="btn btn-outline-primary btn-lg">
-          <i class="fas fa-plus me-2"></i>Ajouter une Recette
+          <i class="fas fa-plus me-2"></i>{% trans "Ajouter une Recette" %}
         </a>
       </div>
     </div>
@@ -28,7 +29,7 @@
   <div class="quick-actions mb-5">
     <h2 class="text-center mb-4">
       <i class="fas fa-rocket text-warning me-2"></i>
-      Actions Rapides
+      {% trans "Actions Rapides" %}
     </h2>
     <div class="row g-4">
       <div class="col-lg-3 col-md-6">
@@ -36,9 +37,9 @@
           <div class="action-icon">
             <i class="fas fa-book-open"></i>
           </div>
-          <h4>Parcourir les Recettes</h4>
-          <p>Explorez notre collection de recettes délicieuses</p>
-          <a href="{% url 'recipes' %}" class="btn btn-sm">Voir les Recettes</a>
+          <h4>{% trans "Parcourir les Recettes" %}</h4>
+          <p>{% trans "Explorez notre collection de recettes délicieuses" %}</p>
+          <a href="{% url 'recipes' %}" class="btn btn-sm">{% trans "Voir les Recettes" %}</a>
         </div>
       </div>
       <div class="col-lg-3 col-md-6">
@@ -46,9 +47,9 @@
           <div class="action-icon">
             <i class="fas fa-plus-circle"></i>
           </div>
-          <h4>Créer une Recette</h4>
-          <p>Ajoutez vos propres créations culinaires</p>
-          <a href="{% url 'add_recipe' %}" class="btn btn-sm">Nouvelle Recette</a>
+          <h4>{% trans "Créer une Recette" %}</h4>
+          <p>{% trans "Ajoutez vos propres créations culinaires" %}</p>
+          <a href="{% url 'add_recipe' %}" class="btn btn-sm">{% trans "Nouvelle Recette" %}</a>
         </div>
       </div>
       <div class="col-lg-3 col-md-6">
@@ -56,9 +57,9 @@
           <div class="action-icon">
             <i class="fas fa-carrot"></i>
           </div>
-          <h4>Gérer les Ingrédients</h4>
-          <p>Organisez votre base d'ingrédients</p>
-          <a href="{% url 'ingredients' %}" class="btn btn-sm">Voir les Ingrédients</a>
+          <h4>{% trans "Gérer les Ingrédients" %}</h4>
+          <p>{% trans "Organisez votre base d'ingrédients" %}</p>
+          <a href="{% url 'ingredients' %}" class="btn btn-sm">{% trans "Voir les Ingrédients" %}</a>
         </div>
       </div>
       <div class="col-lg-3 col-md-6">
@@ -66,9 +67,9 @@
           <div class="action-icon">
             <i class="fas fa-balance-scale"></i>
           </div>
-          <h4>Unités de Mesure</h4>
-          <p>Configurez vos unités préférées</p>
-          <a href="{% url 'units' %}" class="btn btn-sm">Gérer les Unités</a>
+          <h4>{% trans "Unités de Mesure" %}</h4>
+          <p>{% trans "Configurez vos unités préférées" %}</p>
+          <a href="{% url 'units' %}" class="btn btn-sm">{% trans "Gérer les Unités" %}</a>
         </div>
       </div>
     </div>
@@ -81,7 +82,7 @@
         <div class="feature-content">
           <h2 class="mb-4">
             <i class="fas fa-magic text-primary me-2"></i>
-            Pourquoi Choisir Mon Site Recettes ?
+            {% trans "Pourquoi Choisir Mon Site Recettes ?" %}
           </h2>
           <div class="feature-list">
             <div class="feature-item mb-3">
@@ -89,8 +90,8 @@
                 <i class="fas fa-check-circle text-success"></i>
               </div>
               <div class="feature-text">
-                <h5>Interface Intuitive</h5>
-                <p>Design moderne et facile à utiliser pour tous les niveaux</p>
+                <h5>{% trans "Interface Intuitive" %}</h5>
+                <p>{% trans "Design moderne et facile à utiliser pour tous les niveaux" %}</p>
               </div>
             </div>
             <div class="feature-item mb-3">
@@ -98,8 +99,8 @@
                 <i class="fas fa-database text-info"></i>
               </div>
               <div class="feature-text">
-                <h5>Organisation Intelligente</h5>
-                <p>Système de gestion avancé pour vos recettes et ingrédients</p>
+                <h5>{% trans "Organisation Intelligente" %}</h5>
+                <p>{% trans "Système de gestion avancé pour vos recettes et ingrédients" %}</p>
               </div>
             </div>
             <div class="feature-item mb-3">
@@ -107,8 +108,8 @@
                 <i class="fas fa-mobile-alt text-warning"></i>
               </div>
               <div class="feature-text">
-                <h5>Accès Partout</h5>
-                <p>Compatible avec tous vos appareils, partout où vous cuisinez</p>
+                <h5>{% trans "Accès Partout" %}</h5>
+                <p>{% trans "Compatible avec tous vos appareils, partout où vous cuisinez" %}</p>
               </div>
             </div>
           </div>
@@ -133,10 +134,10 @@
   <!-- Call to Action -->
   <div class="cta-section text-center mt-5">
     <div class="cta-content">
-      <h3 class="mb-3">Prêt à Commencer Votre Aventure Culinaire ?</h3>
-      <p class="text-muted mb-4">Rejoignez-nous et découvrez une nouvelle façon d'organiser vos recettes</p>
+      <h3 class="mb-3">{% trans "Prêt à Commencer Votre Aventure Culinaire ?" %}</h3>
+      <p class="text-muted mb-4">{% trans "Rejoignez-nous et découvrez une nouvelle façon d'organiser vos recettes" %}</p>
       <a href="{% url 'add_recipe' %}" class="btn btn-lg">
-        <i class="fas fa-plus me-2"></i>Créer Ma Première Recette
+        <i class="fas fa-plus me-2"></i>{% trans "Créer Ma Première Recette" %}
       </a>
     </div>
   </div>

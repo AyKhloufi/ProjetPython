@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block title %}Modifier {{ ingredient.name }} - Mon Site Recettes{% endblock %}
 
@@ -13,13 +14,13 @@
           <div class="header-icon mb-3">
             <i class="fas fa-edit fa-3x text-success"></i>
           </div>
-          <h1 class="display-5 mb-3">Modifier l'Ingrédient</h1>
+          <h1 class="display-5 mb-3">{% trans "Modifier l'Ingrédient" %}</h1>
           <p class="lead text-muted">Mettre à jour les informations de <strong>{{ ingredient.name }}</strong></p>
         </div>
       </div>
       <div class="col-lg-4 text-lg-end">
         <a href="{% url 'ingredients' %}" class="btn btn-outline-secondary">
-          <i class="fas fa-arrow-left me-2"></i>Retour à la Liste
+          <i class="fas fa-arrow-left me-2"></i>{% trans "Retour à la Liste" %}
         </a>
       </div>
     </div>
@@ -32,9 +33,9 @@
     <div class="col-lg-6 col-md-8">
       <div class="current-info">
         <div class="info-card">
-          <h5><i class="fas fa-info-circle me-2"></i>Informations Actuelles</h5>
-          <p><strong>ID:</strong> #{{ ingredient.id }}</p>
-          <p><strong>Nom actuel:</strong> {{ ingredient.name }}</p>
+          <h5><i class="fas fa-info-circle me-2"></i>{% trans "Informations Actuelles" %}</h5>
+          <p><strong>{% trans "ID:" %}</strong> #{{ ingredient.id }}</p>
+          <p><strong>{% trans "Nom actuel:" %}</strong> {{ ingredient.name }}</p>
         </div>
       </div>
     </div>
@@ -45,7 +46,7 @@
     <div class="row">
       <div class="col-lg-8 mx-auto">
         <div class="warning-card">
-          <h4><i class="fas fa-exclamation-triangle me-2 text-warning"></i>Attention</h4>
+          <h4><i class="fas fa-exclamation-triangle me-2 text-warning"></i>{% trans "Attention" %}</h4>
           <p class="mb-0">
             La modification du nom de cet ingrédient affectera toutes les recettes qui l'utilisent.
             Assurez-vous que le nouveau nom est approprié pour toutes les utilisations existantes.

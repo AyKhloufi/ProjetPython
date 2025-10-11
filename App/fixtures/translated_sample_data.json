@@ -1,0 +1,179 @@
+[
+    {
+        "model": "App.unit",
+        "pk": 1,
+        "fields": {
+            "unit_fr_ca": "g",
+            "unit_en": "g",
+            "unit": "g"
+        }
+    },
+    {
+        "model": "App.unit",
+        "pk": 2,
+        "fields": {
+            "unit_fr_ca": "kg", 
+            "unit_en": "kg",
+            "unit": "kg"
+        }
+    },
+    {
+        "model": "App.unit",
+        "pk": 3,
+        "fields": {
+            "unit_fr_ca": "ml",
+            "unit_en": "ml", 
+            "unit": "ml"
+        }
+    },
+    {
+        "model": "App.unit",
+        "pk": 4,
+        "fields": {
+            "unit_fr_ca": "l",
+            "unit_en": "l",
+            "unit": "l"
+        }
+    },
+    {
+        "model": "App.unit",
+        "pk": 5,
+        "fields": {
+            "unit_fr_ca": "tasse",
+            "unit_en": "cup",
+            "unit": "tasse"
+        }
+    },
+    {
+        "model": "App.unit",
+        "pk": 6,
+        "fields": {
+            "unit_fr_ca": "c. à soupe",
+            "unit_en": "tbsp",
+            "unit": "c. à soupe"
+        }
+    },
+    {
+        "model": "App.unit",
+        "pk": 7,
+        "fields": {
+            "unit_fr_ca": "c. à thé",
+            "unit_en": "tsp",
+            "unit": "c. à thé"
+        }
+    },
+    {
+        "model": "App.unit",
+        "pk": 8,
+        "fields": {
+            "unit_fr_ca": "pièce",
+            "unit_en": "piece",
+            "unit": "pièce"
+        }
+    },
+    {
+        "model": "App.unit",
+        "pk": 9,
+        "fields": {
+            "unit_fr_ca": "pincée",
+            "unit_en": "pinch",
+            "unit": "pincée"
+        }
+    },
+    {
+        "model": "App.unit",
+        "pk": 10,
+        "fields": {
+            "unit_fr_ca": "gousse",
+            "unit_en": "clove",
+            "unit": "gousse"
+        }
+    },
+    {
+        "model": "App.unit",
+        "pk": 11,
+        "fields": {
+            "unit_fr_ca": "tranche",
+            "unit_en": "slice",
+            "unit": "tranche"
+        }
+    },
+    {
+        "model": "App.unit",
+        "pk": 12,
+        "fields": {
+            "unit_fr_ca": "brin",
+            "unit_en": "sprig",
+            "unit": "brin"
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 1,
+        "fields": {
+            "name_fr_ca": "Farine tout usage",
+            "name_en": "All-purpose flour",
+            "name": "Farine tout usage",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 2,
+        "fields": {
+            "name_fr_ca": "Sucre blanc",
+            "name_en": "White sugar",
+            "name": "Sucre blanc",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 3,
+        "fields": {
+            "name_fr_ca": "Œufs",
+            "name_en": "Eggs",
+            "name": "Œufs",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 4,
+        "fields": {
+            "name_fr_ca": "Beurre",
+            "name_en": "Butter",
+            "name": "Beurre",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 5,
+        "fields": {
+            "name_fr_ca": "Lait",
+            "name_en": "Milk",
+            "name": "Lait",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.recipe",
+        "pk": 1,
+        "fields": {
+            "title_fr_ca": "Pâtes à la sauce tomate basilic",
+            "title_en": "Pasta with Tomato Basil Sauce",
+            "title": "Pâtes à la sauce tomate basilic",
+            "description_fr_ca": "Un classique de la cuisine italienne, simple et délicieux. Des pâtes fraîches accompagnées d'une sauce tomate maison parfumée au basilic frais.",
+            "description_en": "A classic Italian dish, simple and delicious. Fresh pasta served with homemade tomato sauce flavored with fresh basil.",
+            "description": "Un classique de la cuisine italienne, simple et délicieux. Des pâtes fraîches accompagnées d'une sauce tomate maison parfumée au basilic frais.",
+            "instructions_fr_ca": "1. Porter une grande casserole d'eau salée à ébullition.\n2. Dans une poêle, faire chauffer l'huile d'olive à feu moyen.\n3. Ajouter l'ail haché et faire revenir 1 minute sans le brûler.\n4. Ajouter les tomates, saler, poivrer et laisser mijoter 15 minutes.\n5. Cuire les pâtes selon les instructions du paquet jusqu'à ce qu'elles soient al dente.\n6. Égoutter les pâtes et les ajouter à la sauce.\n7. Incorporer le basilic frais et mélanger.\n8. Servir immédiatement avec le parmesan râpé.",
+            "instructions_en": "1. Bring a large pot of salted water to boil.\n2. In a pan, heat olive oil over medium heat.\n3. Add minced garlic and sauté for 1 minute without burning.\n4. Add tomatoes, salt, pepper and simmer for 15 minutes.\n5. Cook pasta according to package instructions until al dente.\n6. Drain pasta and add to the sauce.\n7. Stir in fresh basil and mix.\n8. Serve immediately with grated parmesan.",
+            "instructions": "1. Porter une grande casserole d'eau salée à ébullition.\n2. Dans une poêle, faire chauffer l'huile d'olive à feu moyen.\n3. Ajouter l'ail haché et faire revenir 1 minute sans le brûler.\n4. Ajouter les tomates, saler, poivrer et laisser mijoter 15 minutes.\n5. Cuire les pâtes selon les instructions du paquet jusqu'à ce qu'elles soient al dente.\n6. Égoutter les pâtes et les ajouter à la sauce.\n7. Incorporer le basilic frais et mélanger.\n8. Servir immédiatement avec le parmesan râpé.",
+            "created_at": "2024-01-15T10:30:00Z",
+            "updated_at": "2024-01-15T10:30:00Z",
+            "image": "",
+            "user": null
+        }
+    }
+]

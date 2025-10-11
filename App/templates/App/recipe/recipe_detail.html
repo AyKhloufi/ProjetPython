@@ -1,11 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 {% load custom_filters %}
-{% block title %}Recette detail{% endblock %}
+{% block title %}{{ recipe.title }} - {% trans "Mon Site Recettes" %}{% endblock %}
 
 {% block content %}
-
-<h2>MyRecipes</h2>
 
 <div class="card mb-4">
   <div class="card-body">
@@ -28,16 +27,16 @@
       </div>
     {% endif %}
     
-    <h5>Ingrédients:</h5>
+    <h5>{% trans "Ingrédients" %}:</h5>
     <ul>
       {% for ri in recipe_ingredients %}
         <li>{{ ri.ingredient.name }} - {{ ri.quantity }} {{ ri.unit.unit }}</li>
       {% empty %}
-        <li>Aucun ingrédient disponible.</li>
+        <li>{% trans "Aucun ingrédient disponible." %}</li>
       {% endfor %}
     </ul>
 
-    <h5>Instructions:</h5>
+    <h5>{% trans "Instructions" %}:</h5>
     <div class="recipe-instructions">
       {{ recipe.instructions|format_instructions }}
     </div>
@@ -47,7 +46,7 @@
       {% can_delete_recipe user recipe as can_delete %}
       
       {% if can_edit %}
-        <a href="{% url 'edit_recipe' recipe.id %}" class="btn btn-secondary">Éditer la recette</a>
+        <a href="{% url 'edit_recipe' recipe.id %}" class="btn btn-secondary">{% trans "Éditer la recette" %}</a>
       {% endif %}
       
       {% if can_delete %}
@@ -60,7 +59,7 @@
       {% endif %}
     {% endif %}
 
-    <a href="{% url 'recipes' %}" class="btn btn-secondary">Retour aux recettes</a>
+    <a href="{% url 'recipes' %}" class="btn btn-secondary">{% trans "Retour aux recettes" %}</a>
   </div>
 
 {% endblock %}

@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
-{% block title %}Inscription{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Inscription" %}{% endblock %}
 
 {% block content %}
 
 <div class="container-fluid member-app">
     <div class="row">
         <div class="col-md-10 col-lg-8 mx-auto">
-            <h2>Inscrivez-vous dès maintenant</h2>
+            <h2>{% trans "Inscrivez-vous dès maintenant" %}</h2>
             <br />
 
             <form method="POST">
@@ -14,8 +15,8 @@
                     {% csrf_token %}
                     {{ form.as_p }}
 
-                    <a href="{% url 'index' %}" class="btn btn-secondary">Annuler</a>
-                    <button type="submit" class="btn btn-primary">S'inscrire <i
+                    <a href="{% url 'index' %}" class="btn btn-secondary">{% trans "Annuler" %}</a>
+                    <button type="submit" class="btn btn-primary">{% trans "S'inscrire" %} <i
                             class="fas fa-chevron-right"></i></button>
                 </div>
             </form>

@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'modeltranslation',
     'App',
     'member_app',
 ]
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -63,6 +65,7 @@ TEMPLATES = [
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
+                'django.template.context_processors.i18n',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
@@ -113,6 +116,22 @@ TIME_ZONE = 'America/Montreal'
 USE_I18N = True
 
 USE_TZ = True
+
+# Configuration des langues supportées
+LANGUAGES = [
+    ('fr-ca', 'Français'),
+    ('en', 'English'),
+]
+
+# Configuration pour django-modeltranslation
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'fr-ca'
+MODELTRANSLATION_LANGUAGES = ('fr-ca', 'en')
+MODELTRANSLATION_PREPOPULATE_LANGUAGE = 'fr-ca'
+
+# Répertoire des fichiers de traduction
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
 
 
 # Static files (CSS, JavaScript, Images)

@@ -1,12 +1,13 @@
 {% extends 'base.html' %}
-{% block title %}Identification{% endblock %}
+{% load i18n %}
+{% block title %}{% trans "Identification" %}{% endblock %}
 
 {% block content %}
 
 <div class="container-fluid member-app " style="width: 1000px;"></div>
     <div class="row">
         <div class="col-md-8 col-lg-6 mx-auto">
-            <h2>Veuillez vous identifier</h2>
+            <h2>{% trans "Veuillez vous identifier" %}</h2>
             <br />
 
             <form method="POST">
@@ -14,8 +15,8 @@
                     {% csrf_token %}
                     {{ form.as_p }}
 
-                    <a href="{% url 'index' %}" class="btn btn-secondary">Annuler</a>
-                    <button type="submit" class="btn btn-primary">Se connecter <i
+                    <a href="{% url 'index' %}" class="btn btn-secondary">{% trans "Annuler" %}</a>
+                    <button type="submit" class="btn btn-primary">{% trans "Se connecter" %} <i
                             class="fas fa-chevron-right"></i></button>
                 </div>
             </form>

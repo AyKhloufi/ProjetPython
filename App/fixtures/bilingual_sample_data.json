@@ -1,0 +1,361 @@
+[
+    {
+        "model": "App.unit",
+        "pk": 1,
+        "fields": {
+            "unit": "g",
+            "unit_fr_ca": "g",
+            "unit_en": "g"
+        }
+    },
+    {
+        "model": "App.unit", 
+        "pk": 2,
+        "fields": {
+            "unit": "ml",
+            "unit_fr_ca": "ml", 
+            "unit_en": "ml"
+        }
+    },
+    {
+        "model": "App.unit",
+        "pk": 3,
+        "fields": {
+            "unit": "pièce",
+            "unit_fr_ca": "pièce",
+            "unit_en": "piece"
+        }
+    },
+    {
+        "model": "App.unit",
+        "pk": 4,
+        "fields": {
+            "unit": "c. à soupe",
+            "unit_fr_ca": "c. à soupe",
+            "unit_en": "tbsp"
+        }
+    },
+    {
+        "model": "App.unit",
+        "pk": 5,
+        "fields": {
+            "unit": "c. à café",
+            "unit_fr_ca": "c. à café",
+            "unit_en": "tsp"
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 1,
+        "fields": {
+            "name": "Farine",
+            "name_fr_ca": "Farine",
+            "name_en": "Flour",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 2,
+        "fields": {
+            "name": "Sucre",
+            "name_fr_ca": "Sucre",
+            "name_en": "Sugar",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 3,
+        "fields": {
+            "name": "Oeuf",
+            "name_fr_ca": "Oeuf",
+            "name_en": "Egg",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 4,
+        "fields": {
+            "name": "Lait",
+            "name_fr_ca": "Lait",
+            "name_en": "Milk",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 5,
+        "fields": {
+            "name": "Beurre",
+            "name_fr_ca": "Beurre",
+            "name_en": "Butter",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 6,
+        "fields": {
+            "name": "Chocolat",
+            "name_fr_ca": "Chocolat",
+            "name_en": "Chocolate",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 7,
+        "fields": {
+            "name": "Levure",
+            "name_fr_ca": "Levure",
+            "name_en": "Yeast",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 8,
+        "fields": {
+            "name": "Sel",
+            "name_fr_ca": "Sel", 
+            "name_en": "Salt",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 9,
+        "fields": {
+            "name": "Bananes",
+            "name_fr_ca": "Bananes",
+            "name_en": "Bananas",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 10,
+        "fields": {
+            "name": "Pomme",
+            "name_fr_ca": "Pomme",
+            "name_en": "Apple",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 11,
+        "fields": {
+            "name": "Fraise",
+            "name_fr_ca": "Fraise",
+            "name_en": "Strawberry",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 13,
+        "fields": {
+            "name": "Pâte à pizza",
+            "name_fr_ca": "Pâte à pizza",
+            "name_en": "Pizza dough",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 14,
+        "fields": {
+            "name": "Crème de cuisson 32%",
+            "name_fr_ca": "Crème de cuisson 32%",
+            "name_en": "Cooking cream 32%",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 15,
+        "fields": {
+            "name": "Poivrons",
+            "name_fr_ca": "Poivrons",
+            "name_en": "Bell peppers",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 16,
+        "fields": {
+            "name": "Olives",
+            "name_fr_ca": "Olives",
+            "name_en": "Olives",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 17,
+        "fields": {
+            "name": "Sauce fromagère (recette secrète)",
+            "name_fr_ca": "Sauce fromagère (recette secrète)",
+            "name_en": "Cheese sauce (secret recipe)",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 18,
+        "fields": {
+            "name": "Poivre",
+            "name_fr_ca": "Poivre",
+            "name_en": "Pepper",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 19,
+        "fields": {
+            "name": "Poulet",
+            "name_fr_ca": "Poulet",
+            "name_en": "Chicken",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 20,
+        "fields": {
+            "name": "Piment de cayenne",
+            "name_fr_ca": "Piment de cayenne",
+            "name_en": "Cayenne pepper",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.ingredient",
+        "pk": 21,
+        "fields": {
+            "name": "Mozzarella rapée",
+            "name_fr_ca": "Mozzarella rapée",
+            "name_en": "Shredded mozzarella",
+            "image": ""
+        }
+    },
+    {
+        "model": "App.recipe",
+        "pk": 1,
+        "fields": {
+            "title": "Crêpes",
+            "title_fr_ca": "Crêpes",
+            "title_en": "Pancakes",
+            "description": "Délicieuses crêpes maison",
+            "description_fr_ca": "Délicieuses crêpes maison",
+            "description_en": "Delicious homemade pancakes",
+            "instructions": "1. Mélanger les ingrédients.\r\n2. Cuire à la poêle.",
+            "instructions_fr_ca": "1. Mélanger les ingrédients.\r\n2. Cuire à la poêle.",
+            "instructions_en": "1. Mix the ingredients.\r\n2. Cook in a pan.",
+            "created_at": "2024-01-15T10:00:00Z",
+            "updated_at": "2024-01-15T10:00:00Z",
+            "image": "",
+            "user": null
+        }
+    },
+    {
+        "model": "App.recipe",
+        "pk": 2,
+        "fields": {
+            "title": "Gâteau au chocolat",
+            "title_fr_ca": "Gâteau au chocolat",
+            "title_en": "Chocolate cake",
+            "description": "Un gâteau moelleux au chocolat",
+            "description_fr_ca": "Un gâteau moelleux au chocolat",
+            "description_en": "A soft chocolate cake",
+            "instructions": "1. Faire fondre le chocolat et le beurre. 2. Mélanger avec les autres ingrédients. 3. Cuire au four.",
+            "instructions_fr_ca": "1. Faire fondre le chocolat et le beurre. 2. Mélanger avec les autres ingrédients. 3. Cuire au four.",
+            "instructions_en": "1. Melt the chocolate and butter. 2. Mix with other ingredients. 3. Bake in the oven.",
+            "created_at": "2024-01-15T11:00:00Z",
+            "updated_at": "2024-01-15T11:00:00Z",
+            "image": "",
+            "user": null
+        }
+    },
+    {
+        "model": "App.recipe",
+        "pk": 3,
+        "fields": {
+            "title": "Pancakes à la banane",
+            "title_fr_ca": "Pancakes à la banane",
+            "title_en": "Banana pancakes",
+            "description": "Pancakes moelleux à la banane",
+            "description_fr_ca": "Pancakes moelleux à la banane",
+            "description_en": "Soft banana pancakes",
+            "instructions": "1. Écraser les bananes. 2. Mélanger avec les autres ingrédients. 3. Cuire à la poêle.",
+            "instructions_fr_ca": "1. Écraser les bananes. 2. Mélanger avec les autres ingrédients. 3. Cuire à la poêle.",
+            "instructions_en": "1. Mash the bananas. 2. Mix with other ingredients. 3. Cook in a pan.",
+            "created_at": "2024-01-15T12:00:00Z",
+            "updated_at": "2024-01-15T12:00:00Z",
+            "image": "",
+            "user": null
+        }
+    },
+    {
+        "model": "App.recipe",
+        "pk": 4,
+        "fields": {
+            "title": "Compote de pommes",
+            "title_fr_ca": "Compote de pommes",
+            "title_en": "Apple compote",
+            "description": "Compote maison sans sucre ajouté",
+            "description_fr_ca": "Compote maison sans sucre ajouté",
+            "description_en": "Homemade compote without added sugar",
+            "instructions": "1. Éplucher et couper les pommes. 2. Cuire à feu doux avec un peu d eau.",
+            "instructions_fr_ca": "1. Éplucher et couper les pommes. 2. Cuire à feu doux avec un peu d eau.",
+            "instructions_en": "1. Peel and cut the apples. 2. Cook over low heat with a little water.",
+            "created_at": "2024-01-15T13:00:00Z",
+            "updated_at": "2024-01-15T13:00:00Z",
+            "image": "",
+            "user": null
+        }
+    },
+    {
+        "model": "App.recipe",
+        "pk": 5,
+        "fields": {
+            "title": "Muffins",
+            "title_fr_ca": "Muffins",
+            "title_en": "Muffins",
+            "description": "Muffins moelleux pour le goûter",
+            "description_fr_ca": "Muffins moelleux pour le goûter",
+            "description_en": "Soft muffins for snack time",
+            "instructions": "1. Mélanger les ingrédients secs. 2. Ajouter les ingrédients liquides. 3. Cuire au four.",
+            "instructions_fr_ca": "1. Mélanger les ingrédients secs. 2. Ajouter les ingrédients liquides. 3. Cuire au four.",
+            "instructions_en": "1. Mix dry ingredients. 2. Add liquid ingredients. 3. Bake in the oven.",
+            "created_at": "2024-01-15T14:00:00Z",
+            "updated_at": "2024-01-15T14:00:00Z",
+            "image": "",
+            "user": null
+        }
+    },
+    {
+        "model": "App.recipe",
+        "pk": 7,
+        "fields": {
+            "title": "Pizza boisée (à la lyonnaise)",
+            "title_fr_ca": "Pizza boisée (à la lyonnaise)",
+            "title_en": "Woodland pizza (Lyon style)",
+            "description": "Entre street-food lyonnaise et haute gastronomie, une saveur unique, un goût intense ...",
+            "description_fr_ca": "Entre street-food lyonnaise et haute gastronomie, une saveur unique, un goût intense ...",
+            "description_en": "Between Lyon street-food and haute cuisine, a unique flavor, an intense taste...",
+            "instructions": "1. Coupez poivrons en petites lamelles\r\n2. Faire revenir ses poivrons à la poêle avec un filet d'huile. Pendant ce temps, assaisonnez le poulet avec sel, poivre et piment de cayenne\r\n3. Retirez les poivrons de la poêle et cuire le poulet\r\n4. Préchauffez le four à 450°F\r\n5. Etalez la pizza puis y ajouter la crème, le poulet, les poivrons, les olives, et la mozzarella rappée\r\n6. Mettre au four pendant 15-20 min en fonction de la cuisson désirée\r\n7. Sortir la pizza après cuisson puis y ajouter la sauce fromagère en formant des cercles en partant du centre jusqu'à l'extrémité. \r\n8. Dégustez, bon voyage gustatif pour Lyon...",
+            "instructions_fr_ca": "1. Coupez poivrons en petites lamelles\r\n2. Faire revenir ses poivrons à la poêle avec un filet d'huile. Pendant ce temps, assaisonnez le poulet avec sel, poivre et piment de cayenne\r\n3. Retirez les poivrons de la poêle et cuire le poulet\r\n4. Préchauffez le four à 450°F\r\n5. Etalez la pizza puis y ajouter la crème, le poulet, les poivrons, les olives, et la mozzarella rappée\r\n6. Mettre au four pendant 15-20 min en fonction de la cuisson désirée\r\n7. Sortir la pizza après cuisson puis y ajouter la sauce fromagère en formant des cercles en partant du centre jusqu'à l'extrémité. \r\n8. Dégustez, bon voyage gustatif pour Lyon...",
+            "instructions_en": "1. Cut bell peppers into small strips\r\n2. Sauté the peppers in a pan with a drizzle of oil. Meanwhile, season the chicken with salt, pepper and cayenne pepper\r\n3. Remove peppers from pan and cook the chicken\r\n4. Preheat oven to 450°F\r\n5. Spread the pizza then add cream, chicken, peppers, olives, and shredded mozzarella\r\n6. Bake for 15-20 min depending on desired cooking\r\n7. Remove pizza after cooking then add cheese sauce forming circles from center to edge\r\n8. Enjoy, bon voyage to Lyon...",
+            "created_at": "2024-01-15T15:00:00Z",
+            "updated_at": "2024-01-15T15:00:00Z",
+            "image": "",
+            "user": null
+        }
+    }
+]
