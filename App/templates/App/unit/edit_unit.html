@@ -15,7 +15,7 @@
             <i class="fas fa-edit fa-3x text-primary"></i>
           </div>
           <h1 class="display-5 mb-3">{% trans "Modifier l'Unité de Mesure" %}</h1>
-          <p class="lead text-muted">Mettre à jour les informations de <strong>{{ unit.unit }}</strong></p>
+          <p class="lead text-muted">{% trans "Mettre à jour les informations de" %} <strong>{{ unit.unit }}</strong></p>
         </div>
       </div>
       <div class="col-lg-4 text-lg-end">
@@ -26,7 +26,7 @@
     </div>
   </div>
   <!-- Form Section -->
-  {% include 'App/snippets/form_snippet.html' with form_title='Détails de l\'Unité' form_description='Modifiez les informations de votre unité de mesure' form_icon='fas fa-balance-scale' submit_text='Enregistrer les Modifications' submit_icon='fas fa-save' submit_class='btn-primary' cancel_url='units' form=form col_size='col-lg-6 col-md-8' %}
+  {% include 'App/snippets/form_snippet.html' with form_title=_('Détails de l\'Unité') form_description=_('Modifiez les informations de votre unité de mesure') form_icon='fas fa-balance-scale' submit_text=_('Enregistrer les Modifications') submit_icon='fas fa-save' submit_class='btn-primary' cancel_url='units' form=form col_size='col-lg-6 col-md-8' %}
   
   <!-- Additional Info Section -->
   <div class="row justify-content-center mt-4">
@@ -59,8 +59,7 @@
         <div class="warning-card">
           <h4><i class="fas fa-exclamation-triangle me-2 text-warning"></i>{% trans "Attention" %}</h4>
           <p class="mb-0">
-            La modification de cette unité de mesure affectera toutes les recettes qui l'utilisent.
-            Assurez-vous que la nouvelle unité est compatible avec les quantités existantes.
+            {% trans "La modification de cette unité de mesure affectera toutes les recettes qui l'utilisent. Assurez-vous que la nouvelle unité est compatible avec les quantités existantes." %}
           </p>
         </div>
       </div>

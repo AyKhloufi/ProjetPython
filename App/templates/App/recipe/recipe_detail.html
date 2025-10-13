@@ -22,7 +22,7 @@
       <div class="recipe-author-info mb-3">
         <small class="text-muted">
           <i class="fas fa-user me-1"></i>
-          Recette créée par <strong>{{ recipe.user.username }}</strong>
+          {% trans "Recette créée par" %} <strong>{{ recipe.user.username }}</strong>
         </small>
       </div>
     {% endif %}
@@ -50,12 +50,17 @@
       {% endif %}
       
       {% if can_delete %}
-        <form method="post" action="{% url 'delete_recipe' recipe.id %}" style="display:inline;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette recette ? Cette action est irréversible.');">
+        <form method="post" action="{% url 'delete_recipe' recipe.id %}" style="display:inline;" onsubmit="return confirmDeleteRecipe();">
             {% csrf_token %}
             <button type="submit" class="btn btn-danger">
-                Supprimer la recette
+                {% trans "Supprimer la recette" %}
             </button>
         </form>
+        <script>
+        function confirmDeleteRecipe() {
+            return confirm('{% trans "Êtes-vous sûr de vouloir supprimer cette recette ? Cette action est irréversible." %}');
+        }
+        </script>
       {% endif %}
     {% endif %}
 

@@ -2,6 +2,7 @@ from django.views.generic.base import View
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
+from django.utils.translation import gettext as _
 from ..models import Unit
 from ..forms import UnitForm
 
@@ -20,7 +21,12 @@ class UnitListView(View):
         except EmptyPage:
             units = paginator.page(paginator.num_pages)
             
-        return render(request, 'App/unit/unit_list.html', {'units': units})
+        context = {
+            'units': units,
+            'page_aria_label': _('Navigation des unités'),
+            'item_name_plural': _('unités')
+        }
+        return render(request, 'App/unit/unit_list.html', context)
 
 # Create #
 

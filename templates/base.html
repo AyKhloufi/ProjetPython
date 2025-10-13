@@ -20,7 +20,7 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
       <a class="navbar-brand" href="{% url 'index' %}">
-        <i class="fas fa-utensils"></i> Mon Site Recettes
+        <i class="fas fa-utensils"></i> {% trans "Mon Site Recettes" %}
       </a>
       
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,22 +31,22 @@
         <ul class="navbar-nav me-auto">
           <li class="nav-item">
             <a class="nav-link" href="{% url 'index' %}">
-              <i class="fas fa-home"></i> Accueil
+              <i class="fas fa-home"></i> {% trans "Accueil" %}
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'recipes' %}">
-              <i class="fas fa-book"></i> Recettes
+              <i class="fas fa-book"></i> {% trans "Recettes" %}
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'ingredients' %}">
-              <i class="fas fa-carrot"></i> Ingrédients
+              <i class="fas fa-carrot"></i> {% trans "Ingrédients" %}
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{% url 'units' %}">
-              <i class="fas fa-balance-scale"></i> Unités
+              <i class="fas fa-balance-scale"></i> {% trans "Unités" %}
             </a>
           </li>
         </ul>
@@ -59,18 +59,18 @@
               <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                 <li>
                   <a class="dropdown-item" href="{% url 'user_edit' %}">
-                    <i class="fas fa-id-card"></i> Mon Profil
+                    <i class="fas fa-id-card"></i> {% trans "Mon Profil" %}
                   </a>
                 </li>
                 <li>
                   <a class="dropdown-item" href="{% url 'password_edit' %}">
-                    <i class="fas fa-key"></i> Changer le mot de passe
+                    <i class="fas fa-key"></i> {% trans "Changer le mot de passe" %}
                   </a>
                 </li>
                 <li><hr class="dropdown-divider"></li>
                 <li>
                   <a class="dropdown-item" href="{% url 'logout' %}">
-                    <i class="fas fa-sign-out-alt"></i> Déconnexion
+                    <i class="fas fa-sign-out-alt"></i> {% trans "Déconnexion" %}
                   </a>
                 </li>
               </ul>
@@ -78,20 +78,49 @@
           {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'login' %}">
-                <i class="fas fa-sign-in-alt"></i> Connexion
+                <i class="fas fa-sign-in-alt"></i> {% trans "Connexion" %}
               </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'user_create' %}">
-                <i class="fas fa-user-plus"></i> Inscription
+                <i class="fas fa-user-plus"></i> {% trans "Inscription" %}
               </a>
             </li>
           {% endif %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'about' %}">
-              <i class="fas fa-info-circle"></i> À propos
+              <i class="fas fa-info-circle"></i> {% trans "À propos" %}
             </a>
           </li>
+          <!-- Sélecteur de langue -->
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-globe"></i> {% trans "Langue" %}
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="languageDropdown">
+              <li>
+                <form action="{% url 'set_language' %}" method="post" class="d-inline">
+                  {% csrf_token %}
+                  <input name="next" type="hidden" value="{{ request.get_full_path }}" />
+                  <input name="language" type="hidden" value="fr-ca" />
+                  <button type="submit" class="dropdown-item {% if request.LANGUAGE_CODE == 'fr-ca' %}active{% endif %}">
+                    <i class="fas fa-flag"></i> Français (CA)
+                  </button>
+                </form>
+              </li>
+              <li>
+                <form action="{% url 'set_language' %}" method="post" class="d-inline">
+                  {% csrf_token %}
+                  <input name="next" type="hidden" value="{{ request.get_full_path }}" />
+                  <input name="language" type="hidden" value="en" />
+                  <button type="submit" class="dropdown-item {% if request.LANGUAGE_CODE == 'en' %}active{% endif %}">
+                    <i class="fas fa-flag"></i> English
+                  </button>
+                </form>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
     </div>
   </nav>

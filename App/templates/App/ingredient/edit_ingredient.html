@@ -15,7 +15,7 @@
             <i class="fas fa-edit fa-3x text-success"></i>
           </div>
           <h1 class="display-5 mb-3">{% trans "Modifier l'Ingrédient" %}</h1>
-          <p class="lead text-muted">Mettre à jour les informations de <strong>{{ ingredient.name }}</strong></p>
+          <p class="lead text-muted">{% trans "Mettre à jour les informations de" %} <strong>{{ ingredient.name }}</strong></p>
         </div>
       </div>
       <div class="col-lg-4 text-lg-end">
@@ -26,7 +26,7 @@
     </div>
   </div>
   <!-- Form Section -->
-  {% include 'App/snippets/form_snippet.html' with form_title='Détails de l\'Ingrédient' form_description='Modifiez les informations de votre ingrédient' form_icon='fas fa-leaf' submit_text='Enregistrer les Modifications' submit_icon='fas fa-save' submit_class='btn-primary' cancel_url='ingredients' form=form col_size='col-lg-6 col-md-8' %}
+  {% include 'App/snippets/form_snippet.html' with form_title=_('Détails de l\'Ingrédient') form_description=_('Modifiez les informations de votre ingrédient') form_icon='fas fa-leaf' submit_text=_('Enregistrer les Modifications') submit_icon='fas fa-save' submit_class='btn-primary' cancel_url='ingredients' form=form col_size='col-lg-6 col-md-8' %}
   
   <!-- Additional Info Section -->
   <div class="row justify-content-center mt-4">
@@ -48,8 +48,7 @@
         <div class="warning-card">
           <h4><i class="fas fa-exclamation-triangle me-2 text-warning"></i>{% trans "Attention" %}</h4>
           <p class="mb-0">
-            La modification du nom de cet ingrédient affectera toutes les recettes qui l'utilisent.
-            Assurez-vous que le nouveau nom est approprié pour toutes les utilisations existantes.
+            {% trans "La modification du nom de cet ingrédient affectera toutes les recettes qui l'utilisent. Assurez-vous que le nouveau nom est approprié pour toutes les utilisations existantes." %}
           </p>
         </div>
       </div>

@@ -2322,3 +2322,38 @@ input[type="submit"]:hover {
         font-size: 1.5rem;
     }
 }
+
+/* Sélecteur de langue */
+.dropdown-item.active {
+    background-color: var(--bs-primary);
+    color: var(--bs-white);
+}
+
+.dropdown-item:focus,
+.dropdown-item:hover {
+    background-color: var(--bs-gray-100);
+    color: var(--bs-dark);
+}
+
+.dropdown-item.active:focus,
+.dropdown-item.active:hover {
+    background-color: var(--bs-primary);
+    color: var(--bs-white);
+}
+
+/* Boutons dans les dropdowns */
+.dropdown-item button {
+    background: none;
+    border: none;
+    padding: 0;
+    width: 100%;
+    text-align: left;
+    font-size: inherit;
+    color: inherit;
+}
+
+.dropdown-item button:hover,
+.dropdown-item button:focus {
+    background: none;
+    border: none;
+}

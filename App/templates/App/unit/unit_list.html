@@ -34,7 +34,7 @@
       <div class="stats-card">
         <i class="fas fa-balance-scale me-2"></i>
         <span class="stats-number">{{ units.paginator.count }}</span>
-        <span class="stats-label">unité{{ units.paginator.count|pluralize }}</span>
+        <span class="stats-label">{% trans "unité" %}{{ units.paginator.count|pluralize }}</span>
       </div>
     </div>
 
@@ -57,11 +57,11 @@
             <div class="unit-meta">
               <span class="unit-type">
                 {% if unit.unit == "g" or unit.unit == "kg" %}
-                  <i class="fas fa-weight me-1 text-primary"></i>Poids
+                  <i class="fas fa-weight me-1 text-primary"></i>{% trans "Poids" %}
                 {% elif unit.unit == "ml" or unit.unit == "l" or unit.unit == "cl" %}
-                  <i class="fas fa-tint me-1 text-info"></i>Volume
+                  <i class="fas fa-tint me-1 text-info"></i>{% trans "Volume" %}
                 {% elif unit.unit == "tasse" or unit.unit == "cuillère" %}
-                  <i class="fas fa-utensils me-1 text-success"></i>Cuisine
+                  <i class="fas fa-utensils me-1 text-success"></i>{% trans "Cuisine" %}
                 {% else %}
                   <i class="fas fa-ruler me-1 text-secondary"></i>{% trans "Mesure" %}
                 {% endif %}
@@ -73,20 +73,20 @@
             <h3 class="unit-title">{{ unit.unit }}</h3>
             <p class="unit-description text-muted">
               {% if unit.unit == "g" or unit.unit == "kg" %}
-                Unité de poids pour mesurer les ingrédients solides
+                {% trans "Unité de poids pour mesurer les ingrédients solides" %}
               {% elif unit.unit == "ml" or unit.unit == "l" or unit.unit == "cl" %}
-                Unité de volume pour mesurer les liquides
+                {% trans "Unité de volume pour mesurer les liquides" %}
               {% elif unit.unit == "tasse" or unit.unit == "cuillère" %}
-                Unité de cuisine pour mesures pratiques
+                {% trans "Unité de cuisine pour mesures pratiques" %}
               {% else %}
-                Unité de mesure personnalisée
+                {% trans "Unité de mesure personnalisée" %}
               {% endif %}
             </p>
             
             <div class="unit-usage-preview">
               <span class="usage-label">
                 <i class="fas fa-chart-bar me-1"></i>
-                Utilisée dans {{ unit.recipeingredient_set.count }} recette{{ unit.recipeingredient_set.count|pluralize }}
+                {% blocktrans count counter=unit.recipeingredient_set.count %}Utilisée dans {{ counter }} recette{% plural %}Utilisée dans {{ counter }} recettes{% endblocktrans %}
               </span>
             </div>
           </div>
@@ -98,7 +98,7 @@
               </a>
             {% endif %}
             {% if user.is_authenticated and perms.App.delete_unit %}
-              <form method="post" action="{% url 'delete_unit' unit.id %}" style="display:inline;" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer l\'unité {{ unit.unit }} ?');">
+              <form method="post" action="{% url 'delete_unit' unit.id %}" style="display:inline;" onsubmit="return confirm('{% trans "Êtes-vous sûr de vouloir supprimer cette unité ?" %}');">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">
                   <i class="fas fa-trash me-1"></i>{% trans "Supprimer" %}
@@ -110,7 +110,7 @@
       </div>
       {% endfor %}
     </div>    <!-- Pagination -->
-    {% include 'App/includes/pagination_section.html' with page_obj=units aria_label="Navigation des unités" item_name_plural="unités" %}
+    {% include 'App/includes/pagination_section.html' with page_obj=units aria_label=page_aria_label item_name_plural=item_name_plural %}
   {% else %}
     <!-- Empty State -->
     <div class="empty-state">

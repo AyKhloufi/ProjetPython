@@ -46,8 +46,8 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -109,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'fr-ca'
+LANGUAGE_CODE = 'fr-CA'
 
 TIME_ZONE = 'America/Montreal'
 
@@ -119,14 +119,14 @@ USE_TZ = True
 
 # Configuration des langues supportées
 LANGUAGES = [
-    ('fr-ca', 'Français'),
+    ('fr-CA', 'Français (CA)'),
     ('en', 'English'),
 ]
 
 # Configuration pour django-modeltranslation
-MODELTRANSLATION_DEFAULT_LANGUAGE = 'fr-ca'
-MODELTRANSLATION_LANGUAGES = ('fr-ca', 'en')
-MODELTRANSLATION_PREPOPULATE_LANGUAGE = 'fr-ca'
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'fr-CA'
+MODELTRANSLATION_LANGUAGES = ('fr-CA', 'en')
+MODELTRANSLATION_PREPOPULATE_LANGUAGE = 'fr-CA'
 
 # Répertoire des fichiers de traduction
 LOCALE_PATHS = [

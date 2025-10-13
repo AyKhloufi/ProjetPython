@@ -3,6 +3,7 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
@@ -15,125 +16,128 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: .\App\templates\App\about.html:5 .\templates\base.html:92
 msgid "À propos"
-msgstr "About"
+msgstr "À propos"
 
 #: .\App\templates\App\about.html:5 .\App\templates\App\index.html:5
 #: .\App\templates\App\recipe\add_recipe.html:5
 #: .\App\templates\App\recipe\recipe_detail.html:5
 #: .\App\templates\App\recipe\recipes.html:6 .\templates\base.html:23
 msgid "Mon Site Recettes"
-msgstr "My Recipe Site"
+msgstr "Mon Site Recettes"
 
 #: .\App\templates\App\about.html:14
 msgid "À propos de Mon Site Recettes"
-msgstr "About My Recipe Site"
+msgstr "À propos de Mon Site Recettes"
 
 #: .\App\templates\App\about.html:15
 msgid "Une application Django moderne pour la gestion de recettes culinaires"
-msgstr "A modern Django application for culinary recipe management"
+msgstr "Une application Django moderne pour la gestion de recettes culinaires"
 
 #: .\App\templates\App\about.html:25
 msgid "Projet Académique"
-msgstr "Academic Project"
+msgstr "Projet Académique"
 
 #: .\App\templates\App\about.html:26
 msgid "Développé dans le cadre du cours"
-msgstr "Developed as part of the course"
+msgstr "Développé dans le cadre du cours"
 
 #: .\App\templates\App\about.html:26
 msgid "Programmation web et sécurité (420-E60-CH)"
-msgstr "Web Programming and Security (420-E60-CH)"
+msgstr "Programmation web et sécurité (420-E60-CH)"
 
 #: .\App\templates\App\about.html:26
 msgid "au Cégep de Chicoutimi"
-msgstr "at Cégep de Chicoutimi"
+msgstr "au Cégep de Chicoutimi"
 
 #: .\App\templates\App\about.html:28
 msgid "Travail 2 - Prototype Django transactionnel"
-msgstr "Assignment 2 - Django Transactional Prototype"
+msgstr "Travail 2 - Prototype Django transactionnel"
 
 #: .\App\templates\App\about.html:29
 msgid "Architecture MVT complète"
-msgstr "Complete MVT Architecture"
+msgstr "Architecture MVT complète"
 
 #: .\App\templates\App\about.html:30
 msgid "Opérations CRUD avancées"
-msgstr "Advanced CRUD Operations"
+msgstr "Opérations CRUD avancées"
 
 #: .\App\templates\App\about.html:40
 msgid "Technologies Utilisées"
-msgstr "Technologies Used"
+msgstr "Technologies Utilisées"
 
 #: .\App\templates\App\about.html:41
 msgid ""
 "Application construite avec les technologies web modernes et les meilleures "
 "pratiques"
-msgstr "Application built with modern web technologies and best practices"
+msgstr ""
+"Application construite avec les technologies web modernes et les meilleures "
+"pratiques"
 
 #: .\App\templates\App\about.html:56
 msgid "Fonctionnalités Principales"
-msgstr "Main Features"
+msgstr "Fonctionnalités Principales"
 
 #: .\App\templates\App\about.html:64
 msgid "Gestion des Recettes"
-msgstr "Recipe Management"
+msgstr "Gestion des Recettes"
 
 #: .\App\templates\App\about.html:65
 msgid "Créez, modifiez et organisez vos recettes préférées avec facilité"
-msgstr "Create, edit and organize your favorite recipes with ease"
+msgstr "Créez, modifiez et organisez vos recettes préférées avec facilité"
 
 #: .\App\templates\App\about.html:73
 msgid "Base d'Ingrédients"
-msgstr "Ingredient Database"
+msgstr "Base d'Ingrédients"
 
 #: .\App\templates\App\about.html:74
 msgid ""
 "Gérez une base complète d'ingrédients réutilisables pour toutes vos recettes"
 msgstr ""
-"Manage a complete database of reusable ingredients for all your recipes"
+"Gérez une base complète d'ingrédients réutilisables pour toutes vos recettes"
 
 #: .\App\templates\App\about.html:82 .\App\templates\App\index.html:70
 #: .\App\templates\App\unit\unit_list.html:17
 msgid "Unités de Mesure"
-msgstr "Measurement Units"
+msgstr "Unités de Mesure"
 
 #: .\App\templates\App\about.html:83
 msgid "Système flexible d'unités pour des mesures précises et cohérentes"
-msgstr "Flexible unit system for accurate and consistent measurements"
+msgstr "Système flexible d'unités pour des mesures précises et cohérentes"
 
 #: .\App\templates\App\about.html:91
 msgid "Design Responsive"
-msgstr "Responsive Design"
+msgstr "Design Responsive"
 
 #: .\App\templates\App\about.html:92
 msgid "Interface adaptative qui fonctionne parfaitement sur tous les appareils"
-msgstr "Adaptive interface that works perfectly on all devices"
+msgstr ""
+"Interface adaptative qui fonctionne parfaitement sur tous les appareils"
 
 #: .\App\templates\App\about.html:102
 msgid "Architecture Technique"
-msgstr "Technical Architecture"
+msgstr "Architecture Technique"
 
 #: .\App\templates\App\about.html:111
 msgid "Modèles"
-msgstr "Models"
+msgstr "Modèles"
 
 #: .\App\templates\App\about.html:112
 msgid ""
 "4 modèles relationnels avec relations many-to-many et contraintes d'intégrité"
 msgstr ""
-"4 relational models with many-to-many relationships and integrity constraints"
+"4 modèles relationnels avec relations many-to-many et contraintes d'intégrité"
 
 #: .\App\templates\App\about.html:118
 msgid "Vues"
-msgstr "Views"
+msgstr "Vues"
 
 #: .\App\templates\App\about.html:119
 msgid "Vues basées sur les classes avec gestion complète CRUD et validation"
-msgstr "Class-based views with complete CRUD management and validation"
+msgstr "Vues basées sur les classes avec gestion complète CRUD et validation"
 
 #: .\App\templates\App\about.html:125
 msgid "Templates"
@@ -141,11 +145,11 @@ msgstr "Templates"
 
 #: .\App\templates\App\about.html:126
 msgid "Héritage de templates avec Bootstrap et localisation française"
-msgstr "Template inheritance with Bootstrap and French localization"
+msgstr "Héritage de templates avec Bootstrap et localisation française"
 
 #: .\App\templates\App\about.html:142
 msgid "Étudiant en Programmation Web et Sécurité"
-msgstr "Student in Web Programming and Security"
+msgstr "Étudiant en Programmation Web et Sécurité"
 
 #: .\App\templates\App\about.html:144
 msgid "Cégep de Chicoutimi"
@@ -153,19 +157,19 @@ msgstr "Cégep de Chicoutimi"
 
 #: .\App\templates\App\about.html:145
 msgid "Session Automne 2025"
-msgstr "Fall 2025 Session"
+msgstr "Session Automne 2025"
 
 #: .\App\templates\App\about.html:146
 msgid "Passion pour le développement web"
-msgstr "Passion for web development"
+msgstr "Passion pour le développement web"
 
 #: .\App\templates\App\includes\pagination_section.html:45
 msgid "Suivant"
-msgstr "Next"
+msgstr "Suivant"
 
 #: .\App\templates\App\includes\pagination_section.html:50
 msgid "Dernier"
-msgstr "Last"
+msgstr "Dernier"
 
 #: .\App\templates\App\includes\pagination_section.html:60
 msgid "Page"
@@ -174,180 +178,182 @@ msgstr "Page"
 #: .\App\templates\App\includes\pagination_section.html:60
 #: .\App\templates\App\includes\pagination_section.html:61
 msgid "sur"
-msgstr "of"
+msgstr "sur"
 
 #: .\App\templates\App\index.html:5 .\templates\base.html:34
 msgid "Accueil"
-msgstr "Home"
+msgstr "Accueil"
 
 #: .\App\templates\App\index.html:15
 msgid "Bienvenue sur Mon Site Recettes"
-msgstr "Welcome to My Recipe Site"
+msgstr "Bienvenue sur Mon Site Recettes"
 
 #: .\App\templates\App\index.html:16
 msgid ""
 "Votre compagnon culinaire pour organiser, créer et partager vos recettes "
 "préférées"
 msgstr ""
-"Your culinary companion to organize, create and share your favorite recipes"
+"Votre compagnon culinaire pour organiser, créer et partager vos recettes "
+"préférées"
 
 #: .\App\templates\App\index.html:19
 msgid "Découvrir les Recettes"
-msgstr "Discover Recipes"
+msgstr "Découvrir les Recettes"
 
 #: .\App\templates\App\index.html:22 .\App\templates\App\recipe\recipes.html:25
 msgid "Ajouter une Recette"
-msgstr "Add Recipe"
+msgstr "Ajouter une Recette"
 
 #: .\App\templates\App\index.html:32
 msgid "Actions Rapides"
-msgstr "Quick Actions"
+msgstr "Actions Rapides"
 
 #: .\App\templates\App\index.html:40
 msgid "Parcourir les Recettes"
-msgstr "Browse Recipes"
+msgstr "Parcourir les Recettes"
 
 #: .\App\templates\App\index.html:41
 msgid "Explorez notre collection de recettes délicieuses"
-msgstr "Explore our collection of delicious recipes"
+msgstr "Explorez notre collection de recettes délicieuses"
 
 #: .\App\templates\App\index.html:42
 msgid "Voir les Recettes"
-msgstr "View Recipes"
+msgstr "Voir les Recettes"
 
 #: .\App\templates\App\index.html:50
 msgid "Créer une Recette"
-msgstr "Create Recipe"
+msgstr "Créer une Recette"
 
 #: .\App\templates\App\index.html:51
 msgid "Ajoutez vos propres créations culinaires"
-msgstr "Add your own culinary creations"
+msgstr "Ajoutez vos propres créations culinaires"
 
 #: .\App\templates\App\index.html:52
 #: .\App\templates\App\recipe\add_recipe.html:5
 msgid "Nouvelle Recette"
-msgstr "New Recipe"
+msgstr "Nouvelle Recette"
 
 #: .\App\templates\App\index.html:60
 msgid "Gérer les Ingrédients"
-msgstr "Manage Ingredients"
+msgstr "Gérer les Ingrédients"
 
 #: .\App\templates\App\index.html:61
 msgid "Organisez votre base d'ingrédients"
-msgstr "Organize your ingredient database"
+msgstr "Organisez votre base d'ingrédients"
 
 #: .\App\templates\App\index.html:62
 msgid "Voir les Ingrédients"
-msgstr "View Ingredients"
+msgstr "Voir les Ingrédients"
 
 #: .\App\templates\App\index.html:71
 msgid "Configurez vos unités préférées"
-msgstr "Configure your preferred units"
+msgstr "Configurez vos unités préférées"
 
 #: .\App\templates\App\index.html:72
 msgid "Gérer les Unités"
-msgstr "Manage Units"
+msgstr "Gérer les Unités"
 
 #: .\App\templates\App\index.html:85
 msgid "Pourquoi Choisir Mon Site Recettes ?"
-msgstr "Why Choose My Recipe Site?"
+msgstr "Pourquoi Choisir Mon Site Recettes ?"
 
 #: .\App\templates\App\index.html:93
 msgid "Interface Intuitive"
-msgstr "Intuitive Interface"
+msgstr "Interface Intuitive"
 
 #: .\App\templates\App\index.html:94
 msgid "Design moderne et facile à utiliser pour tous les niveaux"
-msgstr "Modern design that's easy to use for all skill levels"
+msgstr "Design moderne et facile à utiliser pour tous les niveaux"
 
 #: .\App\templates\App\index.html:102
 msgid "Organisation Intelligente"
-msgstr "Smart Organization"
+msgstr "Organisation Intelligente"
 
 #: .\App\templates\App\index.html:103
 msgid "Système de gestion avancé pour vos recettes et ingrédients"
-msgstr "Advanced management system for your recipes and ingredients"
+msgstr "Système de gestion avancé pour vos recettes et ingrédients"
 
 #: .\App\templates\App\index.html:111
 msgid "Accès Partout"
-msgstr "Access Everywhere"
+msgstr "Accès Partout"
 
 #: .\App\templates\App\index.html:112
 msgid "Compatible avec tous vos appareils, partout où vous cuisinez"
-msgstr "Compatible with all your devices, wherever you cook"
+msgstr "Compatible avec tous vos appareils, partout où vous cuisinez"
 
 #: .\App\templates\App\index.html:137
 msgid "Prêt à Commencer Votre Aventure Culinaire ?"
-msgstr "Ready to Start Your Culinary Adventure?"
+msgstr "Prêt à Commencer Votre Aventure Culinaire ?"
 
 #: .\App\templates\App\index.html:138
 msgid "Rejoignez-nous et découvrez une nouvelle façon d'organiser vos recettes"
-msgstr "Join us and discover a new way to organize your recipes"
+msgstr ""
+"Rejoignez-nous et découvrez une nouvelle façon d'organiser vos recettes"
 
 #: .\App\templates\App\index.html:140
 #: .\App\templates\App\recipe\recipes.html:112
 msgid "Créer Ma Première Recette"
-msgstr "Create My First Recipe"
+msgstr "Créer Ma Première Recette"
 
 #: .\App\templates\App\ingredient\add_ingredient.html:17
 msgid "Ajouter un Nouvel Ingrédient"
-msgstr "Add New Ingredient"
+msgstr "Ajouter un Nouvel Ingrédient"
 
 #: .\App\templates\App\ingredient\add_ingredient.html:18
 msgid "Enrichissez votre base d'ingrédients pour vos recettes"
-msgstr "Enrich your ingredient database for your recipes"
+msgstr "Enrichissez votre base d'ingrédients pour vos recettes"
 
 #: .\App\templates\App\ingredient\add_ingredient.html:23
 #: .\App\templates\App\ingredient\edit_ingredient.html:23
 #: .\App\templates\App\unit\add_unit.html:23
 #: .\App\templates\App\unit\edit_unit.html:23
 msgid "Retour à la Liste"
-msgstr "Back to List"
+msgstr "Retour à la Liste"
 
 #: .\App\templates\App\ingredient\add_ingredient.html:36
 msgid "Conseils pour nommer vos ingrédients"
-msgstr "Tips for naming your ingredients"
+msgstr "Conseils pour nommer vos ingrédients"
 
 #: .\App\templates\App\ingredient\add_ingredient.html:41
 msgid "Utilisez des noms simples"
-msgstr "Use simple names"
+msgstr "Utilisez des noms simples"
 
 #: .\App\templates\App\ingredient\add_ingredient.html:47
 msgid "Évitez les abréviations"
-msgstr "Avoid abbreviations"
+msgstr "Évitez les abréviations"
 
 #: .\App\templates\App\ingredient\add_ingredient.html:53
 msgid "Soyez spécifique si nécessaire"
-msgstr "Be specific when necessary"
+msgstr "Soyez spécifique si nécessaire"
 
 #: .\App\templates\App\ingredient\edit_ingredient.html:17
 msgid "Modifier l'Ingrédient"
-msgstr "Edit Ingredient"
+msgstr "Modifier l'Ingrédient"
 
 #: .\App\templates\App\ingredient\edit_ingredient.html:18
 #: .\App\templates\App\recipe\edit_recipe.html:19
 #: .\App\templates\App\unit\edit_unit.html:18
 msgid "Mettre à jour les informations de"
-msgstr "Update the information for"
+msgstr "Mettre à jour les informations de"
 
 #: .\App\templates\App\ingredient\edit_ingredient.html:29
 msgid "Détails de l'Ingrédient"
-msgstr "Ingredient Details"
+msgstr "Détails de l'Ingrédient"
 
 #: .\App\templates\App\ingredient\edit_ingredient.html:29
 msgid "Modifiez les informations de votre ingrédient"
-msgstr "Edit your ingredient information"
+msgstr "Modifiez les informations de votre ingrédient"
 
 #: .\App\templates\App\ingredient\edit_ingredient.html:29
 #: .\App\templates\App\recipe\edit_recipe.html:224
 #: .\App\templates\App\unit\edit_unit.html:29
 msgid "Enregistrer les Modifications"
-msgstr "Save Changes"
+msgstr "Enregistrer les Modifications"
 
 #: .\App\templates\App\ingredient\edit_ingredient.html:36
 #: .\App\templates\App\unit\edit_unit.html:36
 msgid "Informations Actuelles"
-msgstr "Current Information"
+msgstr "Informations Actuelles"
 
 #: .\App\templates\App\ingredient\edit_ingredient.html:37
 #: .\App\templates\App\unit\edit_unit.html:37
@@ -356,12 +362,12 @@ msgstr "ID:"
 
 #: .\App\templates\App\ingredient\edit_ingredient.html:38
 msgid "Nom actuel:"
-msgstr "Current name:"
+msgstr "Nom actuel:"
 
 #: .\App\templates\App\ingredient\edit_ingredient.html:49
 #: .\App\templates\App\unit\edit_unit.html:60
 msgid "Attention"
-msgstr "Warning"
+msgstr "Attention"
 
 #: .\App\templates\App\ingredient\edit_ingredient.html:51
 msgid ""
@@ -369,110 +375,112 @@ msgid ""
 "l'utilisent. Assurez-vous que le nouveau nom est approprié pour toutes les "
 "utilisations existantes."
 msgstr ""
-"Modifying the name of this ingredient will affect all recipes that use it. "
-"Make sure the new name is appropriate for all existing uses."
+"La modification du nom de cet ingrédient affectera toutes les recettes qui "
+"l'utilisent. Assurez-vous que le nouveau nom est approprié pour toutes les "
+"utilisations existantes."
 
 #: .\App\templates\App\ingredient\ingredient_list.html:17
 msgid "Mes Ingrédients"
-msgstr "My Ingredients"
+msgstr "Mes Ingrédients"
 
 #: .\App\templates\App\ingredient\ingredient_list.html:18
 msgid "Découvrez et gérez votre collection d'ingrédients pour vos recettes"
-msgstr "Discover and manage your collection of ingredients for your recipes"
+msgstr "Découvrez et gérez votre collection d'ingrédients pour vos recettes"
 
 #: .\App\templates\App\ingredient\ingredient_list.html:24
 msgid "Ajouter un Ingrédient"
-msgstr "Add Ingredient"
+msgstr "Ajouter un Ingrédient"
 
 #: .\App\templates\App\ingredient\ingredient_list.html:37
 msgid "ingrédient"
-msgstr "ingredient"
+msgstr "ingrédient"
 
 #: .\App\templates\App\ingredient\ingredient_list.html:59
 msgid "Disponible"
-msgstr "Available"
+msgstr "Disponible"
 
 #: .\App\templates\App\ingredient\ingredient_list.html:67
 msgid "Ingrédient prêt à être utilisé dans vos recettes"
-msgstr "Ingredient ready to be used in your recipes"
+msgstr "Ingrédient prêt à être utilisé dans vos recettes"
 
 #: .\App\templates\App\ingredient\ingredient_list.html:73
 msgid "Utilisé dans"
-msgstr "Used in"
+msgstr "Utilisé dans"
 
 #: .\App\templates\App\ingredient\ingredient_list.html:73
 #: .\App\templates\App\recipe\recipes.html:38
 msgid "recette"
-msgstr "recipe"
+msgstr "recette"
 
 #: .\App\templates\App\ingredient\ingredient_list.html:81
 #: .\App\templates\App\recipe\recipes.html:92
 #: .\App\templates\App\unit\unit_list.html:97
 msgid "Modifier"
-msgstr "Edit"
+msgstr "Modifier"
 
 #: .\App\templates\App\ingredient\ingredient_list.html:88
 #: .\App\templates\App\unit\unit_list.html:104
 msgid "Supprimer"
-msgstr "Delete"
+msgstr "Supprimer"
 
 #: .\App\templates\App\ingredient\ingredient_list.html:104
 msgid "Aucun ingrédient disponible"
-msgstr "No ingredients available"
+msgstr "Aucun ingrédient disponible"
 
 #: .\App\templates\App\ingredient\ingredient_list.html:105
 msgid ""
 "Commencez par ajouter vos premiers ingrédients pour créer votre collection "
 "culinaire."
 msgstr ""
-"Start by adding your first ingredients to create your culinary collection."
+"Commencez par ajouter vos premiers ingrédients pour créer votre collection "
+"culinaire."
 
 #: .\App\templates\App\ingredient\ingredient_list.html:108
 msgid "Créer Mon Premier Ingrédient"
-msgstr "Create My First Ingredient"
+msgstr "Créer Mon Premier Ingrédient"
 
 #: .\App\templates\App\ingredient\ingredient_list.html:117
 #: .\App\templates\App\recipe\recipes.html:121
 #: .\App\templates\App\unit\unit_list.html:133
 msgid "Retour à l'Accueil"
-msgstr "Back to Home"
+msgstr "Retour à l'Accueil"
 
 #: .\App\templates\App\recipe\edit_recipe.html:18
 msgid "Modifier la Recette"
-msgstr "Edit Recipe"
+msgstr "Modifier la Recette"
 
 #: .\App\templates\App\recipe\edit_recipe.html:24
 msgid "Retour à la Recette"
-msgstr "Back to Recipe"
+msgstr "Retour à la Recette"
 
 #: .\App\templates\App\recipe\edit_recipe.html:39
 msgid "Détails de la Recette"
-msgstr "Recipe Details"
+msgstr "Détails de la Recette"
 
 #: .\App\templates\App\recipe\edit_recipe.html:40
 msgid "Modifiez les informations de votre recette"
-msgstr "Edit your recipe information"
+msgstr "Modifiez les informations de votre recette"
 
 #: .\App\templates\App\recipe\edit_recipe.html:49
 #: .\App\templates\App\snippets\form_snippet.html:40
 msgid "Erreurs détectées :"
-msgstr "Errors detected:"
+msgstr "Erreurs détectées :"
 
 #: .\App\templates\App\recipe\edit_recipe.html:60
 msgid "Informations Générales"
-msgstr "General Information"
+msgstr "Informations Générales"
 
 #: .\App\templates\App\recipe\edit_recipe.html:67
 msgid "Titre de la Recette"
-msgstr "Recipe Title"
+msgstr "Titre de la Recette"
 
 #: .\App\templates\App\recipe\edit_recipe.html:74
 msgid "Donnez un nom délicieux à votre recette..."
-msgstr "Give your recipe a delicious name..."
+msgstr "Donnez un nom délicieux à votre recette..."
 
 #: .\App\templates\App\recipe\edit_recipe.html:79
 msgid "Choisissez un titre accrocheur et descriptif"
-msgstr "Choose a catchy and descriptive title"
+msgstr "Choisissez un titre accrocheur et descriptif"
 
 #: .\App\templates\App\recipe\edit_recipe.html:88
 msgid "Description"
@@ -480,63 +488,63 @@ msgstr "Description"
 
 #: .\App\templates\App\recipe\edit_recipe.html:94
 msgid "Décrivez votre recette en quelques mots..."
-msgstr "Describe your recipe in a few words..."
+msgstr "Décrivez votre recette en quelques mots..."
 
 #: .\App\templates\App\recipe\edit_recipe.html:99
 msgid "Une description appétissante qui donne envie d'essayer la recette"
-msgstr "An appetizing description that makes you want to try the recipe"
+msgstr "Une description appétissante qui donne envie d'essayer la recette"
 
 #: .\App\templates\App\recipe\edit_recipe.html:108
 msgid "Instructions de Préparation"
-msgstr "Preparation Instructions"
+msgstr "Instructions de Préparation"
 
 #: .\App\templates\App\recipe\edit_recipe.html:114
 msgid "1. Commencez par...&#10;2. Ensuite...&#10;3. Finalement..."
-msgstr "1. Start by...&#10;2. Then...&#10;3. Finally..."
+msgstr "1. Commencez par...&#10;2. Ensuite...&#10;3. Finalement..."
 
 #: .\App\templates\App\recipe\edit_recipe.html:119
 msgid "Détaillez chaque étape de préparation de manière claire et ordonnée"
-msgstr "Detail each preparation step clearly and in order"
+msgstr "Détaillez chaque étape de préparation de manière claire et ordonnée"
 
 #: .\App\templates\App\recipe\edit_recipe.html:128
 msgid "Image de la Recette"
-msgstr "Recipe Image"
+msgstr "Image de la Recette"
 
 #: .\App\templates\App\recipe\edit_recipe.html:133
 msgid "Image actuelle :"
-msgstr "Current image:"
+msgstr "Image actuelle :"
 
 #: .\App\templates\App\recipe\edit_recipe.html:145
 msgid "Choisir une nouvelle image..."
-msgstr "Choose a new image..."
+msgstr "Choisir une nouvelle image..."
 
 #: .\App\templates\App\recipe\edit_recipe.html:150
 msgid "Choisissez une nouvelle image pour remplacer l'actuelle (optionnel)"
-msgstr "Choose a new image to replace the current one (optional)"
+msgstr "Choisissez une nouvelle image pour remplacer l'actuelle (optionnel)"
 
 #: .\App\templates\App\recipe\edit_recipe.html:152
 msgid "Ajoutez une photo appétissante de votre plat (optionnel)"
-msgstr "Add an appetizing photo of your dish (optional)"
+msgstr "Ajoutez une photo appétissante de votre plat (optionnel)"
 
 #: .\App\templates\App\recipe\edit_recipe.html:161
 msgid "Ingrédients et Quantités"
-msgstr "Ingredients and Quantities"
+msgstr "Ingrédients et Quantités"
 
 #: .\App\templates\App\recipe\edit_recipe.html:169
 msgid "Instructions :"
-msgstr "Instructions:"
+msgstr "Instructions :"
 
 #: .\App\templates\App\recipe\edit_recipe.html:169
 msgid ""
 "Cochez les ingrédients nécessaires et spécifiez les quantités et unités pour "
 "chacun."
 msgstr ""
-"Check the necessary ingredients and specify the quantities and units for "
-"each one."
+"Cochez les ingrédients nécessaires et spécifiez les quantités et unités pour "
+"chacun."
 
 #: .\App\templates\App\recipe\edit_recipe.html:193
 msgid "Quantité"
-msgstr "Quantity"
+msgstr "Quantité"
 
 #: .\App\templates\App\recipe\edit_recipe.html:200
 msgid "0.0"
@@ -544,7 +552,7 @@ msgstr "0.0"
 
 #: .\App\templates\App\recipe\edit_recipe.html:203
 msgid "Unité"
-msgstr "Unit"
+msgstr "Unité"
 
 #: .\App\templates\App\recipe\edit_recipe.html:227
 #: .\App\templates\App\snippets\form_snippet.html:110
@@ -553,39 +561,39 @@ msgstr "Unit"
 #: .\member_app\templates\member_app\user_create.html:18
 #: .\member_app\templates\member_app\user_edit.html:20
 msgid "Annuler"
-msgstr "Cancel"
+msgstr "Annuler"
 
 #: .\App\templates\App\recipe\edit_recipe.html:241
 msgid "Conseils pour une Excellente Recette"
-msgstr "Tips for an Excellent Recipe"
+msgstr "Conseils pour une Excellente Recette"
 
 #: .\App\templates\App\recipe\edit_recipe.html:246
 msgid "Précisez les temps de préparation et cuisson"
-msgstr "Specify preparation and cooking times"
+msgstr "Précisez les temps de préparation et cuisson"
 
 #: .\App\templates\App\recipe\edit_recipe.html:252
 msgid "Indiquez les températures de cuisson"
-msgstr "Indicate cooking temperatures"
+msgstr "Indiquez les températures de cuisson"
 
 #: .\App\templates\App\recipe\edit_recipe.html:258
 msgid "Précisez le nombre de portions"
-msgstr "Specify the number of servings"
+msgstr "Précisez le nombre de portions"
 
 #: .\App\templates\App\recipe\edit_recipe.html:264
 msgid "Ajoutez des astuces personnelles"
-msgstr "Add personal tips"
+msgstr "Ajoutez des astuces personnelles"
 
 #: .\App\templates\App\recipe\recipe_detail.html:25
 msgid "Recette créée par"
-msgstr "Recipe created by"
+msgstr "Recette créée par"
 
 #: .\App\templates\App\recipe\recipe_detail.html:30 .\templates\base.html:44
 msgid "Ingrédients"
-msgstr "Ingredients"
+msgstr "Ingrédients"
 
 #: .\App\templates\App\recipe\recipe_detail.html:35
 msgid "Aucun ingrédient disponible."
-msgstr "No ingredients available."
+msgstr "Aucun ingrédient disponible."
 
 #: .\App\templates\App\recipe\recipe_detail.html:39
 msgid "Instructions"
@@ -593,61 +601,64 @@ msgstr "Instructions"
 
 #: .\App\templates\App\recipe\recipe_detail.html:49
 msgid "Éditer la recette"
-msgstr "Edit Recipe"
+msgstr "Éditer la recette"
 
 #: .\App\templates\App\recipe\recipe_detail.html:56
 msgid "Supprimer la recette"
-msgstr "Delete Recipe"
+msgstr "Supprimer la recette"
 
 #: .\App\templates\App\recipe\recipe_detail.html:61
 msgid ""
 "Êtes-vous sûr de vouloir supprimer cette recette ? Cette action est "
 "irréversible."
 msgstr ""
-"Are you sure you want to delete this recipe? This action is irreversible."
+"Êtes-vous sûr de vouloir supprimer cette recette ? Cette action est "
+"irréversible."
 
 #: .\App\templates\App\recipe\recipe_detail.html:67
 msgid "Retour aux recettes"
-msgstr "Back to Recipes"
+msgstr "Retour aux recettes"
 
 #: .\App\templates\App\recipe\recipes.html:6
 #: .\App\templates\App\recipe\recipes.html:18
 msgid "Mes Recettes"
-msgstr "My Recipes"
+msgstr "Mes Recettes"
 
 #: .\App\templates\App\recipe\recipes.html:19
 msgid "Découvrez et gérez votre collection de recettes culinaires"
-msgstr "Discover and manage your collection of culinary recipes"
+msgstr "Découvrez et gérez votre collection de recettes culinaires"
 
 #: .\App\templates\App\recipe\recipes.html:68
 msgid "Ajouté récemment"
-msgstr "Added recently"
+msgstr "Ajouté récemment"
 
 #: .\App\templates\App\recipe\recipes.html:73
 msgid "Par"
-msgstr "By"
+msgstr "Par"
 
 #: .\App\templates\App\recipe\recipes.html:86
 msgid "Voir la Recette"
-msgstr "View Recipe"
+msgstr "Voir la Recette"
 
 #: .\App\templates\App\recipe\recipes.html:108
 msgid "Aucune recette disponible"
-msgstr "No recipes available"
+msgstr "Aucune recette disponible"
 
 #: .\App\templates\App\recipe\recipes.html:109
 msgid ""
 "Commencez par ajouter votre première recette pour créer votre collection "
 "culinaire."
-msgstr "Start by adding your first recipe to create your culinary collection."
+msgstr ""
+"Commencez par ajouter votre première recette pour créer votre collection "
+"culinaire."
 
 #: .\App\templates\App\snippets\form_snippet.html:17
 msgid "Formulaire"
-msgstr "Form"
+msgstr "Formulaire"
 
 #: .\App\templates\App\snippets\form_snippet.html:24
 msgid "Saisissez les informations requises"
-msgstr "Enter the required information"
+msgstr "Saisissez les informations requises"
 
 #: .\App\templates\App\snippets\form_snippet.html:86
 msgid "Champ d'exemple"
@@ -655,26 +666,26 @@ msgstr ""
 
 #: .\App\templates\App\snippets\form_snippet.html:91
 msgid "Exemple de placeholder..."
-msgstr "Example placeholder..."
+msgstr "Exemple de placeholder..."
 
 #: .\App\templates\App\unit\add_unit.html:17
 msgid "Ajouter une Nouvelle Unité"
-msgstr "Add New Unit"
+msgstr "Ajouter une Nouvelle Unité"
 
 #: .\App\templates\App\unit\add_unit.html:18
 msgid "Enrichissez votre système de mesures pour des recettes précises"
-msgstr "Enrich your measurement system for precise recipes"
+msgstr "Enrichissez votre système de mesures pour des recettes précises"
 
 #: .\App\templates\App\unit\add_unit.html:36
 msgid "Exemples d'Unités Courantes"
-msgstr "Common Unit Examples"
+msgstr "Exemples d'Unités Courantes"
 
 #: .\App\templates\App\unit\add_unit.html:40
 #: .\App\templates\App\unit\edit_unit.html:41
 #: .\App\templates\App\unit\edit_unit.html:78
 #: .\App\templates\App\unit\unit_list.html:60
 msgid "Poids"
-msgstr "Weight"
+msgstr "Poids"
 
 #: .\App\templates\App\unit\add_unit.html:50
 #: .\App\templates\App\unit\edit_unit.html:43
@@ -688,23 +699,23 @@ msgstr "Volume"
 #: .\App\templates\App\unit\edit_unit.html:97
 #: .\App\templates\App\unit\unit_list.html:64
 msgid "Cuisine"
-msgstr "Cooking"
+msgstr "Cuisine"
 
 #: .\App\templates\App\unit\edit_unit.html:17
 msgid "Modifier l'Unité de Mesure"
-msgstr "Edit Measurement Unit"
+msgstr "Modifier l'Unité de Mesure"
 
 #: .\App\templates\App\unit\edit_unit.html:29
 msgid "Détails de l'Unité"
-msgstr "Unit Details"
+msgstr "Détails de l'Unité"
 
 #: .\App\templates\App\unit\edit_unit.html:29
 msgid "Modifiez les informations de votre unité de mesure"
-msgstr "Edit your measurement unit information"
+msgstr "Modifiez les informations de votre unité de mesure"
 
 #: .\App\templates\App\unit\edit_unit.html:38
 msgid "Unité actuelle:"
-msgstr "Current unit:"
+msgstr "Unité actuelle:"
 
 #: .\App\templates\App\unit\edit_unit.html:39
 msgid "Type:"
@@ -712,7 +723,7 @@ msgstr "Type:"
 
 #: .\App\templates\App\unit\edit_unit.html:47
 msgid "Général"
-msgstr "General"
+msgstr "Général"
 
 #: .\App\templates\App\unit\edit_unit.html:62
 msgid ""
@@ -720,209 +731,192 @@ msgid ""
 "l'utilisent. Assurez-vous que la nouvelle unité est compatible avec les "
 "quantités existantes."
 msgstr ""
-"Modifying this measurement unit will affect all recipes that use it. "
-"Make sure the new unit is compatible with existing quantities."
+"La modification de cette unité de mesure affectera toutes les recettes qui "
+"l'utilisent. Assurez-vous que la nouvelle unité est compatible avec les "
+"quantités existantes."
 
 #: .\App\templates\App\unit\edit_unit.html:74
 msgid "Exemples d'Unités par Catégorie"
-msgstr "Unit Examples by Category"
+msgstr "Exemples d'Unités par Catégorie"
 
 #: .\App\templates\App\unit\unit_list.html:18
 msgid "Découvrez et gérez vos unités de mesure pour des recettes précises"
-msgstr "Discover and manage your measurement units for precise recipes"
+msgstr "Découvrez et gérez vos unités de mesure pour des recettes précises"
 
 #: .\App\templates\App\unit\unit_list.html:24
 msgid "Ajouter une Unité"
-msgstr "Add Unit"
+msgstr "Ajouter une Unité"
 
 #: .\App\templates\App\unit\unit_list.html:37
 msgid "unité"
-msgstr "unit"
+msgstr "unité"
 
 #: .\App\templates\App\unit\unit_list.html:66
 msgid "Mesure"
-msgstr "Measure"
+msgstr "Mesure"
 
 #: .\App\templates\App\unit\unit_list.html:76
 msgid "Unité de poids pour mesurer les ingrédients solides"
-msgstr "Weight unit for measuring solid ingredients"
+msgstr "Unité de poids pour mesurer les ingrédients solides"
 
 #: .\App\templates\App\unit\unit_list.html:78
 msgid "Unité de volume pour mesurer les liquides"
-msgstr "Volume unit for measuring liquids"
+msgstr "Unité de volume pour mesurer les liquides"
 
 #: .\App\templates\App\unit\unit_list.html:80
 msgid "Unité de cuisine pour mesures pratiques"
-msgstr "Kitchen unit for practical measurements"
+msgstr "Unité de cuisine pour mesures pratiques"
 
 #: .\App\templates\App\unit\unit_list.html:82
 msgid "Unité de mesure personnalisée"
-msgstr "Custom measurement unit"
+msgstr "Unité de mesure personnalisée"
 
 #: .\App\templates\App\unit\unit_list.html:89
 #, python-format
 msgid "Utilisée dans %(counter)s recette"
 msgid_plural "Utilisée dans %(counter)s recettes"
-msgstr[0] "Used in %(counter)s recipe"
-msgstr[1] "Used in %(counter)s recipes"
+msgstr[0] ""
+msgstr[1] ""
 
 #: .\App\templates\App\unit\unit_list.html:101
 msgid "Êtes-vous sûr de vouloir supprimer cette unité ?"
-msgstr "Are you sure you want to delete this unit?"
+msgstr "Êtes-vous sûr de vouloir supprimer cette unité ?"
 
 #: .\App\templates\App\unit\unit_list.html:120
 msgid "Aucune unité de mesure disponible"
-msgstr "No measurement units available"
+msgstr "Aucune unité de mesure disponible"
 
 #: .\App\templates\App\unit\unit_list.html:121
 msgid ""
 "Commencez par ajouter vos unités de mesure pour créer des recettes précises."
-msgstr "Start by adding your measurement units to create precise recipes."
+msgstr ""
+"Commencez par ajouter vos unités de mesure pour créer des recettes précises."
 
 #: .\App\templates\App\unit\unit_list.html:124
 msgid "Créer Ma Première Unité"
-msgstr "Create My First Unit"
+msgstr "Créer Ma Première Unité"
 
 #: .\App\views\unit_views.py:26
 msgid "Navigation des unités"
-msgstr "Units navigation"
+msgstr "Navigation des unités"
 
 #: .\App\views\unit_views.py:27
 msgid "unités"
-msgstr "units"
+msgstr "unités"
 
 #: .\member_app\forms.py:14 .\member_app\forms.py:42 .\member_app\forms.py:65
 msgid "Nom d'utilisateur"
-msgstr "Username"
+msgstr "Nom d'utilisateur"
 
 #: .\member_app\forms.py:16 .\member_app\forms.py:73
 #: .\member_app\templates\member_app\password_edit.html:3
 #: .\member_app\templates\member_app\password_edit_success.html:3
 msgid "Mot de passe"
-msgstr "Password"
+msgstr "Mot de passe"
 
 #: .\member_app\forms.py:27
 msgid "Ancien mot de passe"
-msgstr "Old password"
+msgstr "Ancien mot de passe"
 
 #: .\member_app\forms.py:29
 msgid "Nouveau mot de passe"
-msgstr "New password"
+msgstr "Nouveau mot de passe"
 
 #: .\member_app\forms.py:31
 msgid "Confirmation du nouveau mot de passe"
-msgstr "New password confirmation"
+msgstr "Confirmation du nouveau mot de passe"
 
 #: .\member_app\forms.py:44 .\member_app\forms.py:67
 msgid "Prénom"
-msgstr "First name"
+msgstr "Prénom"
 
 #: .\member_app\forms.py:46 .\member_app\forms.py:69
 msgid "Nom de famille"
-msgstr "Last name"
+msgstr "Nom de famille"
 
 #: .\member_app\forms.py:48 .\member_app\forms.py:71
 msgid "Adresse e-mail"
-msgstr "Email address"
+msgstr "Adresse e-mail"
 
 #: .\member_app\forms.py:75
 msgid "Confirmation du mot de passe"
-msgstr "Password confirmation"
+msgstr "Confirmation du mot de passe"
 
 #: .\member_app\templates\member_app\login.html:3
 msgid "Identification"
-msgstr "Login"
+msgstr "Identification"
 
 #: .\member_app\templates\member_app\login.html:10
 msgid "Veuillez vous identifier"
-msgstr "Please log in"
+msgstr "Veuillez vous identifier"
 
 #: .\member_app\templates\member_app\login.html:19
 msgid "Se connecter"
-msgstr "Log in"
+msgstr "Se connecter"
 
 #: .\member_app\templates\member_app\password_edit.html:10
 #: .\member_app\templates\member_app\user_edit.html:18
 msgid "Modifier votre mot de passe"
-msgstr "Change your password"
+msgstr "Modifier votre mot de passe"
 
 #: .\member_app\templates\member_app\password_edit.html:19
 #: .\member_app\templates\member_app\user_edit.html:21
 msgid "Confirmer"
-msgstr "Confirm"
+msgstr "Confirmer"
 
 #: .\member_app\templates\member_app\password_edit_success.html:10
 msgid "Mot de passe modifié avec succès !"
-msgstr "Password changed successfully!"
+msgstr "Mot de passe modifié avec succès !"
 
 #: .\member_app\templates\member_app\password_edit_success.html:13
 msgid "Continuer"
-msgstr "Continue"
+msgstr "Continuer"
 
 #: .\member_app\templates\member_app\user_create.html:3
 #: .\templates\base.html:86
 msgid "Inscription"
-msgstr "Sign Up"
+msgstr "Inscription"
 
 #: .\member_app\templates\member_app\user_create.html:10
 msgid "Inscrivez-vous dès maintenant"
-msgstr "Sign up now"
+msgstr "Inscrivez-vous dès maintenant"
 
 #: .\member_app\templates\member_app\user_create.html:19
 msgid "S'inscrire"
-msgstr "Sign up"
+msgstr "S'inscrire"
 
 #: .\member_app\templates\member_app\user_edit.html:3
 msgid "Votre compte"
-msgstr "Your account"
+msgstr "Votre compte"
 
 #: .\member_app\templates\member_app\user_edit.html:10
 msgid "Vos informations de compte"
-msgstr "Your account information"
+msgstr "Vos informations de compte"
 
 #: .\templates\base.html:39
 msgid "Recettes"
-msgstr "Recipes"
+msgstr "Recettes"
 
 #: .\templates\base.html:49
 msgid "Unités"
-msgstr "Units"
+msgstr "Unités"
 
 #: .\templates\base.html:62
 msgid "Mon Profil"
-msgstr "My Profile"
+msgstr "Mon Profil"
 
 #: .\templates\base.html:67
 msgid "Changer le mot de passe"
-msgstr "Change Password"
+msgstr "Changer le mot de passe"
 
 #: .\templates\base.html:73
 msgid "Déconnexion"
-msgstr "Logout"
+msgstr "Déconnexion"
 
 #: .\templates\base.html:81
 msgid "Connexion"
-msgstr "Login"
+msgstr "Connexion"
 
 #: .\templates\base.html:98
 msgid "Langue"
-msgstr "Language"
-
-#, python-format
-#~ msgid "{%% trans "
-#~ msgstr "{%% trans "
-
-#~ msgid "{{ form_title|default:'Formulaire' }}"
-#~ msgstr "{{ form_title|default:'Form' }}"
-
-#~ msgid "de"
-#~ msgstr "of"
-
-#~ msgid "Aucune instruction disponible pour cette recette."
-#~ msgstr "No instructions available for this recipe."
-
-#~ msgid "Premier"
-#~ msgstr "First"
-
-#~ msgid "Précédent"
-#~ msgstr "Previous"
+msgstr "Langue"
